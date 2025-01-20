@@ -13,15 +13,28 @@ class InformationCascadeGraph:
 
         # Detect necessary fields
         self.author_id_field = self.detect_field(
-            post_data, ["author_id", ("author", "did")]
+            post_data, [("account", "id"), ("author", "did")]
         )
-        self.user_id_field = self.detect_field(post_data, ["did", ("author", "did")])
+        self.user_id_field = self.detect_field(post_data, ["in_reply_to_account_id", ("author", "did")])
         self.in_reply_to_field = self.detect_field(
             post_data, ["in_reply_to_id", ("record", "reply", "parent", "uri")]
         )
 
         # Post ID is fixed as '_id'
         self.post_id_field = "_id"
+    
+    @staticmethod
+    def get_nested_value(entry, path):
+        if isinstance(path, tuple):
+            path = list(path)
+            try:
+                for key in path:
+                    entry = entry[key]
+                return entry
+            except (KeyError, TypeError):
+                return None
+        else:
+            return entry.get(path)
 
     def detect_field(self, data, possible_fields):
         """
@@ -31,18 +44,10 @@ class InformationCascadeGraph:
         :return: The detected field name or path.
         """
 
-        def get_nested_value(entry, path):
-            try:
-                for key in path:
-                    entry = entry[key]
-                return entry
-            except (KeyError, TypeError):
-                return None
-
         for field in possible_fields:
             for entry in data:
                 if isinstance(field, tuple):
-                    if get_nested_value(entry, field) is not None:
+                    if self.get_nested_value(entry, field) is not None:
                         return field
                 elif field in entry:
                     return field
@@ -55,7 +60,11 @@ class InformationCascadeGraph:
         post_dict = {post[self.post_id_field]: post for post in self.post_data}
 
         for post in tqdm(self.post_data, desc="Building Reply Graph"):
-            in_reply_to_id = post.get(self.in_reply_to_field)
+            self.reply_graph.add_node(
+                post[self.post_id_field], author_id=self.get_nested_value(post, self.author_id_field)
+            )
+            in_reply_to_id = self.get_nested_value(post, self.in_reply_to_field)
+
             if in_reply_to_id:
                 parent_id = in_reply_to_id
                 self.reply_graph.add_edge(
@@ -64,11 +73,11 @@ class InformationCascadeGraph:
 
                 # Add metadata
                 self.reply_graph.nodes[post[self.post_id_field]]["author_id"] = (
-                    post.get(self.author_id_field)
+                    self.get_nested_value(post, self.author_id_field)
                 )
-                self.reply_graph.nodes[parent_id]["author_id"] = post_dict.get(
+                self.reply_graph.nodes[parent_id]["author_id"] = self.get_nested_value(post_dict.get(
                     parent_id, {}
-                ).get(self.author_id_field)
+                ),self.author_id_field)
 
         return self.reply_graph
 
@@ -78,41 +87,65 @@ class InformationCascadeGraph:
 
         for post in tqdm(self.post_data, desc="Building Repost Graph"):
             original_post_id = post[self.post_id_field]
-            original_author_id = post.get("author", {}).get("did")
-            reposts = post.get("reposts", [])
+            original_author_id = self.get_nested_value(post, self.author_id_field)
+            reposts = post.get('reposts', [])
+            all_reposts_users = [repost.get('did') for repost in reposts]
 
-            all_reposts_users = [repost.get("did") for repost in reposts]
-            linked_users = {
-                original_author_id: original_post_id
-            }  # {author_id: repost_id}
+            # Initialize linked and unlinked nodes
+            linked_users = {original_author_id: original_post_id} # {author_id: repost_id}
+            unlinked_users = {}
             unlinked_nodes = []
+            self.repost_graph.add_node(
+                original_post_id, author_id=original_author_id
+            )
 
+
+            # Assign unique repost IDs and check direct links
             for i, repost in enumerate(reposts):
-                repost_author = repost.get("did")
+                repost_author = repost.get('did')
                 repost_id = f"{original_post_id}_repost_{i}"
 
                 if original_author_id in self.follow_data.get(repost_author, []):
-                    self.repost_graph.add_edge(
-                        original_post_id, repost_id, type="repost"
-                    )
-                    self.repost_graph.nodes[repost_id]["author_id"] = repost_author
+                    # Directly link to the original author
+                    self.repost_graph.add_edge(original_post_id, repost_id, type='repost')
+                    self.repost_graph.nodes[repost_id]['link_type'] = 'direct'
+                    self.repost_graph.nodes[repost_id]['author_id'] = repost_author
+                    linked_users[repost_author] = repost_id
                 else:
+                    # Add to unlinked nodes for further processing
+                    unlinked_users[repost_author] = repost_id
                     unlinked_nodes.append((repost_author, repost_id))
+            # Iterative linking for unlinked nodes
 
             for node, node_id in unlinked_nodes:
-                for linked_user, linked_id in linked_users.items():
+                for linked_user in all_reposts_users:
+                    if linked_user == node:
+                        continue
                     if linked_user in self.follow_data.get(node, []):
-                        if nx.has_path(self.repost_graph, linked_id, node_id):
+                        #check to aviod cycle, i.e., the other way around is already linked
+                        if (node_id in self.repost_graph.nodes and nx.has_path(self.repost_graph, node_id, linked_users.get(linked_user))):
                             continue
-                        self.repost_graph.add_edge(linked_id, node_id, type="repost")
-                        self.repost_graph.nodes[node_id]["author_id"] = node
+                        # Link to the first user who follows the node
+                        if linked_user in set(linked_users.keys()):
+                            self.repost_graph.add_edge(linked_users.get(linked_user), node_id, type='repost')
+                            self.repost_graph.nodes[node_id]['link_type'] = 'direct'
+                            self.repost_graph.nodes[node_id]['author_id'] = node
+                        else:
+                            self.repost_graph.add_edge(unlinked_users.get(linked_user), node_id, type='repost')
+                            self.repost_graph.nodes[node_id]['link_type'] = 'direct'
+                            self.repost_graph.nodes[node_id]['author_id'] = node
+                        linked_users[linked_user] = node_id
+
+                        unlinked_nodes.remove((node, node_id))
+
                         break
-                else:
-                    self.repost_graph.add_edge(original_post_id, node_id, type="repost")
-                    self.repost_graph.nodes[node_id]["author_id"] = node
+            # Fallback: Link remaining unlinked nodes directly to the original post
+            for node, node_id in unlinked_nodes:
+                self.repost_graph.add_edge(original_post_id, node_id, type='repost')
+                self.repost_graph.nodes[node_id]['link_type'] = 'fallback'
+
 
         return self.repost_graph
-
     def build_combined_graph(self):
         self.combined_graph.clear()
 
@@ -123,17 +156,35 @@ class InformationCascadeGraph:
             self.combined_graph.add_edge(u, v, **data)
 
         for node, attrs in self.reply_graph.nodes(data=True):
-            self.combined_graph.nodes[node].update(attrs)
+            try:
+                self.combined_graph.nodes[node].update(attrs)
+            except:
+                self.combined_graph.add_node(node, **attrs)
         for node, attrs in self.repost_graph.nodes(data=True):
-            self.combined_graph.nodes[node].update(attrs)
+            try:
+                self.combined_graph.nodes[node].update(attrs)
+            except:
+                self.combined_graph.add_node(node, **attrs)
 
         # Step 2: Perform deliberate merging
-        for u, v, data in list(self.reply_graph.edges(data=True)):
+        # Step2.1: Merge reply into repost
+        count = 0
+        for u, v, data in tqdm(list(self.reply_graph.edges(data=True)), desc="Merging"):
             reply_user = self.reply_graph.nodes[v].get("author_id")
             parent_user = self.reply_graph.nodes[u].get("author_id")
+ 
 
             if parent_user not in self.follow_data.get(reply_user, []):
+                # Determine whether the parent node is root
+                if self.reply_graph.in_degree(u) == 0:
+                    count += 1
                 # Find all descendants of the original post
+                
+                # Find out whether the u is in repost graph
+                if u not in self.repost_graph.nodes:
+                    print("The node is not in repost graph")
+                    continue
+
                 descendants = nx.descendants(self.repost_graph, u)
 
                 for repost_target in descendants:
@@ -144,6 +195,26 @@ class InformationCascadeGraph:
                         self.combined_graph.remove_edge(u, v)
                         self.combined_graph.add_edge(repost_target, v, type="reply")
                         break
+
+        print(f"Step 2.1: Merged {count} reply edges into repost edges.")
+
+        # Step 2.2: Merge fallback repost into reply
+        for u, v, data in tqdm(list(self.repost_graph.edges(data=True)), desc="Merging"):
+            if data.get("link_type") == "fallback":
+                repost_user = self.repost_graph.nodes[v].get("author_id")
+                original_post = u
+                original_user = self.repost_graph.nodes[u].get("author_id")
+
+                for reply_target in nx.descendants(self.reply_graph, original_post):
+                    reply_user = self.reply_graph.nodes[reply_target].get("author_id")
+                    if original_user in self.follow_data.get(reply_user, []):
+                        self.combined_graph.remove_edge(u, v)
+                        self.combined_graph.add_edge(u, reply_target, type="repost")
+                        break
+            
+
+
+
 
         return self.combined_graph
 
@@ -166,6 +237,8 @@ class InformationCascadeGraph:
             breadth = defaultdict(int)
             for depth in depths.values():
                 breadth[depth] += 1
+            # Calculate max breadth
+            max_breadth = max(breadth.values())
 
             total_distance = 0
             pair_count = 0
@@ -181,7 +254,7 @@ class InformationCascadeGraph:
             tree_statistics[root] = {
                 "max_depth": max_depth,
                 "size": size,
-                "breadth": dict(breadth),
+                "breadth": max_breadth,
                 "structural_virality": structural_virality,
                 "reach": reach,
             }
