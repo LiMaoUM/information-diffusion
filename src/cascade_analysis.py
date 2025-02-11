@@ -203,6 +203,7 @@ class InformationCascadeGraph:
                 # Determine whether the parent node is root
                 if self.reply_graph.in_degree(u) == 0:
                     count += 1
+                    continue
                 # Find all descendants of the original post
 
                 # Find out whether the u is in repost graph
