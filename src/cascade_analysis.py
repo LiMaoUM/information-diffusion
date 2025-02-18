@@ -67,6 +67,10 @@ class InformationCascadeGraph:
     def build_reply_graph(self):
         self.reply_graph.clear()
         post_dict = {post[self.post_id_field]: post for post in self.post_data}
+        post_to_author = {
+            post[self.post_id_field]: self.get_nested_value(post, self.author_id_field)
+            for post in self.post_data
+        }
 
         for post in tqdm(self.post_data, desc="Building Reply Graph"):
             self.reply_graph.add_node(
@@ -77,8 +81,16 @@ class InformationCascadeGraph:
 
             if in_reply_to_id:
                 parent_id = in_reply_to_id
+
+                # check if the user is following the parent
+                if post_to_author[parent_id] in self.follow_data.get(
+                    post_to_author[post[self.post_id_field]], []
+                ):
+                    edge_type = "directed"
+                else:
+                    edge_type = "indirected"
                 self.reply_graph.add_edge(
-                    parent_id, post[self.post_id_field], type="reply"
+                    parent_id, post[self.post_id_field], type=edge_type
                 )
 
                 # Add metadata
