@@ -83,7 +83,7 @@ class InformationCascadeGraph:
                 parent_id = in_reply_to_id
 
                 # check if the user is following the parent
-                if post_to_author[parent_id] in self.follow_data.get(
+                if post_to_author.get(parent_id,None) in self.follow_data.get(
                     post_to_author[post[self.post_id_field]], []
                 ):
                     edge_type = "directed"
