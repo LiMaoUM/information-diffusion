@@ -5,7 +5,7 @@
 source ~/.virtualenv/ai-lab/bin/activate
 
 
-nohup python3 bsky_follows.py > ~/projects/information-diffusion/logs/bsky_data.log 2>&1 &
+nohup python3 bsky_api.py > ~/projects/information-diffusion/logs/bsky_data.log &
 # Record the PID to a file
 echo $! > bsky_data.pid
 
