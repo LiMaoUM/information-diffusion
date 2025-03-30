@@ -298,6 +298,13 @@ class InformationCascadeGraph:
             structural_virality = total_distance / pair_count if pair_count > 0 else 0
 
             reach = len(tree.nodes)
+            # 👉 Count alignment types
+            aligned_edges = sum(
+                1 for u, v, data in tree.edges(data=True)
+                if data.get("type") in {"directedAligned", "indirectedAligned"}
+            )
+            total_edges = tree.number_of_edges()
+            alignment_ratio = aligned_edges / total_edges if total_edges > 0 else 0
 
             tree_statistics[root] = {
                 "max_depth": max_depth,
@@ -305,6 +312,7 @@ class InformationCascadeGraph:
                 "breadth": max_breadth,
                 "structural_virality": structural_virality,
                 "reach": reach,
+                "alignment_ratio": alignment_ratio,
             }
 
         return tree_statistics

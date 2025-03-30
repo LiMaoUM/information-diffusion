@@ -1,0 +1,12 @@
+Motif 0: 7223419
+Motif 1: 772862
+Motif 2: 778225
+Motif 3: 73620
+Motif 4: 143737
+Motif 5: 101151
+Motif 6: 34800
+Motif 7: 9664
+Motif 8: 15362
+Motif 9: 27162
+Motif 10: 7063
+Motif 11: 18295
