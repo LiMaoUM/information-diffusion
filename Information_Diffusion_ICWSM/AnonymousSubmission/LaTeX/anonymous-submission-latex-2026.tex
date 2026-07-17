@@ -1,0 +1,1004 @@
+%File: anonymous-submission-latex-2026.tex
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2026}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\usepackage{amsmath}
+\usepackage{booktabs}
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2026.1)
+}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai2026.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{Depth, Breadth, and Bias: Structural Diffusion of Political Content on Divergent Platforms}
+\author{
+    %Authors
+    % All authors must be in the same font size and format.
+    Written by AAAI Press Staff\textsuperscript{\rm 1}\thanks{With help from the AAAI Publications Committee.}\\
+    AAAI Style Contributions by Pater Patel Schneider,
+    Sunil Issar,\\
+    J. Scott Penberthy,
+    George Ferguson,
+    Hans Guesgen,
+    Francisco Cruz\equalcontrib,
+    Marc Pujol-Gonzalez\equalcontrib
+}
+\affiliations{
+    %Afiliations
+    \textsuperscript{\rm 1}Association for the Advancement of Artificial Intelligence\\
+    % If you have multiple authors and multiple affiliations
+    % use superscripts in text and roman font to identify them.
+    % For example,
+
+    % Sunil Issar\textsuperscript{\rm 2},
+    % J. Scott Penberthy\textsuperscript{\rm 3},
+    % George Ferguson\textsuperscript{\rm 4},
+    % Hans Guesgen\textsuperscript{\rm 5}
+    % Note that the comma should be placed after the superscript
+
+    1101 Pennsylvania Ave, NW Suite 300\\
+    Washington, DC 20004 USA\\
+    % email address must be in roman text type, not monospace or sans serif
+    proceedings-questions@aaai.org
+%
+% See more examples next
+}
+
+%Example, Single Author, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\iffalse
+\title{My Publication Title --- Single Author}
+\author {
+    Author Name
+}
+\affiliations{
+    Affiliation\\
+    Affiliation Line 2\\
+    name@example.com
+}
+\fi
+
+\iffalse
+%Example, Multiple Authors, ->> remove \iffalse,\fi and place them surrounding AAAI title to use it
+\title{My Publication Title --- Multiple Authors}
+\author {
+    % Authors
+    First Author Name\textsuperscript{\rm 1},
+    Second Author Name\textsuperscript{\rm 2},
+    Third Author Name\textsuperscript{\rm 1}
+}
+\affiliations {
+    % Affiliations
+    \textsuperscript{\rm 1}Affiliation 1\\
+    \textsuperscript{\rm 2}Affiliation 2\\
+    firstAuthor@affiliation1.com, secondAuthor@affilation2.com, thirdAuthor@affiliation1.com
+}
+\fi
+
+
+% REMOVE THIS: bibentry
+% This is only needed to show inline citations in the guidelines document. You should not need it and can safely delete it.
+\usepackage{bibentry}
+% END REMOVE bibentry
+\begin{document} 
+
+\maketitle
+
+\begin{abstract} 
+Political information spreads through social media via both sharing and conversation, and platforms differ in how these processes unfold. This study examines candidate-centered political diffusion about the 2024 U.S. presidential election on Truth Social and Bluesky, two ideologically distinct but technically comparable platforms. Using repost and reply networks constructed from public posts mentioning Biden or Trump during May--June 2024, we analyze cascade structure and evaluate the roles of influencers, topic variation, ideological composition, and interaction alignment. Repost diffusion is broadly similar across platforms, but reply cascades differ substantially: interactions on Truth Social are wider and shallower, whereas Bluesky supports narrower but deeper conversational threads. These differences are statistically accounted for more strongly by ideological composition and alignment than by influencers or topic variation. Fine-grained motif analysis further reveals asymmetric interaction patterns, including distinct roles for left-, right-, and center-leaning users across platforms. Overall, the findings suggest that variation in election-related information diffusion reflects not only who participates, but also how interaction patterns organize opportunities for cross-group engagement, with replies being especially sensitive to ideological structure.
+\end{abstract}
+
+
+\section{Introduction}
+Social media platforms facilitate information cascades, chains of reposts, replies, and other interactions through which political content circulates online \cite{easley_networks_2010, gruhl_information_2004, guille_information_2013}. Understanding how these cascades form has become a central concern across computational social science, communication, and network analysis. Past research has shown how different types of content, such as videos, petitions, or news, spread on platforms including Twitter, Facebook, and LinkedIn, and how false news in particular can diffuse differently than true news \cite{goel_structural_2016, cheng_can_2014, anderson_global_2015, vosoughi_spread_2018, zhao_fake_2020}.
+
+Much of this work highlights two broad influences. First are platform affordances, features like reply visibility, feed ranking, or sharing mechanisms, that determine what users see and how they can interact \cite{boyd_social_2010, treem_social_2013}. Second are community dynamics: who participates, how like-minded or diverse those users are, and whether they engage across ideological boundaries \cite{conover_political_2011, garimella_political_2018}. These factors together shape whether cascades remain shallow amplifications or develop into extended conversations.
+
+Existing studies have often aggregated cascades by content type (e.g., true vs. false news) and examined size, depth, breadth, or virality to identify broad drivers such as novelty, veracity, or emotional tone \cite{goel_structural_2016, vosoughi_spread_2018, berger_what_2012, zollo_emotional_2015}. However, most analyses focus on a single platform, limiting what we know about which aspects of diffusion are universal and which are platform-specific, especially in newer, ideologically distinct online environments \cite{cinelli_echo_2021}.
+
+This gap is increasingly relevant because the social media ecosystem has fractured. After the January 6 Capitol attack, Donald Trump launched Truth Social as a right-leaning alternative to mainstream platforms. More recently, Twitter’s rebranding as X and its loosening of moderation have spurred many centrist and left-leaning users to migrate to Bluesky \cite{gerard_truth_2023, failla_im_2024, quelle_bluesky_2024}. Although both platforms mimic Twitter’s design, follower networks, reposts, and reply mechanics, their contrasting community compositions create distinct social contexts. Prior studies of Gab, a platform built to closely mimic Twitter’s technical design, show that similar architectures can foster very different conversational structures when embedded in different communities \cite{cinelli_echo_2021}.
+
+Truth Social and Bluesky provide a natural comparison for studying how candidate-related political conversations unfold in ideologically distinct online environments. Rather than emphasizing only how far or how fast information travels, our analysis focuses on the shapes of cascades: whether content spreads broadly through direct amplification or develops sequentially through extended exchanges.
+
+Building on this insight, we compare the structural diffusion of political content on Truth Social and Bluesky as a case comparison during a high-salience period of the 2024 U.S. presidential campaign. The analysis centers on a one-month window that included major events such as the first presidential debate, focusing on posts containing hashtags and keywords related to “Biden” and “Trump.” This setting captures how political exchanges unfold at a moment of peak public attention, when participation is both intense and ideologically charged. 
+
+We ask: Which aspects of diffusion are consistent across platforms, and which vary with community composition and interaction norms? 
+
+\section{Theoretical Framework and Hypotheses}
+
+\subsection{Defining Diffusion Modes and Scaling}
+To address our research question, we distinguish between two modes of diffusion. Reposts capture endorsement behaviors, signals of agreement and amplification that spread content outward. Replies, by contrast, capture conversational engagement, where users respond, contest, or extend discussions. This distinction allows us to separate what is broadly universal in online diffusion (patterns of endorsement) from what is platform-specific (the conversational architectures that emerge in reply threads).
+
+Rather than emphasizing only how far or how fast information travels, our analysis focuses on the shapes of cascades: whether content spreads broadly through direct amplification or develops sequentially through extended exchanges. Prior work has shown that depth, breadth, and structural virality all correlate positively with cascade size \cite{juul_comparing_2021}. This raises a concern: marginal comparisons may conflate structural effects with sheer volume, making it difficult to disentangle mechanisms of growth. To address this concern, we hold the cascade size constant and examine structural differences directly, analyzing how cascades grow vertically (depth) and horizontally (breadth). 
+
+Motivated by observed differences in reply cascade geometry across platforms, we propose three candidate mechanisms that may account for this divergence. These explanations draw from prior work in network science, computational social science, and political communication, and span different levels of influence: user prominence, content semantics, and ideological composition and alignment.
+
+\subsection{H1: Influencer Dominance}
+Prior research has demonstrated that a small number of high-follower users can disproportionately influence content dissemination, particularly on platforms characterized by skewed follower distributions or centralized influence structures \cite{goel_structural_2016, zannettou_what_2018}. Truth Social, with its relatively small and ideologically concentrated user base, offers a fertile environment for such dynamics. This is further supported by the power-law distributions observed in the number of followers, reposts, and replies per user, as detailed in the Appendix. Overall, Truth Social exhibits a more pronounced heavy-tailed distribution compared to Bluesky, with a handful of dominant users, primarily right-leaning—occupying central roles in terms of follower count. To identify these influential users, we examined the follower count distribution and observed a clear discontinuity separating the top eight users from the rest, providing a natural cutoff for defining unusually high influence (see Appendix). We hypothesize that this concentration of influence contributes to reply cascades that are broad in reach but shallow in depth, indicative of immediate visibility rather than sustained conversational engagement.
+
+\subsection{H2: Ideological Structure}
+The ideology of users in a cascade, both in terms of who participates and how they interact, can shape its structure. Ideologically homogeneous groups often generate more uniform and shallow discussions, whereas cross-cutting exchanges promote greater depth, branching, and contention~\cite{conover_political_2011, garimella_political_2018, barbera_tweeting_2015, adamic_political_2005, guess_how_2023}.
+
+We measure the role of ideology in shaping cascade structure along two dimensions: (1) the ideological composition of users and (2) the alignment of their interactions. The ideological composition is defined as the proportion of users from each ideology within a reply tree, capturing the dominant perspective of a conversation. Alignment is measured as the share of reply edges connecting users of the same ideology; lower alignment indicates more ideologically heterogeneous interactions. 
+
+We hypothesize that ideological alignment and user composition are the key factors shaping cascade structure. Specifically, cascades with more ideologically diverse participants and lower alignment ratios are expected to develop deeper and more layered patterns, particularly on platforms such as Bluesky, where cross-cutting discussion is more viable. Our models build on this logic, illustrating why incorporating these factors into the models substantially attenuates platform-level differences.
+
+\subsection{H3: Topic Variability}
+The content of a post also plays a crucial role in shaping how users interact with it. Content that is emotionally charged, controversial, or conspiratorial often spreads through deeper and more structurally viral cascades than neutral or factual information \cite{vosoughi_spread_2018, wang_factors_2022}. In this study, we identified ten salient topics across both platforms. Although all topics are politically related, the distribution of emphasis varies substantially between Truth Social and Bluesky. The procedure for topic identification, evaluation (with results validated through human judgment), and assignment is detailed in Appendix.
+
+We hypothesize that certain topics, particularly those involving partisan conflict, institutional distrust, or election-related narratives, may elicit distinct structural diffusion patterns depending on their resonance within each platform’s community. For example, election-related topics (e.g., presidential debates) are more prevalent on certain platforms. If such topics also diffuse differently, these differences may help explain the contrasting cascade structures we observe.
+
+\subsection{Micro-Level Network Motifs}
+To further unpack the mechanisms underlying platform-level differences in reply cascade geometry, we move from cascade-level regressions to a finer-grained motif analysis. While our statistical models evaluate whether alignment ratio and ideological composition control divergence, they do not reveal \textit{how} these compositional factors shape the micro-dynamics of interaction. Motif analysis, a graph-theoretic approach that examines the frequency of small recurring substructures within larger networks~\cite{alon_network_2007}, offers precisely this lens. 
+
+We analyze two basic 3-node motif shapes: \textit{chains}, where replies unfold in sequence, and \textit{stars}, where multiple replies attach to the same root. Each motif is labeled by the ideological stance of its participants: Left (L), Center (C), or Right (R).
+
+% \section{Related Work}
+
+
+% Truth Social and Bluesky provide a natural comparison for studying how political conversations unfold in ideologically distinct online environments. Rather than emphasizing only how far or how fast information travels, our analysis focuses on the shapes of cascades: whether content spreads broadly through direct amplification or develops sequentially through extended exchanges.
+
+% In our analysis, we distinguish between two modes of diffusion. Reposts capture endorsement behaviors, signals of agreement and amplification that spread content outward. Replies, by contrast, capture conversational engagement, where users respond, contest, or extend discussions. This distinction allows us to separate what is broadly universal in online diffusion (patterns of endorsement) from what is platform-specific (the conversational architectures that emerge in reply threads).
+
+% Motivated by the observed differences in reply cascade geometry across platforms, we propose three candidate mechanisms that may account for this divergence. These explanations draw from prior work in network science, computational social science, and political communication, and span different levels of influence: user prominence, content semantics, and ideological composition and alignment.
+
+% \paragraph*{Influencer Dominance.}
+% Prior research has demonstrated that a small number of high-follower users can disproportionately influence content dissemination, particularly on platforms characterized by skewed follower distributions or centralized influence structures \cite{goel_structural_2016, zannettou_what_2018}. Truth Social, with its relatively small and ideologically concentrated user base, offers a fertile environment for such dynamics. This is further supported by the power-law distributions observed in the number of followers, reposts, and replies per user, as detailed in \cite{methods}. Overall, Truth Social exhibits a more pronounced heavy-tailed distribution compared to Bluesky, with a handful of dominant users, primarily right-leaning—occupying central roles in terms of follower count. To identify these influential users, we examined the follower count distribution and observed a clear discontinuity separating the top eight users from the rest, providing a natural cutoff for defining unusually high influence (see \cite{methods}). We hypothesize that this concentration of influence contributes to reply cascades that are broad in reach but shallow in depth, indicative of immediate visibility rather than sustained conversational engagement.
+
+% \paragraph*{Ideological Structure.}
+% The ideology of users in a cascade, both in terms of who participates and how they interact, can shape its structure. Ideologically homogeneous groups often generate more uniform and shallow discussions, whereas cross-cutting exchanges promote greater depth, branching, and contention~\cite{conover_political_2011, garimella_political_2018, barbera_tweeting_2015, adamic_political_2005, guess_how_2023}.
+
+% We measure the role of ideology in shaping cascade structure along two dimensions: (1) the ideological composition of users and (2) the alignment of their interactions. The ideological composition is defined as the proportion of users from each ideology within a reply tree, capturing the dominant perspective of a conversation. Alignment is measured as the share of reply edges connecting users of the same ideology; lower alignment indicates more ideologically heterogeneous interactions. 
+
+% We hypothesize that ideological alignment and user composition are the key factors shaping cascade structure. Specifically, cascades with more ideologically diverse participants and lower alignment ratios are expected to develop deeper and more layered patterns, particularly on platforms such as Bluesky, where cross-cutting discussion is more viable. Our models build on this logic, illustrating why incorporating these factors into the models substantially attenuates platform-level differences.
+
+% \paragraph*{Topic Variability.}
+% The content of a post also plays a crucial role in shaping how users interact with it. Content that is emotionally charged, controversial, or conspiratorial often spreads through deeper and more structurally viral cascades than neutral or factual information \cite{vosoughi_spread_2018, wang_factors_2022}. In this study, we identified ten salient topics across both platforms. Although all topics are politically related, the distribution of emphasis varies substantially between Truth Social and Bluesky. The procedure for topic identification, evaluation (with results validated through human judgment), and assignment is detailed in \cite{methods}.
+
+% We hypothesize that certain topics, particularly those involving partisan conflict, institutional distrust, or election-related narratives, may elicit distinct structural diffusion patterns depending on their resonance within each platform’s community. For example, election-related topics (e.g., presidential debates) are more prevalent on certain platforms. If such topics also diffuse differently, these differences may help explain the contrasting cascade structures we observe.
+
+% To further unpack the mechanisms underlying platform-level differences in reply cascade geometry, we move from cascade-level regressions to a finer-grained motif analysis. While our statistical models showed that cross-platform divergence in breadth and depth largely vanishes once alignment ratio and ideological composition are controlled, they do not reveal \textit{how} these compositional factors shape the micro-dynamics of interaction. Motif analysis, a graph-theoretic approach that examines the frequency of small recurring substructures within larger networks~\cite{alon_network_2007}, offers precisely this lens. 
+
+% We analyze two basic 3-node motif shapes: \textit{chains}, where replies unfold in sequence, and \textit{stars}, where multiple replies attach to the same root. Each motif is labeled by the ideological stance of its participants: Left (L), Center (C), or Right (R). 
+
+\section{Data and Methods}
+\subsection{Data}
+We collected posts and their associated reposts and replies from both platforms during a critical month of the 2024 U.S. presidential campaign, when major political events (including the first debate) spurred intense online discussion. While our sampling window is limited, it offers a revealing snapshot of how these communities process high-salience political content.
+
+We used each platform’s public API to collect posts containing the target keywords and their surrounding conversations.
+For Bluesky, the thread endpoint enabled retrieval of entire discussion trees around posts mentioning “Biden” or “Trump,” while for Truth Social (which follows the Mastodon API structure), we used the context endpoint to capture both ancestor and descendant replies recursively.
+This approach provides full conversational context rather than isolated messages, allowing us to reconstruct entire reply cascades. For every post and reply, we also collected associated repost actions and each user’s follower list, allowing us to link diffusion patterns to the underlying network of connections. Data were collected between May 30 and June 30, 2024, a high-salience period that included the first U.S. presidential debate.
+
+\subsection{Modeling Structural Differences in Information Cascades}
+
+\paragraph*{Baseline Model.}
+
+To rigorously assess how cascade structure varies across platforms, we model the scaling relationship between cascade size and breadth using robust regression with the Huber loss function. This approach mitigates the influence of outliers, common in heavy-tailed cascade data, and addresses heteroskedasticity in residuals (see Appendix for additional justification).
+
+Our baseline model examines how cascade breadth and depth scale with size, conditional on platform. Specifically, we include a platform indicator and its interaction with log-transformed cascade size:
+
+\begin{align}
+\label{eq:eq1}
+\log(Y_i) =\ & \beta_0 + \beta_1 \log(\text{size}_i) \notag \\
+             & + \beta_2 \cdot \text{platform}_i \notag \\
+             & + \beta_3 \cdot \left( \log(\text{size}_i) \times \text{platform}_i \right) + \varepsilon_i ,
+\end{align}
+where $Y_i$ denotes either cascade breadth or cascade depth.
+The coefficient of primary interest is the interaction term, $\beta_3$, which captures whether the relationship between cascade size and breadth differs by platform. A significant $\beta_3$ implies that the slope of the log--log relationship varies systematically across platforms.
+
+To quantify the explanatory contribution of these additional covariates, we track how the platform-by-size interaction changes between models. Specifically, we compute the percent attenuation of $\beta_3$:
+
+\begin{equation}
+\Delta = 1 - \frac{\hat{\beta}_{3,\text{aug}}}{\hat{\beta}_{3,\text{base}}} ,
+\end{equation}
+
+where $\hat{\beta}_{3,\text{base}}$ denotes the interaction coefficient from Eq.~\ref{eq:eq1}, and $\hat{\beta}_{3,\text{aug}}$ the corresponding estimate obtained from the augmented specifications (ie., Models 2–4). A larger $\Delta$ indicates that the added covariates account for a greater portion of the cross-platform difference.
+
+By comparing baseline and augmented models, we thus directly assess whether observed platform-specific scaling patterns persist once structural and author-level features are taken into account.
+
+\paragraph*{Incorporating Influencer Dynamics.}
+
+To evaluate the \textit{Influencer Dominance Hypothesis}, we refine the platform variable to distinguish influencer-initiated cascades on Truth Social. In the baseline model, the platform variable $\text{platform}_i$ takes two values: 0 for Bluesky and 1 for Truth Social. We extend this variable to include a third category: 2 for Truth Social cascades initiated by high-follower users, while 1 for Truth Social cascades initiated by others. Such a refinement is only necessary for Truth Social, because the platform is uniquely shaped by a small set of highly dominant accounts, most prominently Trump himself and seven other users with exceptionally large followings. No comparable concentration of outlier accounts exists on Bluesky, where user influence is more evenly distributed.
+
+The revised model retains the same functional form as Equation~\ref{eq:eq1}, with $\text{platform}_i$ now representing three cascade types. This formulation enables us to compare non-influencer cascades in TruthSocial against cascades from Bluesky.
+
+\paragraph*{Assessing Ideological Composition and Alignment Effects.}
+
+We first assign each user an ideological label. Labels are inferred from aggregate posting behavior using the Llama-3.1-8B-Instruct model and validated against human annotations ($\kappa = 0.64$–$0.73$; see Appendix). Because large language models may encode biases, we treat these labels as probabilistic indicators rather than ground truth. Each user’s ideology is inferred from the proportion of their posts identified as left-, center-, or right-leaning, and we tested different cutoff values (e.g., classifying a user as left-leaning if more than 60\% of their posts are labeled as left). The aggregate patterns we report remain consistent across these threshold choices, indicating that our results are not sensitive to any particular cutoff (the sensitivity analysis can be seen in Appendix).
+
+Building on these labels, we define interaction across ideological lines. Each reply edge is coded as aligned if the two users share the same stance, and a cascade’s alignment ratio is defined as the proportion of aligned edges. To capture nonlinear effects, particularly at extremes of homogeneity, we apply a spline transformation (df = 3) and interact this term with cascade size and platform indicators (see Appendix). This measure reflects the extent of cross-cutting interaction, following prior work that links ideological heterogeneity to conversational complexity~\cite{adamic_political_2005, guess_how_2023}.
+
+We then measure the ideological composition of each reply tree. For each reply tree, we compute the proportion of replies authored by left-leaning and right-leaning users, using the centrist share as the reference category. To account for potential nonlinearities, we tested spline specifications for both shares. Diagnostics indicated that a spline (df = 3) better captures the effect of the left-user ratio, while the right-user ratio is sufficiently modeled linearly; full details are reported in Appendix. These measures capture the degree of ideological homogeneity or imbalance, which prior work has connected to polarization and engagement dynamics~\cite{conover_political_2011, garimella_political_2018, barbera_tweeting_2015}. As a robustness check, we also test a majority/minority specification, where the majority corresponds to the platform-dominant ideology (right-leaning on Truth Social, left-leaning on Bluesky) and the minority corresponds to the opposing ideology. This formulation could potentially compare majority versus minority status within each platform, abstracting away from the specific left/right distributional asymmetries across platforms. While this alternative reproduces the main pattern, its incremental improvement is limited. We therefore retain the left/right specification as our primary model, reporting results from the majority/minority formulation in Appendix.
+
+Taken together, these measures distinguish between who participates in a conversation (ideological composition) and how those users interact (alignment). By incorporating both into the regression framework, we assess whether structural divergence in reply cascades is better explained by participant makeup, communication patterns, or their interaction.
+
+\paragraph*{Evaluating Topic Variability.}
+
+To address the \textit{Topic Variability Hypothesis}, we include cascade-level topic annotations as categorical moderators. Topics are interacted with $\log(\text{size}_i)$ and $\text{platform}_i$ to test whether differences in cascade content account for cross-platform variation in how depth and breadth scale with size.
+The main text describes our core modeling procedures, including the regression framework and mechanisms evaluated. Additional methodological details are provided in Appendix, including full regression outputs, justification for identifying outlier users, diagnostics for model assumptions, and supplementary data analyses such as follower distribution patterns and agreement validation.
+
+\section{Results}
+
+\subsection{Diffusion Structure Across Emerging Social Networks}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\linewidth]{figures/ccdf_all.png}
+\caption{(A–D) Complementary cumulative distribution functions (CCDFs) of repost cascade statistics across two platforms: BlueSky and TruthSocial). Each subplot represents a different structural property: Size, Depth, Breadth, and Structural Virality \cite{goel_structural_2016}. (E–H) The same analyses applied to reply cascades on BlueSky and TruthSocial using the same metrics. X-axes are on a log scale (except for structural virality), and y-axes are plotted on a log scale throughout. Each line represents a platform’s empirical distribution. Tick marks are retained for alignment, and rows are annotated to distinguish reposts from replies.
+}
+\label{fig:ccdf}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/breadth_depth.png}
+    \caption{(A–B) Robust Linear Models (RLM) regressions of log-transformed cascade breadth (A) and depth (B) on log-transformed cascade size for reply cascades on BlueSky and TruthSocial. (C–D) Same regressions for repost cascades. Point clouds represent individual cascades (semi-transparent), and lines represent RLM fits. Blue denotes BlueSky, and red denotes TruthSocial. Slope coefficients and their standard errors are annotated in each subplot. Cascade depth is computed as $\log(\text{depth} + 1)$ to avoid undefined values for shallow trees. All axes are on a logarithmic scale. Each panel uses matched styling to support cross-platform comparisons.}
+    \label{fig:bd}
+\end{figure}
+
+As shown in Figure~\ref{fig:ccdf}, cascades on Truth Social appear larger, deeper, and broader than those on Bluesky for both reposts and replies, and they also show higher levels of structural virality. These descriptive comparisons raise a natural question: what explains the apparent discrepancy in cascade shape across platforms? A straightforward possibility is platform size, since larger user bases mechanically allow cascades to expand further. Prior work has shown that depth, breadth, and structural virality all correlate positively with cascade size\cite{juul_comparing_2021}. This raises a concern: marginal comparisons may conflate structural effects with sheer volume, making it difficult to disentangle mechanisms of growth. To address this concern, we hold the cascade size constant and examine structural differences directly. Specifically, we analyze how cascades grow along two dimensions: vertically (depth) and horizontally (breadth). Variation in these scaling slopes reveals how user engagement patterns shift as discussions unfold.
+
+Figure~\ref{fig:bd} presents robust linear fits between log-transformed cascade size and both depth and breadth. After conditioning on cascade size, differences in repost behavior largely disappear: repost cascades scale similarly across Truth Social and Bluesky, with nearly identical slopes. In contrast, reply cascades exhibit a marked divergence. On Truth Social, replies tend to fan out, producing broad but shallow trees, whereas on Bluesky, conversations deepen through sequential exchange, forming narrower but more layered structures. This asymmetry suggests that while baseline amplification behaviors (i.e., reposts) are consistent, patterns of dialogic engagement diverge.
+
+\subsection{Mechanisms of Structural Divergence}
+
+\begin{table*}[htbp]
+\centering
+\caption{Interaction Effects of Size (Log) and Platform on Breadth (Log) and Depth (Log)}
+\label{model}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Model} & Size (Log) & Size (Log) $\times$ TruthSocial & $pseudo\ R^2$ & RMSE  \\
+\hline
+\hline
+\multicolumn{5}{l}{\textbf{Breadth (Log)}} \\
+\hline
+Model 1 (Baseline) & $0.4999^{***} (0.001)$ & $0.3988^{***} (0.002)$ & $0.9107$ & $0.1373$  \\
+Model 2 (Influencers) & $0.5000^{***} (0.001)$ & $0.3915^{***} (0.002)^{\dagger}$ & $0.9117$ & $0.1365$  \\
+Model 3a (Alignment) &  $0.0000^{***} (0.001)$  & $0.2022^{***} (0.000)$ & $0.9326$ &$0.1192$ \\
+Model 3b (Composition) &$0.3646^{***} (0.001)$  & $0.2579^{***} (0.000)$ & $0.9312$ &$0.1205$ \\
+Model 3c (Combined) & $0.2526^{***} (0.000)$ & $0.0230^{***} (0.000)$ & $0.9517$ & $0.1010$  \\
+Model 4 (Topic) & $0.5070^{***} (0.002)$ & $0.4286^{***} (0.005)$ & $0.9125$ & $0.1359$  \\
+\hline
+\hline
+\multicolumn{5}{l}{\textbf{Depth (Log)}} \\
+\hline
+Model 1 (Baseline) & $0.7737^{***} (0.001)$ & $-0.3344^{***} (0.001)$ & $0.8483$ & $0.1076$  \\
+Model 2 (Influencers) & $0.7737^{***} (0.001)$ & $-0.3254^{***} (0.001)^{\dagger}$ & $0.8499$ & $0.1070$  \\
+Model 3a (Alignment) & $0.7956^{***} (0.001)$ &$-0.1831^{***} (0.001)$ & $0.8965$ & $0.0889$ \\
+Model 3b (Composition) & $0.9002^{***} (0.001)$ &$-0.1950^{***} (0.001)$ & $0.8781$ & $0.0964$  \\
+Model 3c (Combined) & $0.9286^{***} (0.000)$ & $-0.0547^{***} (0.000)$ & $0.9049$ & $ 0.0852$  \\
+Model 4 (Topic) & $0.7808^{***} (0.002)$ & $-0.2374^{***} (0.003)$ & $0.7882$ & $0.1271$  \\
+\hline
+\hline
+\end{tabular}
+
+\vspace{1em}
+\begin{minipage}{0.95\linewidth}
+\footnotesize
+\textit{Notes:} Standard errors in parentheses. *$p<0.05$; **$p<0.01$; ***$p<0.001$. $N=123189$ \\
+\textsuperscript{†} In Model 2, interaction is with \texttt{outlier}, not platform.
+\end{minipage}
+\end{table*}
+
+The modeling results, reported in Table~\ref{model}, highlight clear differences in explanatory power across the three mechanisms. Model 2 (\textit{Influencers}) indicates that cascades initiated by high-follower accounts on Truth Social are only marginally broader on average, and the platform–size slope gap remains largely unchanged relative to the baseline. This suggests that the broad–shallow structure of Truth Social cascades is not simply the product of a small elite of prominent accounts, but rather reflects more widespread interaction patterns across the platform.
+
+Model 3 (\textit{Ideological Structure}) is decomposed into three specifications. Model 3a incorporates only the alignment ratio, Model 3b incorporates only user-level ideological composition, and Model 3c combines both. This decomposition shows that Composition (Model 3a) reduces the divergence, yet substantial residual differences persist ($0.2579$ for breadth and $-0.1950$ for depth). Alignment (Model 3b) likewise attenuates but does not eliminate platform differences: the size-platform interaction for breadth remains positive ($0.2022$), and the size–platform interaction for depth remains negative ($-0.1831$). By contrast, the combined model (3c) drives both interaction terms close to zero ($0.0230$ for breadth and $-0.0547$ for depth), indicating that only when considering both ideological composition and cross-ideological alignment together do the platform-specific scaling gaps vanish.
+
+Model fit statistics reinforce this conclusion. While Models 3a and 3b improve pseudo-$R^2$ and RMSE relative to the baseline, the gains are modest. The combined specification produces the strongest fit—pseudo-$R^2$ increases to $0.95$ for breadth and $0.90$ for depth, with corresponding reductions in RMSE, demonstrating that ideological structure jointly explains a large share of the observed divergence. Substantively, this suggests that structural diffusion patterns across platforms are shaped not only by within-cascade conflict (alignment) but also by broader differences in the ideological makeup of user communities. 
+
+Model 4 (\textit{Topic Variability}) shows a more modest effect. While platform–size interactions remain significant, the slope gaps shrink only slightly, by about 8\% for breadth and 29\% for depth, indicating that topic exerts some influence on cascade geometry, but not enough to explain most of the platform difference.
+
+In sum, the augmented models make clear that structural differences in reply cascades are not well explained by the presence of influential users or topics alone. Instead, they are largely attributable to the ideological composition of participating users and the alignment of their interactions. Controlling for these factors eliminates most of the platform-specific divergence in scaling, suggesting that ideological structure is a key mechanism mediating differences in conversational dynamics between Bluesky and Truth Social.
+
+\subsection{Motif-level interaction patterns}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/motif_z.png}
+    \caption{\textbf{Chain motif analysis of cross-platform reply structures.}  
+    Standardized differences (Z-scores) in the frequency of three-node chain motifs between observed cascades and a randomized null model.
+Node colors mark ideology (Left = blue, Center = green, Right = red); background shading groups motifs as aligned, mid-shift (middle node differs), end-shift (first or last node differs), or all-different.
+Circles represent Truth Social, triangles Bluesky; gray symbols denote non-significant values ($|Z|<3$).
+Center-aligned chains are overrepresented on both platforms, while Bluesky shows broad enrichment of cross-cutting “bounce-backs’’ and Truth Social concentrates them in intense Left–Right confrontations.  
+    }
+    \label{fig:motif_zscore}
+\end{figure*}
+
+Figure~\ref{fig:motif_zscore} shows how often three-node chain motifs occur relative to randomized baselines. We organize motifs into four types: fully aligned sequences, mid-shift transitions (where the middle reply differs ideologically), end-shift transitions (where the final reply differs), and all-different triads.
+
+Fully aligned Center chains are consistently more frequent than expected on both platforms, indicating that center users often talk with one another. In contrast, fully aligned Right chains show no over- or under-representation on either platform, suggesting that right-leaning users seldom sustain purely homogeneous conversations. Left-leaning chains diverge across platforms: Bluesky shows an overrepresentation, whereas Truth Social shows an underrepresentation. 
+
+The strongest contrasts appear in mid-shift “bounce-back” motifs. On Bluesky, all bounce-back chain motifs are overrepresented, indicating that cross-cutting replies across ideological pairings routinely draw immediate responses. On Truth Social, by contrast, only Left$\leftrightarrow$Right bounce-backs are overrepresented, but at much higher magnitudes than on Bluesky. This suggests that Bluesky fosters a broad pattern of routine cross-cutting engagement, whereas Truth Social channels such interaction almost entirely into intense confrontations between opposing extremes.
+
+By contrast, end-shift transitions (e.g., C–C–R, L–L–C, L–C–C), which place a cross-cutting reply at the conversational boundary, do not follow a uniform pattern across platforms. On Bluesky, end-shifts are generally at or below the rewired baseline, with L$\leftrightarrow$C links most underrepresented. On Truth Social, however, several center-involved end-shift motifs (R-C-C, R-R-L, L-C-C) are significantly overrepresented, suggesting that while the dominant bloc rarely incorporates cross-cutting voices, boundary exchanges among moderates, or between moderates and rare left-leaning participants, occur more often than expected by chance. This indicates that, in Truth Social, while the dominant bloc rarely incorporates cross-cutting voices, minority (i.e., Center and Left) users sometimes establish local footholds at the conversational boundary without being fully integrated into mainstream exchanges.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/star_motif_z.png}
+    \caption{\textbf{Star motif analysis.} Standardized Z-scores of three-node star motif frequencies relative to degree-preserving null models.
+Circles mark Truth Social, triangles Bluesky; gray symbols indicate non-significant values ($|Z|<3$). Background shading groups motifs by structural family. Truth Social shows strong overrepresentation of aligned C–C–C and R–R–R stars and several mixed forms (e.g., L–R–R, L–C–C), indicating that diverse replies cluster around a single root. Bluesky lacks these concentrations, underscoring its deeper, more distributed conversational patterns.}
+    \label{fig:star_motif}
+\end{figure*}
+
+For star motifs, as shown in Figure~\ref{fig:star_motif}, platform differences are more selective than for chains but remain revealing. On Truth Social, fully aligned C–C–C and R–R–R stars are strongly overrepresented, while on Bluesky, no comparable over- or under-representation appears. In contrast, L–L–L stars are overrepresented on Bluesky but underrepresented on Truth Social. Truth Social also shows several mixed configurations (L–R–R, L–C–C, C–R–R, R–L–L) as overrepresented, indicating that diverse voices often cluster around a single root. These bursts of root-focused replies inflate breadth relative to depth: where chain motifs highlighted bounce-back exchanges, star motifs show Truth Social’s tendency to channel heterogeneous engagement into short, centralized reply structures. While their interpretive weight is weaker than sequential chains, star motifs reinforce the broader picture that Truth Social organizes cross-cutting interactions into shallow, initiator-focused bursts rather than sustained dialogue.
+
+Overall, motif analysis corroborates the regression results: once ideological composition and alignment are controlled, platform-level differences in reply cascade geometry largely disappear, and motif patterns illuminate the micro-level pathways behind this convergence. Bounce-back motifs are overrepresented on both platforms, but with different profiles: on Truth Social they concentrate in direct Left–Right confrontations, while on Bluesky, they span a wider range of pairings. End-shift motifs are not uniformly suppressed; instead, they follow partisan logics. On Bluesky, Left–Center end-shifts are sharply underrepresented, whereas on Truth Social, several boundary configurations (R–C–C, R–R–L, L–C–C) are overrepresented, indicating that cross-cutting uptake occurs mainly at the margins (i.e., Center and Left users) rather than through incorporation by the dominant bloc (i.e., Right users). Star motifs reinforce this picture: Truth Social shows strong overrepresentation of aligned Center and Right star motifs, along with several mixed forms, channeling diverse voices into short, root-focused bursts instead of extended exchanges. Together, these patterns highlight the micro-mechanisms of alignment: extremes confront one another through bounce-backs, centers rarely sustain end-shift handoffs, and heterogeneous stars concentrate activity at the root. In this way, motif analysis demonstrates how the alignment effects that absorb platform differences in regression models are themselves grounded in systematic differences in local conversational structure.
+
+\section{Discussion}
+This study compares how candidate-centered conversations about the 2024 U.S. presidential election unfold on two ideologically distinct but technically comparable platforms, Truth Social and Bluesky. Whereas most prior work emphasizes how far or how fast information spreads, we focus on its structural form: whether interactions broaden outward through shallow branching or deepen through sequential layering. By analyzing both reposts and replies, we show that reposts scale in similar ways across platforms, but reply cascades diverge sharply: Truth Social supports broader, shallower exchanges, while Bluesky produces narrower, deeper threads. These results demonstrate that identical affordances can give rise to fundamentally different conversational dynamics, depending on the social and ideological composition of the communities that use them.
+
+Our modeling results show that ideological composition and alignment together account for most of the platform divergence: cross-ideological exchanges are more likely to produce depth, while homogeneous cascades tend to flatten. Yet alignment alone is insufficient. Even when disagreement occurs, reply structures on Truth Social often remain shallow. Motif analysis clarifies this pattern: on Truth Social, disagreement frequently appears as star motifs, parallel replies directed at a single post. On Bluesky, by contrast, disagreement more often takes the form of chain motifs, where replies build sequentially and support multi-turn interaction.
+
+Motif results highlight the combined role of interactional structure and user composition. On Truth Social, left-leaning users constitute less than ten percent of the population, yet when present, they appear disproportionately in Left$\leftrightarrow$Right bounce-back motifs. This produces a paradox: such confrontational motifs are strongly overrepresented relative to the null model, but their absolute frequency is low, yielding the broad and shallow cascades seen in aggregate. In other words, bounce-backs mark where cross-ideological debate occurs, but the scarcity of left-leaning users limits their influence on cascade structure. This also explains why alignment alone cannot account for platform differences: it captures whether interactions are within- or across-ideology, but not the underlying distribution of ideological groups. Composition must be considered to capture the rarity of certain user types.
+
+These patterns also demonstrate something that prior studies have largely overlooked: the structural role of Center users. On Bluesky, they often appear as interlocutors in bounce-back motifs, serving as the targets of cross-ideological replies and sustaining reciprocal exchanges. On Truth Social, by contrast, they surface more frequently in end-shift motifs, acting as boundary bridges that connect minority voices without being integrated into dominant cascades. This contrast shows why centrist voices are simultaneously visible in local motifs yet remain marginal in aggregate cascade structures.
+
+Although Truth Social and Bluesky share nearly identical technical affordances, their user bases differ in size and composition. These contextual differences likely interact with diffusion in ways our models cannot fully capture. We therefore interpret the observed patterns not as direct effects of design, but as emergent properties of user behavior within distinct sociotechnical contexts. Beyond shared reply and repost mechanics, latent factors such as algorithmic filtering (which remains opaque) and, more importantly, self-selection into ideologically distinct communities shape how conversations unfold. Both platforms exhibit partisan clustering, but the communicative style and discursive norms associated with being “conservative” or “liberal” may differ markedly across sites. Who joins, who stays, and what forms of interaction are socially rewarded together offer a more plausible explanation for the structural divergence we observe than affordances alone.
+
+While our analysis focuses on observable conversation structures, unobserved mechanisms such as moderation practices and algorithmic ranking may also contribute to the patterns we observe.
+Both platforms expose users to content through partially opaque visibility pathways: on Bluesky, chronological feeds and decentralized moderation may amplify sustained exchanges, whereas on Truth Social, algorithmic curation and selective content removal could favor brief, attention-grabbing interactions.
+
+Such processes would interact with user composition, the same affordances may produce different outcomes when visibility and moderation differentially reward certain kinds of engagement.
+The motif analysis, which shows distinct frequencies of cross-ideological and centrist interactions, is consistent with this interpretation: the configurations we observe could reflect not only who participates but which exchanges are made more visible within each system.
+
+These findings highlight a subtler dimension of online political discourse: not only what circulates or who engages, but how conversations are organized. On one platform, disagreement tends to manifest as expression, parallel replies directed outward; on the other, as interaction, reciprocal replies unfolding over time. These distinct conversational structures carry implications for deliberative potential. When disagreement remains structurally shallow, exposure to opposing views may produce fleeting reactions without meaningful exchange. By contrast, deeper cascades may provide opportunities for contestation, clarification, or understanding, though not necessarily consensus.
+
+Several limitations merit consideration. First, our analysis focuses on a single month during a politically salient period; whether these patterns hold across time and issues remains to be tested. Second, our measure of ideological alignment is coarse, relying on a simplified typology that may not capture subtler dimensions of identity. Third, while we account for cascade size, content, and user prominence, unobserved platform dynamics, such as visibility algorithms or moderation policies, may also shape interaction in ways we cannot fully disentangle. Finally, we use "technical similarity" in a deliberately narrow sense. Both Truth Social and Bluesky provide Twitter-like affordances for posting, reposting, and threaded replying, which allows us to construct comparable repost and reply cascades across platforms. This comparison is also supported by their software and protocol lineages: Bluesky is built on the open-source AT Protocol ecosystem, while Truth Social has been widely documented as a Mastodon-derived platform. These similarities make the observed interaction traces structurally comparable for cascade analysis.
+
+However, this does not imply that the platforms are identical in feed ranking, moderation, recommendation, or thread presentation. Bluesky, for example, supports algorithmic and user-selectable feeds through the AT Protocol feed-generator architecture, while Truth Social may implement platform-specific visibility and moderation rules on top of its Mastodon-derived base. We therefore treat technical similarity as a condition for constructing comparable cascade objects, not as an assumption that platform design is fully held constant.
+
+Nonetheless, by combining cascade-level modeling with motif analysis, this study advances a structural perspective on political diffusion. Rather than attributing outcomes to platform design alone, we describe emergent interaction patterns shaped by the communities and contexts in which they unfold. Understanding online political discourse thus requires not only tracing who speaks or what spreads, but also examining how conversational structures scaffold engagement itself.
+
+
+
+\bibliography{aaai2026}
+\subsection{Paper Checklist to be included in your paper}
+\begin{enumerate}
+
+\item For most authors...
+\begin{enumerate}
+    \item Would answering this research question advance science without violating social contracts, such as violating privacy norms, perpetuating unfair profiling, exacerbating the socio-economic divide, or implying disrespect to societies or cultures?
+    
+    \answerTODO{Yes.}
+
+  \item Do your main claims in the abstract and introduction accurately reflect the paper's contributions and scope?
+    
+    \answerTODO{Yes.}
+
+  \item Do you clarify how the proposed methodological approach is appropriate for the claims made?
+    
+    \answerTODO{Yes.}
+
+  \item Do you clarify what are possible artifacts in the data used, given population-specific distributions?
+    
+    \answerTODO{Yes.}
+
+  \item Did you describe the limitations of your work?
+    
+    \answerTODO{Yes.}
+
+  \item Did you discuss any potential negative societal impacts of your work?
+    
+    \answerTODO{Yes.}
+
+  \item Did you discuss any potential misuse of your work?
+    
+    \answerTODO{Yes.}
+
+  \item Did you describe steps taken to prevent or mitigate potential negative outcomes of the research, such as data and model documentation, data anonymization, responsible release, access control, and the reproducibility of findings?
+    
+    \answerTODO{Yes.}
+
+  \item Have you read the ethics review guidelines and ensured that your paper conforms to them?
+    
+    \answerTODO{Yes.}
+\end{enumerate}
+
+\item Additionally, if your study involves hypotheses testing...
+\begin{enumerate}
+  \item Did you clearly state the assumptions underlying all theoretical results?
+    
+    \answerTODO{Yes.}
+
+  \item Have you provided justifications for all theoretical results?
+    
+    \answerTODO{Yes.}
+
+  \item Did you discuss competing hypotheses or theories that might challenge or complement your theoretical results?
+    
+    \answerTODO{Yes.}
+
+  \item Have you considered alternative mechanisms or explanations that might account for the same outcomes observed in your study?
+    
+    \answerTODO{Yes.}
+
+  \item Did you address potential biases or limitations in your theoretical framework?
+    
+    \answerTODO{Yes.}
+
+  \item Have you related your theoretical results to the existing literature in social science?
+    
+    \answerTODO{Yes.}
+
+  \item Did you discuss the implications of your theoretical results for policy, practice, or further research in the social science domain?
+    
+    \answerTODO{Yes.}
+\end{enumerate}
+
+\item Additionally, if you are including theoretical proofs...
+\begin{enumerate}
+  \item Did you state the full set of assumptions of all theoretical results?
+    
+    \answerTODO{Not applicable.}
+
+  \item Did you include complete proofs of all theoretical results?
+    
+    \answerTODO{Not applicable.}
+\end{enumerate}
+
+\item Additionally, if you ran machine learning experiments...
+\begin{enumerate}
+  \item Did you include the code, data, and instructions needed to reproduce the main experimental results (either in the supplemental material or as a URL)?
+    
+    \answerTODO{Yes, subject to platform terms and privacy constraints.}
+
+  \item Did you specify all the training details (e.g., data splits, hyperparameters, how they were chosen)?
+    
+    \answerTODO{Not applicable. We use an existing instruction-tuned model and do not train a new model.}
+
+  \item Did you report error bars (e.g., with respect to the random seed after running experiments multiple times)?
+    
+    \answerTODO{Not applicable for model training. We report uncertainty and robustness checks where relevant.}
+
+  \item Did you include the total amount of compute and the type of resources used (e.g., type of GPUs, internal cluster, or cloud provider)?
+    
+    \answerTODO{Yes.}
+
+  \item Do you justify how the proposed evaluation is sufficient and appropriate to the claims made?
+    
+    \answerTODO{Yes.}
+
+  \item Do you discuss what is ``the cost'' of misclassification and fault (in)tolerance?
+    
+    \answerTODO{Yes.}
+\end{enumerate}
+
+\item Additionally, if you are using existing assets (e.g., code, data, models) or curating/releasing new assets, \textbf{without compromising anonymity}...
+\begin{enumerate}
+  \item If your work uses existing assets, did you cite the creators?
+    
+    \answerTODO{Yes.}
+
+  \item Did you mention the license of the assets?
+    
+    \answerTODO{Yes, where applicable and available.}
+
+  \item Did you include any new assets in the supplemental material or as a URL?
+    
+    \answerTODO{Yes, subject to platform terms and privacy constraints.}
+
+  \item Did you discuss whether and how consent was obtained from people whose data you're using/curating?
+    
+    \answerTODO{Yes. The study uses publicly available social media data and does not involve direct interaction with users.}
+
+  \item Did you discuss whether the data you are using/curating contains personally identifiable information or offensive content?
+    
+    \answerTODO{Yes.}
+
+  \item If you are curating or releasing new datasets, did you discuss how you intend to make your datasets FAIR (see \citet{fair})?
+    
+    \answerTODO{Not applicable.}
+
+  \item If you are curating or releasing new datasets, did you create a Datasheet for the Dataset (see \citet{gebru2021datasheets})?
+    
+    \answerTODO{Not applicable.}
+\end{enumerate}
+
+\item Additionally, if you used crowdsourcing or conducted research with human subjects, \textbf{without compromising anonymity}...
+\begin{enumerate}
+  \item Did you include the full text of instructions given to participants and screenshots?
+    
+    \answerTODO{Not applicable.}
+
+  \item Did you describe any potential participant risks, with mentions of Institutional Review Board (IRB) approvals?
+    
+    \answerTODO{Not applicable.}
+
+  \item Did you include the estimated hourly wage paid to participants and the total amount spent on participant compensation?
+    
+    \answerTODO{Not applicable.}
+
+  \item Did you discuss how data is stored, shared, and deidentified?
+    
+    \answerTODO{Yes.}
+\end{enumerate}
+
+\end{enumerate}
+
+\appendix
+\label{method}
+\section*{Cascade Construction via Time-Inferred Diffusion}
+
+To investigate information diffusion dynamics on \textit{Truth Social} and \textit{Bluesky}, we constructed cascade networks for both \textbf{reposts} and \textbf{replies}, drawing inspiration from the time, inferred diffusion method introduced by Vosoughi et al\cite{vosoughi_spread_2018}. Each cascade was modeled as a directed acyclic graph (DAG), where nodes represent users and edges represent inferred diffusion pathways.
+
+\subsection{Repost Cascades.}
+Because the platform APIs do not provide the true repost paths (i.e., who reshared from whom), all reposts are nominally linked to the original post. However, users may often repost another user's repost rather than the original. To approximate the true repost cascade, we reconstructed repost trees using timestamped repost data and follower-followee relationships at the time of reposting.
+
+Specifically, for each repost \( r_i \), we identified all prior reposts \( r_j \) such that \( t_j < t_i \), and among those, filtered for users that \( r_i \) followed at the time. We then inferred the edge \( r_j \rightarrow r_i \), linking each repost to the most recent prior repost by a user the reposting user follows. If no such user existed, the repost was attributed directly to the original post. This procedure infers the most probable diffusion paths based on temporal and social proximity.
+
+\subsection{Reply Cascades.}
+Reply trees were constructed directly from reply metadata, linking each reply to its parent post. As with reposts, each reply was treated as a node, and an edge was created from the parent post to the reply. Cascades were rooted at the original post, and subsequent replies were linked recursively based on reply chains.
+
+
+\subsection{Cascade Metrics.}
+
+To characterize the structure of repost and reply cascades, we computed four core metrics: \textbf{size}, \textbf{breadth}, \textbf{depth}, and \textbf{structural virality}. These measures provide complementary views of cascade growth, reach, and shape, and are adapted from prior studies of information diffusion~\cite{vosoughi_spread_2018,goel_structural_2016}.
+
+\begin{itemize}
+    \item \textbf{Size} ($N$): The total number of unique users participating in the cascade. For repost cascades, $N$ equals the number of distinct users who reposted the original post, either directly or indirectly. For reply cascades, $N$ equals the number of distinct users who contributed at least one reply in the thread.
+    
+    \item \textbf{Breadth} ($B$): The maximum number of nodes appearing at any depth level in the cascade tree (i.e., maximum breadth). Formally, let $n(d)$ denote the number of nodes at depth $d$ (with the root at $d=0$); then
+    \[
+    B=\max_{d \ge 1} n(d).
+    \]
+    This definition captures the widest “layer” of the cascade and differs from \emph{root out-degree}, which counts only direct children of the root.
+    
+    \item \textbf{Depth} ($D$): The maximum distance (in hops) from the root node to any leaf node in the cascade tree. Formally,
+    \[
+    D=\max_{v} \mathrm{dist}(\text{root}, v),
+    \]
+    where $\mathrm{dist}(\cdot,\cdot)$ is the shortest-path distance along tree edges. In repost cascades, depth is computed on the observed repost tree when parent reposts are available, or on the time-inferred tree when parents are inferred; in reply cascades, depth is computed on the reply tree.
+
+    \item \textbf{Structural Virality}: The average pairwise shortest-path distance between all nodes in the cascade. Formally, for a cascade with \( n \) nodes, virality is defined as:
+    \[
+        v = \frac{1}{n(n - 1)} \sum_{i=1}^{n} \sum_{j=1}^{n} d_{ij}
+    \]
+    where \( d_{ij} \) is the shortest path length between nodes \( i \) and \( j \). Higher values indicate more distributed (viral-like) cascades, while lower values indicate shallow, broadcast-like structures.
+\end{itemize}
+
+All metrics were computed on the final time-inferred cascade DAGs, and were log-transformed for visualization and modeling due to heavy-tailed distributions.
+
+\section*{Power-Law Analysis of User-Level Activity Distributions}
+
+We analyzed the distribution of user-level activity—specifically, the number of followers, reposts, and replies per user—across both platforms using power-law fits. Figure~\ref{fig:powerlaw} shows the complementary cumulative distribution functions (CCDFs) of these metrics in log-log scale, overlaid with fitted power-law tails (dashed orange lines). For each distribution, we report the estimated power-law exponent $\gamma$ and the lower cutoff $x_{\min}$ above which the power-law holds.
+
+The distribution of follower counts per user reveals strong skewness on both platforms. On Truth Social, a small number of users amass an exceptionally large number of followers, with a power-law exponent $\gamma = 1.76$ and $x_{\min} \approx 13{,}515$. In contrast, BlueSky users show a slightly less extreme concentration, with $\gamma = 1.84$ and $x_{\min} \approx 1{,}498$.
+
+Repost and reply behaviors also exhibit heavy-tailed patterns. On BlueSky, the average number of replies per user decays rapidly ($\gamma = 3.02$), while reposts follow a shallower slope ($\gamma = 2.43$), suggesting higher variability in repost activity. Truth Social users display flatter distributions for both reposts ($\gamma = 1.84$) and replies ($\gamma = 1.79$), consistent with broader participation from users in redistributing and responding to content.
+
+\subsection*{Exclusion of Highly Followed Users for Robustness.}
+To identify unusually influential users, we examined the distribution of follower counts on each platform. As shown in Figure~\ref{fig:powerlaw}, follower counts on both Bluesky and Truth Social followed a heavy-tailed distribution characteristic of online influence dynamics. However, on Truth Social, we observed a marked discontinuity in the upper tail: a gap in the follower-rank plot revealed a distinct separation between the top 8 users and the rest of the distribution. Based on this natural break, we designated these 8 users as outliers for modeling purposes. This data-driven threshold allowed us to capture extreme influence without imposing arbitrary cutoffs.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figures/powerlaw.png}
+    \caption{Follower count distributions across platforms.}
+    \label{fig:powerlaw}
+\end{figure}
+
+\section*{Topic Modeling}
+
+
+To identify dominant themes in social media discourse, we applied unsupervised topic modeling using the \texttt{BERTopic} framework. This method integrates contextual sentence embeddings, dimensionality reduction, clustering, and class-based TF-IDF to generate semantically coherent topic representations.
+
+Each post was first embedded using the \texttt{all-mpnet-base-v2} sentence transformer model, producing a 768-dimensional vector. We then applied UMAP (Uniform Manifold Approximation and Projection) to reduce the embedding dimensionality and used HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise) to group posts into dense semantic clusters.
+
+Topics were extracted from each cluster using class-based TF-IDF over a preprocessed vocabulary. We used \texttt{CountVectorizer} with a minimum document frequency of 10 and a maximum document frequency of 0.9 to filter out rare and overly common terms. For each topic, the top-ranked n-grams based on c-TF-IDF were used to construct candidate topic labels.
+
+To ensure topic interpretability, two human annotators independently reviewed a sample of 10 representative posts from each cluster. Topics were finalized through consensus-based manual labeling, resulting in 11 coherent and interpretable topic categories. Posts not confidently assigned to any cluster were labeled with a default topic ID of \texttt{-1} and excluded from topic-based analyses.
+
+We assessed the alignment between human and model-assigned topic labels by computing Cohen’s $\kappa$ coefficient. Inter-annotator agreement between the two human experts was moderate ($\kappa = 0.53$). Agreement between the model and Human 1 yielded $\kappa = 0.67$, while agreement between the model and Human 2 was $\kappa = 0.67$, suggesting that the model-generated clusters were generally consistent with human interpretations of topic structure.
+
+To compare topical emphasis across platforms, we plotted the distribution of root posts by topic label for \textit{Bluesky} and \textit{Truth Social} (Fig.~\ref{fig:topic_dis}). While both platforms exhibited substantial engagement with topics surrounding Donald Trump’s legal issues and the 2024 U.S. presidential election, there were notable differences. Posts on \textit{Bluesky} were more likely to focus on legal accountability, international affairs (e.g., the Israel–Hamas conflict), and broader campaign discourse. In contrast, \textit{Truth Social} featured a larger proportion of posts celebrating Trump (e.g., birthdays and tributes) and promoting pro-Trump narratives (e.g., “MAGA advocacy”), reflecting differences in user base ideology and agenda-setting priorities. These topical variations underscore the divergent discourse ecosystems that have emerged across platforms.
+
+
+
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/topic_dis.png}
+    \caption{Topic distribution across \textit{Bluesky} and \textit{Truth Social}.  
+Bar plots show the number of unique root posts assigned to each of the 121 topics, based on BERTopic clustering and manual labeling. While both platforms heavily feature discussions about Trump’s legal cases and the upcoming U.S. presidential election, \textit{Bluesky} content is more concentrated around policy and legal accountability, whereas \textit{Truth Social} emphasizes celebratory or supportive content related to Trump. These platform-level differences in topic salience inform subsequent analyses of cascade structure and alignment.}
+    \label{fig:topic_dis}
+\end{figure*}
+
+\subsubsection*{Ideology Estimation and Aggregation}
+
+\subsection*{Post-Level Stance Detection.}
+
+To measure political alignment within reply cascades, we employed a large language model to perform stance detection on individual replies. Specifically, we used the \texttt{Llama-3.1-8B-Instruct} model, a state-of-the-art instruction-tuned model, to classify each reply into one of five ideological stances: \textit{left}, \textit{lean-left}, \textit{center}, \textit{lean-right}, or \textit{right}. To account for the dialogic and context-sensitive nature of replies, each input included the original post and preceding replies when available.
+
+For interpretability and robustness, we grouped stances into three categories: \textit{left-leaning} (left, lean-left), \textit{center}, and \textit{right-leaning} (lean-right, right). Each reply node in the cascade was labeled with its ideological stance accordingly.
+
+To further contextualize alignment patterns across platforms, we examined the ideological distribution of users who authored root posts (i.e., the original posts that initiate reply cascades). As shown in Figure~\ref{fig:party_dis}, \textit{Bluesky} exhibited a predominantly left-leaning user base, with over 46,000 root posts originating from users labeled as left-leaning and 27,495 from right-leaning users. Centrists contributed a comparatively small number of posts (5,853). Conversely, \textit{Truth Social} was overwhelmingly right-leaning, with 37,639 right-authored root posts versus just 5,149 from left-leaning users and 1,053 from centrists.
+
+\begin{figure*}
+    \centering
+
+    \includegraphics[width=\linewidth]{figures/party_dis.png}
+    
+    \caption{Distribution of root post partisanship across platforms.  
+Bar plots show the number of root posts authored by users with left-leaning, centrist, or right-leaning stance labels, as detected by the LLM. On \textit{Bluesky}, left-leaning users dominate root-post activity, followed by right-leaning and centrist users. In contrast, \textit{Truth Social} exhibits a pronounced right-leaning skew, with over 37,000 root posts authored by right-leaning users and fewer than 6,500 from left or centrist users combined. These distributions reflect the ideological clustering of user bases on each platform and provide context for interpreting downstream alignment patterns.}
+    \label{fig:party_dis}
+
+
+\end{figure*}
+
+These aggregate distributions highlight the platform-level asymmetry in ideological representation and reinforce the need to aggregate stance labels at the user level for modeling ideological composition and alignment in reply cascades. We describe this aggregation procedure in the next section.
+
+\subsection*{User-Level Ideology Inference via Threshold Aggregation.}
+
+While reply-level stance labels capture the ideological tone of individual posts, many of our analyses required consistent user-level ideological classifications. To infer user ideology, we aggregated stance labels across all posts authored by each user. Specifically, we computed the proportion of posts labeled as left-leaning or right-leaning.
+
+A user was classified as \textit{left-leaning} if more than 60\% of their posts were labeled as left or lean-left, and as \textit{right-leaning} if more than 60\% were labeled as right or lean-right. Users not exceeding the 60\% threshold for either pole were labeled as \textit{centrist}.
+
+This 60\% threshold was chosen to balance ideological signal with label consistency. Many high-volume users produce a mix of political and apolitical content (e.g., greetings or non-informative messages), and a more lenient threshold (e.g., 50\%) would risk misclassification due to incidental variation. The 60\% threshold ensures a stronger signal of consistent ideology while retaining sufficient sample size.
+
+Our threshold choice is also supported by prior behavioral research. A Pew Research Center study found that Democrats consistently expressed liberal views around 60\% of the time, with Republicans showing comparable consistency in expressing conservative views\footnote{Pew Research Center. (2014). Political Polarization in the American Public. \url{https://www.pewresearch.org/politics/2014/06/12/political-polarization-in-the-american-public/}}. This provides a behavioral benchmark for interpreting ideology as a probabilistic but consistent trait.
+
+To assess robustness, we examined how user ideology distributions and average label consistency varied across thresholds from 0.5 to 0.7. As shown in Figure~\ref{fig:threshold}, center-leaning users increase with higher thresholds, while average consistency remains stable across the threshold range. This suggests that the classification is robust to moderate changes in thresholding criteria.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/threshold.png}
+    \caption{User ideology proportions and consistency across thresholds on \textit{Bluesky} and  \textit{Truth Social}. For \textit{Bluesky}, Left-leaning users dominate at lower thresholds, while center-leaning users increase in proportion as the threshold tightens. For \textit{Truth Social}, Right-leaning users represent the majority at all thresholds. The rise of center-labeled users at higher thresholds mirrors the Bluesky pattern.}
+    \label{fig:threshold}
+\end{figure*}
+
+
+
+We also applied an unsupervised natural breakpoint detection algorithm to each platform's ideology distribution, which identified 0.67 as a statistically distinct split point. However, to avoid excessive sparsity in user categories, we adopt 0.6 as our default threshold and conduct robustness checks using 0.55 and 0.67 as alternative specifications.
+
+\subsection*{Alignment Ratio Based on User Ideology.}
+
+To quantify ideological cohesion within reply cascades, we compute an \textbf{alignment ratio} based on user-level ideological labels. For each directed reply edge, we compared the ideological categories of the replying user and the user they responded to. An edge was labeled as \textbf{aligned} if both users shared the same ideology (left-leaning, center, or right-leaning), and \textbf{misaligned} otherwise.
+
+The alignment ratio for each cascade was then defined as the proportion of aligned reply edges:
+
+\[
+\text{Alignment Ratio} = \frac{\text{\# Aligned Edges}}{\text{Total \# of Edges}}
+\]
+
+This edge-based measure captures the extent of ideological homophily within conversational structures. High alignment ratios indicate ideologically homogeneous discussions, while lower ratios reflect cross-cutting or ideologically heterogeneous conversations. This measure forms the basis for testing whether ideological diversity within cascades moderates structural depth or breadth across platforms.
+
+\subsection*{Validation of LLM Stance Annotations.}
+
+To assess the reliability of stance annotations, two authors independently labeled a random sample of 200 replies from the dataset using the same five-category stance scheme employed by the model. Annotators were blinded to model predictions and to each other's labels.
+
+We assessed inter-annotator reliability using Cohen’s $\kappa$ coefficient and found substantial agreement ($\kappa = 0.78$). Model–human agreement was also high: $\kappa = 0.64$ with Annotator 1 and $\kappa = 0.73$ with Annotator 2. These results suggest that the LLM’s stance annotations are sufficiently accurate for large-scale analysis.
+
+Most disagreements involved ambiguous, sarcastic, or low-information posts, reflecting common challenges in short-form political discourse. However, the LLM's consistency, contextualization capabilities, and alignment with human judgment support its use in high-volume ideological annotation tasks.
+
+
+
+
+\section*{Modeling Strategy and Regression Framework}
+
+To quantify the explanatory power of our hypotheses and assess their ability to account for platform-specific variation in cascade structures, we modeled two key dependent variables: breadth and depth.
+
+Initial Ordinary Least Squares (OLS) regression revealed strong signs of heteroskedasticity, consistent with the observation that the potential range of cascade breadth and depth expands with increasing cascade size. This structural constraint induces a fan-shaped pattern in the residuals, as confirmed by Figure~\ref{fig:model_diag}. Furthermore, the residuals exhibited heavy tails, resembling a t-distribution, suggesting deviations from the normality assumption.
+
+Although the Cook’s Distance analysis identified a small number of observations with relatively higher influence, the vast majority fell well below the conventional threshold of $4/n$, indicating that no single data point exerted undue leverage on the model estimates. Nonetheless, the clear violation of the homoskedasticity assumption—evident from residual diagnostics—compromises the validity of classical OLS inference. To ensure robust and reliable estimation, we adopted linear regression with HC3 heteroskedasticity-consistent standard errors. The HC3 estimator provides improved performance in the presence of heteroskedasticity and potential high-leverage points, offering more accurate inference by more aggressively adjusting for the influence of individual observations compared to HC0 or HC1.
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/model_diag.png}
+    \caption{\textbf{Regression diagnostic plots assessing model assumptions.}
+The top panel shows a quantile–quantile (QQ) plot of the regression residuals, indicating substantial departure from normality, particularly in the tails. This suggests heavy-tailed error distribution, resembling a t-distribution. The bottom panel plots residuals against fitted values, revealing a fan-shaped pattern indicative of heteroskedasticity. A LOESS smoother (black line) is overlaid to highlight the non-constant variance pattern.}
+    \label{fig:model_diag}
+\end{figure*}
+
+
+
+\section*{Assessing the need for spline transformations}
+
+
+To examine potential non-linear effects of the predictors, we inspected partial residual plots for \texttt{author\_left\_ratio}, \texttt{author\_right\_ratio}, and \texttt{author\_alignment\_ratio} under a linear baseline specification (Figure~\ref{fig:partial_residuals}a--c).
+
+For \texttt{author\_left\_ratio}, the partial residuals display a clear convex pattern: residuals are systematically above zero at both ends of the distribution (near 0 and 1), and lower in the middle. This departure from linearity suggests that a linear term would be insufficient, and a spline basis is required to flexibly capture the curvature.
+
+For \texttt{author\_alignment\_ratio}, we also observe a monotonic but curved relationship, with the slope increasing as the variable approaches~1. This pattern again motivates the use of a spline transformation rather than a single linear term.
+
+In contrast, the partial residuals for \texttt{author\_right\_ratio} appear approximately linear across the [0,1] range, without strong evidence of systematic curvature. Therefore, we retain a simple linear effect for this predictor.
+
+Given these patterns, we apply spline transformations (\texttt{bs} basis) to \texttt{author\_left\_ratio} and \texttt{author\_alignment\_ratio}, while modeling \texttt{author\_right\_ratio} linearly. We chose B-splines (\texttt{bs}) rather than natural cubic splines (\texttt{cr}), because the data are confined to the [0,1] interval and heavily used in interactions. In this setting, \texttt{bs} bases are more numerically stable due to their local support and reduced collinearity with intercept and linear terms, while \texttt{cr} tends to induce near-linear dependencies under boundary constraints. Although including spline terms consistently improves pseudo-$R^2$, we decided on this final specification to balance model fit and complexity.
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.6\linewidth]{figures/partial.png}
+    \caption{Partial residual plots under a linear baseline for (A) \texttt{author\_left\_ratio}, (B) \texttt{author\_right\_ratio}, and (C) \texttt{author\_alignment\_ratio}.}
+    \label{fig:partial_residuals}
+\end{figure*}
+
+
+
+\section*{Final Model Specification}
+
+Our final model specification includes:
+
+\begin{itemize}
+    \item A main effect of \texttt{log\_size} and its interaction with \texttt{platform}.
+    \item \texttt{right\_user\_ratio} and spline-based transformation of \texttt{alignment\_ratio} and \texttt{left\_user\_ratio}, interacted with both \texttt{log\_size} and \texttt{platform}.
+    \item Topic category and outlier status (influencer vs.\ non-influencer) as categorical moderators.
+\end{itemize}
+
+All models were estimated using the \texttt{statsmodels} package in Python, with robust standard errors and diagnostics to ensure stability. Alternative specifications with random slopes (via mixed-effects models) were considered but ultimately not adopted due to convergence issues and added complexity.
+
+\section*{Robustness to User Ideology Thresholds}
+
+In the main analysis, we defined user-level ideology using a threshold of 0.6 (i.e., a user is classified as left- or right-leaning if at least 60\% of their posts are annotated as such; otherwise, they are labeled as center). To assess the robustness of our findings to this choice, we re-estimated Model~3 using alternative thresholds of 0.5 and 0.7. Table~\ref{tab:robust_threshold} reports the corresponding fit statistics and key parameters.
+
+Across all three thresholds, the results remain substantively consistent. Pseudo-$R^2$ values are uniformly high, error metrics (MAE, RMSE) fluctuate only marginally, and—most importantly—the platform–size interaction term (Size$\times$TS) decreases markedly (even at the relatively noisy 0.5 threshold) in both the breadth and depth models once ideological structure is incorporated. This demonstrates that the explanatory power of user composition and alignment is robust to the choice of threshold used to classify user ideology. Accordingly, our central conclusion—that ideological structure accounts for cross-platform differences in cascade geometry—holds across reasonable operationalizations.
+\begin{table*}[htbp]
+\centering
+\caption{Robustness check using alternative thresholds for defining user-level ideology.
+Results show that the main findings are stable across thresholds (0.5, 0.6, 0.7): 
+platform gaps in cascade breadth and depth are consistently reduced once ideological structure is accounted for.}
+\label{tab:robust_threshold}
+\begin{tabular}{ccccc|cccc}
+\hline
+ & \multicolumn{4}{c}{Breadth (Log)} & \multicolumn{4}{c}{Depth (Log)} \\
+\hline
+ Threshold& Pseudo-$R^2$ & MAE & RMSE & Size$\times$TS  & Pseudo-$R^2$ & MAE & RMSE & Size$\times$TS  \\
+\hline
+0.5 & 0.948 & 0.041 & 0.104 & 0.127 &  0.901 & 0.036 & 0.087 & -0.143  \\
+0.6 & 0.952 & 0.042 & 0.101 & 0.023 & 0.905 & 0.036 & 0.085 & -0.050  \\
+0.7 & 0.955 & 0.041 & 0.097 & 0.000 &  0.911 & 0.035 & 0.083 & -0.000  \\
+\hline
+\end{tabular}
+\end{table*}
+
+
+\section*{Robustness Checks: Alternative User Composition Specifications}
+To assess whether our findings depend on the way user composition is encoded, we compared four specifications: (1) left/right shares only, (2) majority/minority shares only, (3) left/right with alignment, and (4) majority/minority with alignment. Table~\ref{tab:si_comp_encoding_rlm_full} reports robust linear model (RLM) results for both cascade breadth and depth.
+
+Including the alignment ratio substantially improves model fit for both outcomes (Breadth $R^2 \approx 0.95$; Depth $R^2 \approx 0.90$), confirming that interaction structure plays a central role in cascade geometry. The majority/minority framework slightly improves error metrics and consistently reduces the size of the $\log(\text{size}) \times \text{platform}$ interaction, suggesting that it absorbs part of the platform-specific compositional asymmetry. However, the overall improvement relative to the left/right specification is modest. Given that left/right distinctions are more theoretically grounded and more easily interpretable across platforms, we retain the left/right specification as our main model in the text, and report majority/minority results in the Appendix.
+\begin{table*}[t]
+\centering
+\caption{Comparison of user-composition encodings (Left/Right vs. Majority/Minority), with and without alignment. Robust Linear Models.}
+\label{tab:si_comp_encoding_rlm_full}
+\scriptsize
+% Increase row height to compensate for the lack of booktabs spacing
+\renewcommand{\arraystretch}{1.25}
+% Reduce column separation to prevent table overflow
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{lcccccccc}
+\hline
+& \multicolumn{4}{c}{\textbf{Panel A: Composition only}} & \multicolumn{4}{c}{\textbf{Panel B: + Alignment (df=3)}}\\
+\cline{2-9}
+& \multicolumn{2}{c}{\textbf{Breadth (log\_breadth)}} & \multicolumn{2}{c}{\textbf{Depth (log\_depth)}} & \multicolumn{2}{c}{\textbf{Breadth (log\_breadth)}} & \multicolumn{2}{c}{\textbf{Depth (log\_depth)}}\\
+\cline{2-9} 
+& L/R & Maj/Min & L/R & Maj/Min & L/R+Align & Maj/Min+Align & L/R+Align & Maj/Min+Align \\
+\hline
+Observations & 123{,}189 & 123{,}189 & 123{,}189 & 123{,}189 & 123{,}189 & 123{,}189 & 123{,}189 & 123{,}189 \\
+Pseudo $R^{2}$ & 0.9312 & \textbf{0.9322} & \textbf{0.8781} & 0.8767 & \textbf{0.9517} & 0.9508 & \textbf{0.9049} & 0.9041 \\
+MAE & 0.0565 & \textbf{0.0563} & 0.0445 & \textbf{0.0431} & \textbf{0.0427} & 0.0411 & 0.0368 & \textbf{0.0359} \\
+RMSE & 0.1205 & \textbf{0.1196} & \textbf{0.0964} & 0.0970 & \textbf{0.1010} & 0.1019 & \textbf{0.0852} & 0.0855 \\
+% Manual vertical spacing to replace \addlinespace
+\\
+$\beta_{\log(\text{size})}$ 
+& 0.3646 & 0.3562 & 0.9002 & 0.8982 & 0.2526 & 0.4807 & 0.9286 & 0.8023 \\
+$\beta_{\log(\text{size})\times \text{platform(ts)}}$ 
+& $0.2579$ & $0.1073$ & $-0.1950$ & $-0.1112$ & $0.0230$ & $0.0719$ & $-0.0547$ & $-0.0552$ \\
+\hline
+\end{tabular}
+
+\vspace{0.75ex}
+\footnotesize
+\textit{Notes:}
+Left/Right (L/R) specification models the \emph{left-user share} with a spline (df=3) and the \emph{right-user share} linearly, interacted with $\log(\text{size})$ and platform.
+Majority/Minority (Maj/Min) re-codes composition by platform-dominant ideology (majority) vs. opposing (minority); the \emph{majority share} is modeled with a spline (df=3) and the \emph{minority share} linearly, with the same interactions.
+Panel~B additionally includes the \emph{alignment ratio} (spline, df=3) and its interactions with $\log(\text{size})$ and platform.
+Breadth---Maj/Min+Alignment overall error metrics (Pseudo $R^2$, MAE, RMSE) were not printed in the provided output and are marked as N/A; coefficient entries shown are from the reported summary.
+Full coefficient tables are available upon request.
+\end{table*}
+
+\section*{Marginal Effects of Ideological Structure}
+
+To further interpret Model~3, Figure~\ref{fig:marginal} plots the marginal effects of alignment ratio, left-user ratio, and right-user ratio on cascade structure. For both depth and breadth, the results reveal that as cascade size increases, these relationships become less pronounced.  
+
+For \textbf{depth}, higher alignment is associated with shallower structures, consistent with the idea that ideologically homogeneous cascades are less likely to sustain extended exchanges. By contrast, cascades with fewer right-leaning participants exhibit greater layering, echoing our motif analysis finding that right-leaning users are less likely to construct fully right-aligned chains. Interestingly, the marginal effects of left- and right-user ratios are not symmetric: increases in right-leaning participation are linked to sharper declines in depth than comparable increases in left-leaning participation.  
+
+For \textbf{breadth}, the patterns diverge. Higher alignment corresponds to wider cascades, indicating that homogeneous groups are more likely to generate simultaneous uptake at the same level. The left-user ratio exhibits an inverted-U relationship with breadth, with the widest cascades occurring at intermediate values. By contrast, the right-user ratio shows a more linear pattern: as right-leaning users become increasingly dominant, cascades grow consistently broader. This suggests that left- and right-leaning users across both platforms follow distinct modes of interaction.  
+
+Taken together, these marginal effects reinforce the regression evidence: it is not only platform size and topic content, but the \textbf{interaction between ideological composition and alignment} that systematically shapes cascade geometry. Homogeneity tends to flatten conversations into wide, shallow trees, while heterogeneity fosters greater layering in depth.
+
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/model_margin_effect.png}
+    \caption{Marginal effects of ideological alignment, left-user ratio, and right-user ratio on cascade structure. 
+Solid lines denote predicted log(depth) (top row) and log(breadth) (bottom row) at five equally spaced values of log(size) between its observed minimum and maximum. Shaded bands represent 95\% bootstrap confidence intervals around the median prediction. Results indicate that homogeneous cascades (high alignment) tend to flatten, producing wide but shallow structures, whereas heterogeneous cascades deepen through sequential exchanges.}
+
+    \label{fig:marginal}
+\end{figure*}
+
+
+\section*{Network Motif Analysis Methodology}
+\label{app:motif_analysis}
+
+We use network motif analysis to characterize local interaction patterns in reply cascades. Network motifs are recurring subgraph configurations that appear more or less frequently than expected under a specified null model~\cite{milo_network_2002}. In this study, motif analysis serves as a descriptive diagnostic of micro-level conversational structure rather than as an independent causal test of platform effects. The analysis evaluates whether specific 3-node ideological configurations are over- or under-represented relative to randomized reply trees that preserve the size of each observed cascade.
+
+\subsection*{Motif Definition and Classification}
+
+We focus on directed 3-node tree motifs, the smallest non-trivial structures that distinguish branching from sequential reply patterns. Each motif is characterized by both its topology and the ideological labels of the participating users.
+
+Topologically, we distinguish two motif families:
+
+\begin{enumerate}
+    \item \textbf{Star motifs}: one parent node has two child nodes. In a reply tree, this corresponds to two replies attached to the same prior post.
+    \item \textbf{Chain motifs}: a directed path of length two, in which one reply receives a subsequent reply.
+\end{enumerate}
+
+Each node is annotated with the ideology label of the corresponding user: Left (L), Center (C), or Right (R). Motifs are treated as ordered configurations. For chain motifs, order follows the direction of reply from the rootward node to the terminal node. For star motifs, the parent position is distinguished from the child positions, and ideological configurations are counted according to their ordered node positions in the enumerated tree motif. Thus, motif types capture both local reply structure and the positional arrangement of ideology within that structure.
+
+We also summarize motifs into broader interpretive families: \textit{aligned} motifs, in which all three users share the same ideology; \textit{one-different} motifs, in which two users share an ideology and the third differs; and \textit{all-different} motifs, in which Left, Center, and Right users all appear in the same local structure. These families are used to interpret the full set of ordered motif results.
+
+\subsection*{Counting Unit}
+
+Motifs are counted within each reply cascade tree and then aggregated by platform. Specifically, for each observed reply tree, we enumerate all connected 3-node tree subgraphs and classify each subgraph by topology and ordered ideological configuration. We then sum motif counts across all reply trees within the same platform. This procedure ensures that motifs represent local conversational configurations within observed threads, rather than triads formed by pooling users across unrelated conversations.
+
+\subsection*{Null Model}
+
+To assess whether each motif appears more or less frequently than expected by chance, we compare the observed motif counts with a platform-specific ensemble of randomized reply trees. Randomization is performed separately within each platform and within each reply tree. For each observed tree, the null model preserves the number of nodes and edges. The only feature randomized is the assignment of edges among users within the tree. Node ideology labels are held fixed.
+
+This null model therefore preserves cascade size and platform-specific ideological composition while randomizing the local attachment pattern among participants. It asks whether particular ideological configurations occur more or less often than expected given the observed set of users, their ideology labels, and the size of the reply trees. Because randomization is performed within trees, the comparison does not mix users across unrelated conversations or across platforms.
+\subsection*{Randomization Procedure and Motif Scores}
+
+For each platform, we generate $R=1{,}000{,}000$ randomized realizations of the reply trees. For each motif type $i$, we compute the observed motif count $N_{\mathrm{obs}}(i)$ and compare it with the distribution of counts obtained from the randomized trees. Let $\mu_{\mathrm{null}}(i)$ and $\sigma_{\mathrm{null}}(i)$ denote the mean and standard deviation of motif counts across the randomized realizations. We compute the standardized motif score as:
+
+\[
+Z_i = \frac{N_{\mathrm{obs}}(i) - \mu_{\mathrm{null}}(i)}{\sigma_{\mathrm{null}}(i)}.
+\]
+
+Positive values indicate that motif $i$ appears more frequently than expected under the null model, whereas negative values indicate that it appears less frequently than expected.
+
+Because the motif analysis is used as a descriptive diagnostic rather than as a confirmatory multiple-hypothesis testing procedure, we do not interpret individual motifs through binary significance thresholds. Instead, we report standardized deviations from the null distribution and focus on the relative direction and magnitude of motif over- or under-representation across platforms. This avoids treating the motif panel as a set of independent hypothesis tests and keeps the interpretation centered on recurring local interaction patterns.
+
+\subsection*{Interpretation}
+
+The motif analysis identifies local ideological configurations that are amplified or suppressed relative to randomized reply trees with the same cascade sizes and participant ideology labels. It should not be interpreted as a causal estimate of why these structures arise. Instead, it complements the cascade-level models by showing which local interaction configurations contribute to broader platform differences in reply structure.
+
+\section{Platform Affordances and Technical Comparability}
+\label{app:platform_affordances}
+
+Our comparison between Truth Social and Bluesky rests on a narrow notion of technical comparability. We do not assume that the two platforms are identical exposure environments, nor do we assume that their feed ranking, moderation, recommendation, or thread-presentation systems operate in the same way. Instead, we use technical comparability to refer to the availability of common, Twitter-like interaction affordances: users can publish posts, reshare posts, and reply to posts in threaded conversations. These shared affordances make it possible to construct comparable repost and reply cascade objects across platforms.
+
+This distinction is important because cascade comparability does not imply exposure equivalence. Ranking systems, moderation decisions, default feed settings, user-curated feeds, and platform-specific visibility rules may affect which posts users see and therefore which cascades grow. These processes are partly opaque and cannot be fully identified from the public traces used in this study. Accordingly, our analysis should be interpreted as an observational comparison of public interaction traces, rather than as a causal estimate of platform design effects.
+
+The technical lineage of the two platforms nevertheless provides additional justification for comparing their observable interaction structures. Bluesky is built on the AT Protocol, which Bluesky describes as an open-source toolbox for building interoperable social applications. Bluesky also supports custom feed generation through the AT Protocol feed-generator architecture, where feed generator services can host one or more algorithms. Truth Social, in turn, has been widely documented as Mastodon-derived. Mastodon reported that Truth Social appeared to use Mastodon source code with visual modifications, and Software Freedom Conservancy discussed Truth Social in relation to Mastodon’s AGPL-licensed codebase. These lineages support our claim that the platforms expose comparable posting, reposting, and replying affordances, while also reinforcing the need to treat ranking, moderation, and exposure as platform-specific and only partially observed. 
+\begin{table}[ht]
+\centering
+\small
+\caption{Platform affordances and technical lineage relevant to cascade construction.}
+\label{tab:platform_affordances}
+\begin{tabular}{p{0.23\linewidth}p{0.32\linewidth}p{0.32\linewidth}}
+\toprule
+\textbf{Dimension} & \textbf{Truth Social} & \textbf{Bluesky} \\
+\midrule
+Technical lineage 
+& Mastodon-derived platform, based on open-source social networking software 
+& Built on the open-source AT Protocol ecosystem \\
+
+Posting affordance 
+& Supports user-authored posts 
+& Supports user-authored posts \\
+
+Reposting affordance 
+& Supports repost-style resharing of posts 
+& Supports repost-style resharing of posts \\
+
+Reply affordance 
+& Supports threaded replies 
+& Supports threaded replies \\
+
+Cascade observability 
+& Public repost and reply traces are observable for collected posts 
+& Public repost and reply traces are observable for collected posts \\
+
+Feed and ranking 
+& Platform-specific visibility and ranking may affect exposure; ranking process is not directly observed 
+& Supports multiple feeds and feed-generator architecture; visibility may vary across selected or default feeds \\
+
+Moderation and governance 
+& Platform-specific moderation and visibility policies may affect observed interaction patterns 
+& Platform-specific moderation, labels, and user/feed-level curation may affect observed interaction patterns \\
+
+Analytic implication 
+& Enables construction of repost and reply cascades, but the exposure process is not fully identified 
+& Enables construction of repost and reply cascades, but the exposure process is not fully identified \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Computing Environment}
+
+All experiments were conducted on a single-node, multi-GPU system equipped with \textbf{8 NVIDIA H100 GPUs (80GB memory each)}. Model inference was deployed using \textbf{vLLM} with \textbf{bfloat16 (BF16) precision}, enabling efficient batched inference while maintaining numerical stability for long-context inputs.
+
+\end{document}

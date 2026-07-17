@@ -7,13 +7,15 @@ import cugraph
 import networkx as nx
 import pandas as pd
 from tqdm.auto import tqdm
-
+from typing import Literal
 
 class InformationCascadeGraph:
-    def __init__(self, post_data: list[dict], follow_data: dict, ideology_map: dict, platform: str = "ts"):
+    def __init__(self, post_data: list[dict], follow_data: dict, ideology_map: dict, author_ideology_map: dict, author_ideology_threshold = 0.8, platform: str = "ts"):
         self.post_data = post_data
         self.follow_data = follow_data
         self.ideology_map = ideology_map
+        self.author_ideology_map = author_ideology_map
+        self.author_ideology_threshold = author_ideology_threshold
         self.reply_graph = nx.DiGraph()
         self.repost_graph = nx.DiGraph()
         self.combined_graph = nx.DiGraph()
@@ -65,28 +67,57 @@ class InformationCascadeGraph:
             f"None of the fields {possible_fields} were found in the dataset."
         )
 
-    def build_reply_graph(self):
+    def build_reply_graph(self, edge_mapping_type: Literal['normal', 'breakdown'] = 'normal'):
         self.reply_graph.clear()
         post_dict = {post[self.post_id_field]: post for post in self.post_data}
         post_to_author = {
             post[self.post_id_field]: self.get_nested_value(post, self.author_id_field)
             for post in self.post_data
         }
+        missing_ideology = 0
 
         for post in tqdm(self.post_data, desc="Building Reply Graph"):
+            post_ideology = self.ideology_map.get(post[self.post_id_field], 'center')
+            author_ideology_dist = self.author_ideology_map.get(
+                self.get_nested_value(post, self.author_id_field), {}
+            )
+            if author_ideology_dist.get('left') >= self.author_ideology_threshold:
+                author_ideology = 'left'
+            elif author_ideology_dist.get('right') >= self.author_ideology_threshold:
+                author_ideology = 'right'
+            else:
+                author_ideology = 'center'
+                
             self.reply_graph.add_node(
                 post[self.post_id_field],
                 author_id=self.get_nested_value(post, self.author_id_field),
+                ideology=post_ideology,
+                author_ideology=author_ideology
             )
+            
             in_reply_to_id = self.get_nested_value(post, self.in_reply_to_field)
 
             if in_reply_to_id:
                 parent_id = in_reply_to_id
                 parent_author = post_to_author.get(parent_id, None)
                 current_author = post_to_author[post[self.post_id_field]]
+                parent_author_ideology_dist = self.author_ideology_map.get(
+                    parent_author, 
+                )
+                if parent_author_ideology_dist is None:
+                    missing_ideology += 1
+                    continue
+                if parent_author_ideology_dist.get('left') >= self.author_ideology_threshold:
+                    parent_author_ideology = 'left'
+                elif parent_author_ideology_dist.get('right') >= self.author_ideology_threshold:
+                    parent_author_ideology = 'right'
+                else:
+                    parent_author_ideology = 'center'
 
                 is_following = parent_author in self.follow_data.get(current_author, [])
-                same_ideology = self.ideology_map.get(post[self.post_id_field],'center') == self.ideology_map.get(in_reply_to_id,'center')
+                parent_ideology = self.ideology_map.get(parent_id, 'center')
+                
+                same_ideology = post_ideology == parent_ideology
 
                 edge_mapping = {
                     (True, True): "directedAligned",
@@ -95,11 +126,30 @@ class InformationCascadeGraph:
                     (False, False): "indirectedOpposed",
                 }
 
-                edge_type = edge_mapping[(is_following, same_ideology)]
+                edge_mapping_breakdown = {
+                    ("center", "center"): "centerAligned",
+                    ("left", "left"): "leftAligned",
+                    ("right", "right"): "rightAligned",
+                    ("left", "right"): "leftOpposed",
+                    ("right", "left"): "rightOpposed",
+                }
+
+                if edge_mapping_type == 'breakdown':
+                    edge_type = edge_mapping_breakdown.get(
+                        (post_ideology, parent_ideology),
+                        "opposed"
+                    )
+                else:
+                    edge_type = edge_mapping[(is_following, same_ideology)]
+
+                same_author_ideology = (
+                    author_ideology == parent_author_ideology
+                )
+                edge_label = edge_mapping[(is_following, same_author_ideology)]
 
 
                 self.reply_graph.add_edge(
-                    parent_id, post[self.post_id_field], type=edge_type
+                    parent_id, post[self.post_id_field], type=edge_type, label=edge_label
                 )
 
                 # Add metadata
@@ -109,6 +159,15 @@ class InformationCascadeGraph:
                 self.reply_graph.nodes[parent_id]["author_id"] = self.get_nested_value(
                     post_dict.get(parent_id, {}), self.author_id_field
                 )
+
+                # add node ideology
+                self.reply_graph.nodes[parent_id]["ideology"] = parent_ideology
+                self.reply_graph.nodes[parent_id]["author_ideology"] = parent_author_ideology
+
+
+        print(
+            f"Step 1: {missing_ideology} edges skipped due to missing ideology information"
+        )
 
         return self.reply_graph
 
@@ -266,7 +325,7 @@ class InformationCascadeGraph:
 
         return self.combined_graph
 
-    def calculate_tree_statistics(self, graph):
+    def calculate_tree_statistics(self, graph, is_reply: bool = False):
         if not nx.is_directed_acyclic_graph(graph):
             raise ValueError("Graph must be a directed acyclic graph (DAG).")
 
@@ -290,10 +349,28 @@ class InformationCascadeGraph:
 
             total_distance = 0
             pair_count = 0
+            total_left = 0
+            total_right = 0
+            error_idology_count = 0
+            total_author_left = 0
+            total_author_right = 0
             for node in tree.nodes:
                 distances = nx.single_source_shortest_path_length(tree, node)
                 total_distance += sum(distances.values())
                 pair_count += len(distances) - 1
+                if is_reply:
+                    node_ideology = tree.nodes[node].get("ideology", None)
+                    author_ideology = tree.nodes[node].get("author_ideology", None)
+                    if node_ideology == "left":
+                        total_left += 1
+                    elif node_ideology == "right":
+                        total_right += 1
+                    if node_ideology is None:
+                        error_idology_count += 1
+                    if author_ideology == "left":
+                        total_author_left += 1
+                    elif author_ideology == "right":
+                        total_author_right += 1
 
             structural_virality = total_distance / pair_count if pair_count > 0 else 0
 
@@ -305,6 +382,16 @@ class InformationCascadeGraph:
             )
             total_edges = tree.number_of_edges()
             alignment_ratio = aligned_edges / total_edges if total_edges > 0 else 0
+            aligned_author_edges = sum(
+                1 for u, v, data in tree.edges(data=True)
+                if data.get("label") in {"directedAligned", "indirectedAligned"}
+            )
+            
+            author_alignment_ratio = aligned_author_edges / total_edges if total_edges > 0 else 0
+            left_ratio = total_left / size if size > 0 else 0
+            right_ratio = total_right / size if size > 0 else 0
+            author_left_ratio = total_author_left / size if size > 0 else 0
+            author_right_ratio = total_author_right / size if size > 0 else 0
 
             tree_statistics[root] = {
                 "max_depth": max_depth,
@@ -313,98 +400,22 @@ class InformationCascadeGraph:
                 "structural_virality": structural_virality,
                 "reach": reach,
                 "alignment_ratio": alignment_ratio,
+                "author_alignment_ratio": author_alignment_ratio,
+                "left_ratio": left_ratio,
+                "right_ratio": right_ratio,
+                "author_left_ratio": author_left_ratio,
+                "author_right_ratio": author_right_ratio,
+                "error_idology_count": error_idology_count,
+                
             }
 
         return tree_statistics
 
-    def calculate_tree_statistics_cugraph(nx_graph):
-        """
-        Given a NetworkX DiGraph (assumed to be a tree or forest),
-        convert it to a cuGraph DiGraph and compute per-root tree statistics.
 
-        Statistics computed for each tree (root):
-        - max_depth: maximum distance from the root to any node
-        - size: number of nodes in the tree
-        - breadth: maximum number of nodes at any distance from the root
-        - structural_virality: average shortest-path distance among all node pairs in the tree
-        - reach: same as size
-        """
-        # --- Step 1: Convert the NetworkX graph to a cuGraph graph ---
-        # Create an edge list from the NetworkX graph. cuGraph requires a DataFrame with
-        # source and destination columns.
-        df_edges = nx.to_pandas_edgelist(nx_graph)
-        # Make sure the edge list uses the expected column names: 'source' and 'target'
-        if "source" not in df_edges.columns or "target" not in df_edges.columns:
-            raise ValueError("The edge list must have 'source' and 'target' columns.")
-
-        # Convert the Pandas DataFrame to a cuDF DataFrame.
-        cudf_edges = cudf.DataFrame.from_pandas(df_edges)
-
-        # Create a cuGraph DiGraph and load the edge list.
-        G_cu = cugraph.Graph(directed=True)
-        G_cu.from_cudf_edgelist(cudf_edges, source="source", destination="target")
-
-        # --- Step 2: Identify Root Nodes ---
-        # In a tree, root nodes have zero in-degree.
-        # We can compute in-degrees by grouping on the 'target' column.
-        in_degree_df = (
-            cudf_edges.groupby("target")
-            .agg({"target": "count"})
-            .rename(columns={"target": "in_degree"})
-        )
-        # Get all unique vertices from both source and target columns.
-        all_vertices = pd.concat([df_edges["source"], df_edges["target"]]).unique()
-        # Identify roots: vertices that never appear as a target.
-        in_degree_set = set(in_degree_df["target"].to_pandas())
-        roots = [v for v in all_vertices if v not in in_degree_set]
-
-        tree_statistics = {}
-        # --- Step 3: For Each Root, Run BFS and Compute Statistics ---
-        for root in tqdm(roots, desc="Calculating Tree Statistics (cuGraph)"):
-            # Run BFS from the root; cuGraph returns a cuDF DataFrame with columns:
-            # 'vertex', 'distance', and 'predecessor'
-            bfs_result = cugraph.bfs(G_cu, root)
-            # Convert to Pandas DataFrame for easier (CPU-side) aggregation;
-            # if your trees are very large you might want to keep computations on the GPU.
-            bfs_pdf = bfs_result.to_pandas()
-
-            # max_depth: the maximum distance encountered
-            max_depth = int(bfs_pdf["distance"].max())
-            # size (and reach): total number of nodes reached by BFS
-            size = len(bfs_pdf)
-            # breadth: maximum number of nodes found at the same distance from the root
-            breadth_series = bfs_pdf.groupby("distance").size()
-            max_breadth = int(breadth_series.max())
-
-            # structural_virality: average distance over all node pairs.
-            # The following approach runs a BFS from each node in the tree.
-            # (Note: if the trees are large, you might want to use an approximate method.)
-            total_distance = 0
-            pair_count = 0
-            for v in bfs_pdf["vertex"]:
-                bfs_v = cugraph.bfs(G_cu, v)
-                # Convert the result to Pandas for summing.
-                distances = bfs_v.to_pandas()["distance"]
-                total_distance += distances.sum()
-                # Subtract one so that we don’t count the distance from v to itself
-                pair_count += len(distances) - 1
-            structural_virality = (
-                float(total_distance / pair_count) if pair_count > 0 else 0
-            )
-
-            tree_statistics[root] = {
-                "max_depth": max_depth,
-                "size": size,
-                "breadth": max_breadth,
-                "structural_virality": structural_virality,
-                "reach": size,
-            }
-
-        return tree_statistics
 
     def calculate_statistics(self):
         return {
-            "reply_graph": self.calculate_tree_statistics(self.reply_graph),
+            "reply_graph": self.calculate_tree_statistics(self.reply_graph, is_reply=True),
             "repost_graph": self.calculate_tree_statistics(self.repost_graph),
             "combined_graph": self.calculate_tree_statistics(self.combined_graph),
         }
