@@ -34,7 +34,12 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 
 ## Paper status (2026-07)
 
-- Anonymous submission complete: `paper/AnonymousSubmission/LaTeX/anonymous-submission-latex-2026.tex`.
-- `RestructuredLatex/icwsm2026-restructured.tex` is an alternate draft with
-  extended appendices; which one is final is undecided.
-- `CameraReady/LaTeX/` is still the blank AAAI template, no paper content yet.
+- ICWSM 2027, paper 1217, **R&R received 2026-07-17, revision due 2026-09-15**
+  (final accept/reject, color-highlighted changes + response document).
+- Reviews: `paper/reviews/2026-07_icwsm2027_round1_decision.md`.
+  Roadmap + response skeleton: `paper/revision/`.
+- Submitted version: `paper/AnonymousSubmission/LaTeX/anonymous-submission-latex-2026.tex`.
+  `RestructuredLatex/` is an alternate draft; `CameraReady/` is still blank template.
+- Known factual issue to fix in revision: main text claims Huber-loss robust
+  regression (line ~258), appendix claims OLS + HC3 (line ~765); actual code
+  `src/modeling/model_R.R` uses lmrob (KS2014) and rlm with Huber psi.

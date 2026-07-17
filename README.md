@@ -6,7 +6,7 @@ during the 2024 U.S. presidential campaign (posts mentioning Biden or Trump,
 May to June 2024).
 
 Paper: **"Depth, Breadth, and Bias: Structural Diffusion of Political Content on
-Divergent Platforms"**, submitted to ICWSM 2026
+Divergent Platforms"**, under revise-and-resubmit at ICWSM 2027 (revision due 2026-09-15)
 (`paper/AnonymousSubmission/LaTeX/`).
 
 Key finding: repost (amplification) cascades scale similarly across platforms,
