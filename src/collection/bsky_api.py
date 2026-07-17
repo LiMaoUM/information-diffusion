@@ -29,7 +29,7 @@ def get_userinfo(user_id):
     response = requests.get(url, params=params)
     return response.json()
 
-#bsky_topic_df = pd.read_csv("../data/bsky_df_id_topic.csv")
+#bsky_topic_df = pd.read_csv("../../data/bsky_df_id_topic.csv")
 
 #bsky_threads = []
 #from tqdm.auto import tqdm
@@ -40,10 +40,10 @@ def get_userinfo(user_id):
     #bsky_threads.append(thread) 
 
 ## Save the threads to a file
-#with open("../data/bsky_threads.json", "w") as f:
+#with open("../../data/bsky_threads.json", "w") as f:
     #json.dump(bsky_threads, f)
 
-with open("../data/bsky_follows.json") as f:
+with open("../../data/bsky_follows.json") as f:
     bsky_follow = json.load(f)
 
 from collections import defaultdict
@@ -67,8 +67,8 @@ author_dict = {}
 for author in author_list:
     user_info = get_userinfo(author)
     author_dict[author] = user_info
-    with open("../data/bsky_author_info.json", "w") as f:
+    with open("../../data/bsky_author_info.json", "w") as f:
         json.dump(author_dict, f) 
 
-with open("../data/bsky_author_info.json", "w") as f:
+with open("../../data/bsky_author_info.json", "w") as f:
     json.dump(author_dict, f)

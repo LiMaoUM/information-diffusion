@@ -44,7 +44,7 @@ def fetch_flower_information(base_url, author, limit=100):
 if __name__ == "__main__":
     base_url = "https://public.api.bsky.app/xrpc/app.bsky.graph.getFollows"
     from tqdm.auto import tqdm
-    with open("../data/bsky_reposts.json", "r") as f:
+    with open("../../data/bsky_reposts.json", "r") as f:
         bsky_threads = json.load(f)
     all_authors = set()
     for i in tqdm(bsky_threads):
@@ -57,5 +57,5 @@ if __name__ == "__main__":
     all_flower_info = []
     for author in tqdm(authors):
         all_flower_info.append({author: fetch_flower_information(base_url, author)})
-    with open("../data/bsky_follows.json", "w") as f:
+    with open("../../data/bsky_follows.json", "w") as f:
         json.dump(all_flower_info, f)

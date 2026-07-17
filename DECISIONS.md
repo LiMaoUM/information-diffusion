@@ -2,7 +2,7 @@
 
 - 2025 (pre-existing, inferred from repo): Venue is ICWSM 2026, AAAI two-column
   format. Anonymous submission prepared in
-  `Information_Diffusion_ICWSM/AnonymousSubmission/LaTeX/`.
+  `paper/AnonymousSubmission/LaTeX/`.
 - 2025 (pre-existing): Raw platform data stays out of git; plan is a
   de-identified derived dataset on Zenodo (draft description in
   `src/analysis/README.md`).

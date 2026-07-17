@@ -34,7 +34,7 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 
 ## Paper status (2026-07)
 
-- Anonymous submission complete: `Information_Diffusion_ICWSM/AnonymousSubmission/LaTeX/anonymous-submission-latex-2026.tex`.
+- Anonymous submission complete: `paper/AnonymousSubmission/LaTeX/anonymous-submission-latex-2026.tex`.
 - `RestructuredLatex/icwsm2026-restructured.tex` is an alternate draft with
   extended appendices; which one is final is undecided.
 - `CameraReady/LaTeX/` is still the blank AAAI template, no paper content yet.
