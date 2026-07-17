@@ -1,4 +1,48 @@
-/models
-/logs
-/data
+# Environments and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+__marimo__/
 .DS_Store
+*.pid
+freeze_err.log
+
+# R session state
+.RData
+.Rhistory
+
+# Raw and large data: lives locally / on Zenodo, never in git.
+# data/ holds ~45 GB of raw, PII-bearing social media data (posts, handles,
+# follow graphs). Do not commit or publish it.
+/data/
+/models/
+/logs/
+/networks/
+parquet_out/
+*.parquet
+*.edgelist
+*.jsonl
+*.gml
+
+# Large regenerable edge lists (90 MB+ each)
+src/motif/data/
+src/graph_edges.csv
+src/df.csv
+src/analysis/*.csv
+
+# Cluster job output
+*.out
+slurm-*
+
+# Compiled CUDA binaries (rebuild with src/motif/src/motif.sh)
+src/motif/src/motif_count_2
+src/motif/src/motif_count_node
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
