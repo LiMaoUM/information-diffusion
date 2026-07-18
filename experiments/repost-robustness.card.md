@@ -44,3 +44,14 @@
   No loop; single run.
 - **Status log**:
   - 2026-07-17 v1 created; smoke test pending.
+  - 2026-07-17/18 smoke: first attempt hung (candidate sets recomputed per
+    draw + a parent-array cycle from a code path where the original would
+    crash); fixed (candidates cached per cascade-order, cycle check on the
+    chosen parent). Smoke passes: 2000+2000 cascades, rules phase 7 s,
+    schema and outputs validated.
+  - 2026-07-18 full run launched.
+  - 2026-07-18 COMPLETE. Headline: repost b3 within [-0.031, +0.031] under all
+    principled rules (published-rule replica -0.083 depth is the worst case;
+    reply reference +0.170/-0.182). Similarity claim robust. Estimator note:
+    OLS+HC3 primary (MAD Huber scale collapses on lattice outcomes).
+    Artifacts: results/repost_robustness/.

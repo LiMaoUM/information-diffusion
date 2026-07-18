@@ -129,44 +129,46 @@ def load_cache(platform, smoke=None):
 # ------------------------------------------------------------------ the rules
 
 def candidates_prior(reposters, follows):
-    """For each position i: indices j < i whose author u_i follows, and
-    whether u_i follows the root author (computed by caller)."""
-    seen_positions = defaultdict(list)  # author -> positions so far
+    """For each position i: sorted indices j < i whose author u_i follows.
+    Iterates the smaller of (followee set, authors seen so far)."""
+    seen_positions = {}  # author -> positions so far
     out = []
     for i, u in enumerate(reposters):
         fset = follows.get(u, ())
-        cand = []
-        for a in fset:
-            cand.extend(seen_positions.get(a, ()))
-        out.append(sorted(cand))
-        seen_positions[u].append(i)
+        if len(fset) <= len(seen_positions):
+            cand = [j for a in fset if a in seen_positions
+                    for j in seen_positions[a]]
+        else:
+            cand = [j for a, ps in seen_positions.items() if a in fset
+                    for j in ps]
+        cand.sort()
+        out.append(cand)
+        seen_positions.setdefault(u, []).append(i)
     return out
 
 
-def parents_ordered(reposters, root_author, follows, mode, rng=None):
-    """Rules first/last/random. Parent index: -1 = root."""
-    cands = candidates_prior(reposters, follows)
-    parents = np.full(len(reposters), -1, dtype=np.int64)
-    n_fallback = n_unique = 0
+def select_parents(cands, mode, rng=None):
+    """Apply a rule to precomputed candidate lists. Parent index: -1 = root."""
+    parents = np.full(len(cands), -1, dtype=np.int64)
     for i, cand in enumerate(cands):
         if not cand:
-            n_fallback += 1  # root: either followed root or pure fallback
-            continue
-        if len(cand) == 1:
-            n_unique += 1
+            continue  # root (followed root author or pure fallback)
         if mode == "first":
             parents[i] = cand[0]
         elif mode == "last":
             parents[i] = cand[-1]
         else:
             parents[i] = cand[rng.randrange(len(cand))]
-    stats = {
-        "n": len(reposters),
-        "root_attached": int(n_fallback),
-        "unique_candidate": int(n_unique),
+    return parents
+
+
+def cand_stats(cands):
+    return {
+        "n": len(cands),
+        "root_attached": sum(1 for c in cands if not c),
+        "unique_candidate": sum(1 for c in cands if len(c) == 1),
         "mean_cands": float(np.mean([len(c) for c in cands])) if cands else 0.0,
     }
-    return parents, stats
 
 
 def parents_code(reposters, root_author, follows):
@@ -197,30 +199,43 @@ def parents_code(reposters, root_author, follows):
             unlinked_users[u] = i
             unlinked.append((u, i))
 
-    def is_ancestor(a, x):
+    def links_back_to(start, needle):
+        """True if walking up parents from `start` reaches `needle`.
+        Attaching `needle` under `start` would then close a cycle. Step cap
+        guards against walking an already-broken structure."""
+        x, steps = start, 0
         while x is not None and x >= 0:
-            if x == a:
+            if x == needle:
                 return True
             p = parents[x]
             x = p if p != -2 else None
+            steps += 1
+            if steps > n:
+                return True
         return False
 
     pos = 0
     while pos < len(unlinked):
         node, i = unlinked[pos]
         fset = follows.get(node, ())
-        # first occurrence, in list order, of any author the node follows
-        cand = sorted(
-            j for a in fset if a in author_positions
-            for j in author_positions[a] if reposters[j] != node
-        )
+        # occurrences, in list order, of authors the node follows
+        if len(fset) <= len(author_positions):
+            cand = [j for a in fset if a in author_positions
+                    for j in author_positions[a] if reposters[j] != node]
+        else:
+            cand = [j for a, ps in author_positions.items()
+                    if a != node and a in fset for j in ps]
+        cand.sort()
         linked_here = False
         for j in cand:
             v = reposters[j]
-            target = linked_users.get(v)
-            if has_edge[i] and target is not None and is_ancestor(i, target):
-                continue  # original cycle check
             parent = linked_users[v] if v in linked_users else unlinked_users[v]
+            # Cycle check against the node actually attached to. Where the
+            # original checked (target in linked_users, node in graph) this is
+            # equivalent; where the original would raise NodeNotFound (target
+            # None with node in graph) this skips the candidate instead.
+            if parent >= 0 and links_back_to(parent, i):
+                continue
             parents[i] = parent
             has_edge[i] = True
             if parent >= 0:
@@ -254,6 +269,8 @@ def tree_metrics(parents):
         while j >= 0 and depth[j] == 0:
             stack.append(j)
             j = parents[j]
+            if len(stack) > n:
+                raise RuntimeError("cycle in parent array")
         base = 0 if j < 0 else depth[j]
         for k in reversed(stack):
             base += 1
@@ -283,16 +300,16 @@ def run_platform(platform, smoke=None, k=20, seed=7):
         reposters = list(reposters)
         for order in ["api", "rev"]:
             rl = reposters if order == "api" else list(reversed(reposters))
+            cands = candidates_prior(rl, follows)  # computed once per order
+            if order == "api":
+                diag_rows.append({"post_id": post_id, "platform": platform,
+                                  **cand_stats(cands)})
             for rule in ["first", "last"]:
-                parents, stats = parents_ordered(rl, root_author, follows, rule)
-                m = tree_metrics(parents)
+                m = tree_metrics(select_parents(cands, rule))
                 rows.append({"post_id": post_id, "platform": platform,
                              "rule": rule, "order": order, "draw": 0, **m})
-                if rule == "first" and order == "api":
-                    diag_rows.append({"post_id": post_id, "platform": platform, **stats})
             for draw in range(k):
-                parents, _ = parents_ordered(rl, root_author, follows, "random", rng)
-                m = tree_metrics(parents)
+                m = tree_metrics(select_parents(cands, "random", rng))
                 rows.append({"post_id": post_id, "platform": platform,
                              "rule": "random", "order": order, "draw": draw, **m})
         parents = parents_code(reposters, root_author, follows)
@@ -306,33 +323,61 @@ def run_platform(platform, smoke=None, k=20, seed=7):
 
 
 def fit_b3(df, y):
-    """Huber RLM of log10(y) ~ log10(size) * platform; returns b3 and CI."""
+    """Scaling fits for one rule variant.
+
+    Outcomes are lattice-valued (log breadth/depth of small trees), which
+    collapses MAD-based Huber scale (scale=0, zero SEs), so the primary
+    estimator is OLS with HC3 robust SEs; Huber RLM with Huber proposal-2
+    scale is kept as a secondary check. Depth uses log10(depth + 1) to
+    mirror the paper's figure. Reports the pooled platform-by-size
+    interaction (b3) and per-platform slopes (the Fig 3 C/D quantity)."""
     import statsmodels.api as sm
 
-    d = df[(df["size"] > 1) & (df[y] > 0)].copy()
-    d["ly"] = np.log10(d[y])
+    d = df[df["size"] > 1].copy()
+    d["ly"] = np.log10(d[y] + 1) if y == "depth" else np.log10(d[y])
     d["ls"] = np.log10(d["size"])
     d["ts"] = (d["platform"] == "ts").astype(float)
-    X = sm.add_constant(
-        np.column_stack([d["ls"], d["ts"], d["ls"] * d["ts"]])
-    )
-    fit = sm.RLM(d["ly"], X, M=sm.robust.norms.HuberT()).fit()
-    b3, se = fit.params[3], fit.bse[3]
-    return {"b3": b3, "lo": b3 - 1.96 * se, "hi": b3 + 1.96 * se, "n": len(d)}
+
+    X = sm.add_constant(np.column_stack([d["ls"], d["ts"], d["ls"] * d["ts"]]))
+    ols = sm.OLS(np.asarray(d["ly"]), X).fit(cov_type="HC3")
+    b3, se = float(ols.params[3]), float(ols.bse[3])
+    out = {"b3": b3, "lo": b3 - 1.96 * se, "hi": b3 + 1.96 * se, "n": len(d)}
+
+    try:
+        rlm = sm.RLM(
+            np.asarray(d["ly"]), X, M=sm.robust.norms.HuberT()
+        ).fit(scale_est=sm.robust.scale.HuberScale())
+        out["b3_rlm"] = float(rlm.params[3])
+        out["b3_rlm_se"] = float(rlm.bse[3])
+    except Exception:
+        out["b3_rlm"] = np.nan
+        out["b3_rlm_se"] = np.nan
+
+    for plat in ["bsky", "ts"]:
+        dp = d[d["platform"] == plat]
+        Xp = sm.add_constant(np.asarray(dp["ls"]))
+        f = sm.OLS(np.asarray(dp["ly"]), Xp).fit(cov_type="HC3")
+        out[f"slope_{plat}"] = float(f.params[1])
+        out[f"slope_{plat}_se"] = float(f.bse[1])
+    return out
 
 
-def run(smoke=None, k=20):
+def run(smoke=None, k=20, refit=False):
     OUT.mkdir(parents=True, exist_ok=True)
-    metrics, diags = [], []
-    for platform in ["bsky", "ts"]:
-        m, dg = run_platform(platform, smoke, k)
-        metrics.append(m)
-        diags.append(dg)
-    metrics = pd.concat(metrics, ignore_index=True)
-    diags = pd.concat(diags, ignore_index=True)
     tag = f"_smoke{smoke}" if smoke else ""
-    metrics.to_parquet(OUT / f"cascade_metrics{tag}.parquet")
-    diags.to_parquet(OUT / f"diagnostics{tag}.parquet")
+    if refit:
+        metrics = pd.read_parquet(OUT / f"cascade_metrics{tag}.parquet")
+        diags = pd.read_parquet(OUT / f"diagnostics{tag}.parquet")
+    else:
+        m_list, d_list = [], []
+        for platform in ["bsky", "ts"]:
+            m, dg = run_platform(platform, smoke, k)
+            m_list.append(m)
+            d_list.append(dg)
+        metrics = pd.concat(m_list, ignore_index=True)
+        diags = pd.concat(d_list, ignore_index=True)
+        metrics.to_parquet(OUT / f"cascade_metrics{tag}.parquet")
+        diags.to_parquet(OUT / f"diagnostics{tag}.parquet")
 
     results = []
     for y in ["breadth", "depth"]:
@@ -366,7 +411,7 @@ def run(smoke=None, k=20):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["prepare", "run"])
+    ap.add_argument("cmd", choices=["prepare", "run", "refit"])
     ap.add_argument("--smoke", type=int, default=None)
     ap.add_argument("--k", type=int, default=20)
     ap.add_argument("--platform", choices=["bsky", "ts"], default=None)
@@ -375,4 +420,4 @@ if __name__ == "__main__":
         for p in [args.platform] if args.platform else ["bsky", "ts"]:
             prepare(p, args.smoke)
     else:
-        run(args.smoke, args.k)
+        run(args.smoke, args.k, refit=(args.cmd == "refit"))
