@@ -15,7 +15,8 @@ freeze_err.log
 # Raw and large data: lives locally / on Zenodo, never in git.
 # data/ holds ~45 GB of raw, PII-bearing social media data (posts, handles,
 # follow graphs). Do not commit or publish it.
-/data/
+/data/*
+!/data/MANIFEST.md
 /models/
 /logs/
 /networks/
