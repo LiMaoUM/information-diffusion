@@ -196,6 +196,37 @@ def confusions():
     return out
 
 
+_G = {}  # populated by run() before forking; workers inherit via fork
+
+
+def _one_draw(args):
+    scen, draw = args
+    drng = np.random.default_rng(1000 * (scen == "pooled") + draw)
+    users, base_arr = _G["users"], _G["base_arr"]
+    cats = ["left", "center", "right"]
+    pick = {}
+    for plat in ["bsky", "ts"]:
+        cm = _G["conf"][plat if scen == "per_platform" else "all"]
+        idx = [i for i, u in enumerate(users) if u[0] == plat]
+        labs = base_arr[idx]
+        new = labs.copy()
+        for m_lab in cats:
+            mask = labs == m_lab
+            if mask.sum() == 0:
+                continue
+            p = cm[m_lab].reindex(cats).fillna(0).values
+            p = p / p.sum()
+            new[mask] = drng.choice(cats, size=mask.sum(), p=p)
+        for j, i in enumerate(idx):
+            pick[users[i]] = new[j]
+    pert = _G["apply_ratios"](_G["frame"], pick)
+    out = []
+    for y in ["log_breadth", "log_depth"]:
+        b3, n = fit_b3(pert, y)
+        out.append({"scenario": scen, "draw": draw, "y": y, "b3": b3, "n": n})
+    return out
+
+
 def fit_b3(frame, y):
     import statsmodels.api as sm
     import statsmodels.formula.api as smf
@@ -241,45 +272,21 @@ def run(k=100, smoke=False):
         results.append({"scenario": "reconstructed_unperturbed", "draw": -1, "y": y, "b3": b3, "n": n})
     log(f"references done: {results}")
 
-    users = list(base.keys())
-    base_arr = np.array([base[u] for u in users])
-    cats = ["left", "center", "right"]
-
-    def one_draw(args):
-        scen, draw = args
-        drng = np.random.default_rng(1000 * (scen == "pooled") + draw)
-        pick = {}
-        for plat in ["bsky", "ts"]:
-            cm = conf[plat if scen == "per_platform" else "all"]
-            idx = [i for i, u in enumerate(users) if u[0] == plat]
-            labs = base_arr[idx]
-            new = labs.copy()
-            for m_lab in cats:
-                mask = labs == m_lab
-                if mask.sum() == 0:
-                    continue
-                p = cm[m_lab].reindex(cats).fillna(0).values
-                p = p / p.sum()
-                new[mask] = drng.choice(cats, size=mask.sum(), p=p)
-            for j, i in enumerate(idx):
-                pick[users[i]] = new[j]
-        pert = apply_ratios(frame, pick)
-        out = []
-        for y in ["log_breadth", "log_depth"]:
-            b3, n = fit_b3(pert, y)
-            out.append({"scenario": scen, "draw": draw, "y": y, "b3": b3, "n": n})
-        return out
+    _G.update(frame=frame, conf=conf,
+              users=list(base.keys()),
+              base_arr=np.array([base[u] for u in base]),
+              apply_ratios=apply_ratios)
 
     import multiprocessing as mp
     jobs = [(scen, d) for scen in ["per_platform", "pooled"] for d in range(k)]
     nproc = 1 if smoke else min(12, mp.cpu_count() - 2)
     if nproc == 1:
         for j, job in enumerate(jobs):
-            results.extend(one_draw(job))
+            results.extend(_one_draw(job))
             log(f"draw {j + 1}/{len(jobs)}")
     else:
         with mp.get_context("fork").Pool(nproc) as pool:
-            for j, out in enumerate(pool.imap_unordered(one_draw, jobs)):
+            for j, out in enumerate(pool.imap_unordered(_one_draw, jobs)):
                 results.extend(out)
                 if j % 10 == 0:
                     log(f"{j + 1}/{len(jobs)} draws done")

@@ -32,3 +32,8 @@
   message leads with the attenuation percentage range and artifact path.
 - **Status log**:
   - 2026-08-17 v1 created.
+  - 2026-08-17 COMPLETE (after 3 false starts: frame index dtype mangling,
+    closure pickling, background cwd). Headline: per-platform measured noise
+    keeps >=83% attenuation in all 100 draws (median ~95%); pooled stress
+    test keeps ~62-71%. Conclusion robust under measured error rates.
+    Artifacts: results/noise_propagation/.
