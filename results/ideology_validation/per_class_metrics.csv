@@ -1,0 +1,10 @@
+scope,class,precision,recall,f1-score,support
+all,left,0.636,0.737,0.683,38.0
+all,center,0.926,0.735,0.82,68.0
+all,right,0.795,0.875,0.833,80.0
+bsky,left,0.7,0.667,0.683,21.0
+bsky,center,0.952,0.816,0.879,49.0
+bsky,right,0.412,0.778,0.538,9.0
+ts,left,0.583,0.824,0.683,17.0
+ts,center,0.833,0.526,0.645,19.0
+ts,right,0.887,0.887,0.887,71.0

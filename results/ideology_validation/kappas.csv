@@ -1,0 +1,4 @@
+scope,n,n_consensus,kappa_h1_h2,kappa_model_h1,kappa_model_h2
+all,200,186,0.891,0.611,0.658
+bsky,86,79,0.85,0.516,0.585
+ts,114,107,0.88,0.57,0.608

@@ -33,7 +33,7 @@ is. PII rule: nothing in this directory is ever committed or published.
 | `eval_bsky_chen.xlsx`, `eval_bsky_Li.xlsx`, `eval_ts_chen.xlsx`, `eval_ts_Li.xlsx` | TOPIC validation: 224 (bsky) + 257 (ts) cascades, coders Chen and Li assign Primary/Secondary topic labels. Appendix topic kappas (0.53 / 0.67 / 0.67) come from these via `src/eval_topmod/eval.ipynb` |
 | `topic_eval_*_sample*.csv` | Topic eval samples incl. llama3-70b LLM labeling comparison |
 | `annotation_bsky_ts.xlsx` | USER-level ideology annotation, 295 users, single annotator session 2025-12-14, options Left/Center/Right + undecided, thread-context prompts. Copied from Google Drive (file id 1TsGmieCddZBWgYTv2cdWHU3_wWT3pPZd) on 2026-07-18. Provenance/purpose to confirm with Mao |
-| MISSING: 200-reply stance validation | The paper appendix's "two authors, 200 replies, five-category scheme" (kappa 0.78 human-human, 0.64/0.73 model-human). NOT FOUND in repo or Drive as of 2026-07-18. Needed for R&R per-class validation. Location unknown |
+| `val_chen.csv` | THE 200-item stance validation (identified 2026-08-17): post text, model label (stance), two human annotators (Ideology, Ideology2), three-category. Platform recoverable by text match (86 bsky / 114 ts). NOTE: appendix says five-category and kappas 0.78/0.64/0.73; this file yields 0.89/0.61/0.66 after case normalization, so the appendix numbers need recomputing in the revision. Metrics: results/ideology_validation/ via src/analysis/ideology_validation.py |
 
 ## Figure assets
 
