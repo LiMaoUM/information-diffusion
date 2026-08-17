@@ -90,8 +90,8 @@ We thank the reviewer for the detailed and expert review, and for noting the nov
 **Changes made**: [...]
 
 ### R1-10: Influencer analysis justification; top n% on both platforms
-**Response**: [PLACEHOLDER: robustness with top 1/5/10% on both platforms]
-**Changes made**: [...]
+**Response**: The reviewer is right that "no natural gap" understated our reasoning, and we have replaced that justification with the measurement it rested on. The two platforms' follower distributions are not comparable at the top. In our data, the largest Truth Social account (Donald Trump, 7.1M followers) has 56 times the followers of the platform's own 99.9th percentile account, and the top eight accounts hold 16 percent of all follower ties among 134,100 accounts. Even the eighth largest Truth Social account (2.2M followers) is larger than the largest Bluesky account in our data (1.2M). On Bluesky the distribution is continuous at the top: the largest account sits 5 times above the 99.9th percentile, and the top eight accounts hold 6 percent of follower ties. Truth Social has a separated class of dominant accounts; Bluesky does not. A symmetric top-n-percent exclusion would therefore not equalize the platforms: on Bluesky it would remove accounts continuous with the rest of the distribution, while on Truth Social any n large enough to capture the separated class also sweeps in ordinary accounts. We treat influencer dominance as a property of Truth Social because, in these data, it is one.
+**Changes made**: The appendix section justifying the influencer cutoff now reports these distributional statistics alongside the follower CCDF (Appendix X), and the main text points to them where the refined platform variable is introduced (Section 3.2).
 
 ### R1-11: US-centric focus
 **Response**: [PLACEHOLDER: acknowledged in limitations; future work]
