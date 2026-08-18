@@ -1,0 +1,5 @@
+check,variant,y,baseline_b3,model3c_b3,n,attenuation
+C5_center,published (center as third position),log_breadth,0.15203831235597584,0.0008988021125978941,40259,0.9940883182753734
+C5_center,published (center as third position),log_depth,-0.19206423702837855,0.04484384617237058,40259,0.7665164172872816
+C5_center,partisan-only (center unlabeled),log_breadth,0.14850905037416126,0.057403279932290475,28083,0.6134694835926449
+C5_center,partisan-only (center unlabeled),log_depth,-0.18017431391692829,-0.06504316602503137,28083,0.638998675166204
