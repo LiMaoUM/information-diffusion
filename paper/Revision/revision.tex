@@ -287,7 +287,7 @@ The revised model retains the same functional form as Equation~\ref{eq:eq1}, wit
 
 \paragraph*{Assessing Ideological Composition and Alignment Effects.}
 
-We first assign each user an ideological label. Labels are inferred from aggregate posting behavior using the Llama-3.1-8B-Instruct model and validated against human annotations \rev{($\kappa = 0.61$--$0.66$ against each annotator, with class-specific and platform-specific performance in Appendix Table~\ref{tab:validation}, and a label-noise analysis showing the results below survive errors at the measured rates)}. Because large language models may encode biases, we treat these labels as probabilistic indicators rather than ground truth. Each user’s ideology is inferred from the proportion of their posts identified as left-, center-, or right-leaning, and we tested different cutoff values (e.g., classifying a user as left-leaning if more than 60\% of their posts are labeled as left). The aggregate patterns we report remain consistent across these threshold choices, indicating that our results are not sensitive to any particular cutoff (the sensitivity analysis can be seen in Appendix).
+We first assign each user an ideological label. Labels are inferred from aggregate posting behavior using the Llama-3.1-8B-Instruct model and validated against human annotations \rev{($\kappa = 0.61$ and $0.74$ against the two annotators, with class-specific and platform-specific performance and bootstrap intervals in Appendix Table~\ref{tab:validation}, and a label-noise analysis showing the results below survive errors at the measured rates)}. Because large language models may encode biases, we treat these labels as probabilistic indicators rather than ground truth. Each user’s ideology is inferred from the proportion of their posts identified as left-, center-, or right-leaning, and we tested different cutoff values (e.g., classifying a user as left-leaning if more than 60\% of their posts are labeled as left). The aggregate patterns we report remain consistent across these threshold choices, indicating that our results are not sensitive to any particular cutoff (the sensitivity analysis can be seen in Appendix).
 
 Building on these labels, we define interaction across ideological lines. Each reply edge is coded as aligned if the two users share the same stance, and a cascade’s alignment ratio is defined as the proportion of aligned edges. \rev{A worked example makes the quantity concrete. Consider a thread with four replies: a right-leaning user replies to a right-leaning root author, a second right-leaning user replies to the same root, a left-leaning user replies to the root, and that left-leaning comment draws a reply from a right-leaning user. Three of these four edges connect users who share a stance and one crosses stances, so the alignment ratio is $3/4 = 0.75$. A ratio of $1$ describes a conversation in which nobody replies across ideological lines; a ratio near $0$ describes one in which almost every reply does. The measure is a property of the conversation rather than of any participant: the same user contributes aligned edges in one thread and crossing edges in another.} To capture nonlinear effects, particularly at extremes of homogeneity, we apply a spline transformation (df = 3) and interact this term with cascade size and platform indicators (see Appendix). This measure reflects the extent of cross-cutting interaction, following prior work that links ideological heterogeneity to conversational complexity~\cite{adamic_political_2005, guess_how_2023}.
 
@@ -802,7 +802,9 @@ This edge-based measure captures the extent of ideological homophily within conv
 
 To assess the reliability of stance annotations, two authors independently labeled a random sample of 200 replies from the dataset\rev{, 86 from Bluesky and 114 from Truth Social. The model's five-category output (left, lean left, center, lean right, right) was collapsed to left, center, and right for all analyses, and the validation uses the same collapsed scheme; the ``center'' user category is a residual, covering users whose posts reach neither the left nor the right threshold}. Annotators were blinded to model predictions and to each other's labels.
 
-\rev{Inter-annotator agreement was strong (Cohen's $\kappa = 0.89$), and model--human agreement was moderate: $\kappa = 0.61$ with Annotator 1 and $\kappa = 0.66$ with Annotator 2 (recomputed from the archived annotation file; an earlier version of this appendix reported $\kappa$ = 0.78, 0.64, and 0.73). Table~\ref{tab:validation} reports class-specific precision and recall against the 186 items on which both annotators agree. Accuracy is 0.80 overall, but the errors are not uniform: the model over-assigns left on Truth Social (precision 0.58) and right on Bluesky (precision 0.41, on 9 consensus items), that is, it overstates each platform's ideological minority. The two minority cells rest on few items and are estimated imprecisely. The label-noise analysis below shows the substantive conclusions survive errors at these measured rates.}
+\rev{Inter-annotator agreement is substantial (Cohen's $\kappa = 0.77$, bootstrap 95\% interval $[0.70, 0.85]$), and model--human agreement is moderate: $\kappa = 0.61$ with Annotator 1 and $\kappa = 0.74$ with Annotator 2. Table~\ref{tab:validation} reports class-specific and platform-specific precision and recall against the 171 items on which both annotators agree, with bootstrap intervals so that the precision of each rate is visible. Overall accuracy against consensus is 0.86.}
+
+\rev{The errors are not uniform across classes, and the pattern matters for interpreting our composition estimates: the model over-assigns each platform's ideological minority. Precision is 0.64 for right-leaning labels on Bluesky and 0.64 for left-leaning labels on Truth Social, against 0.93 and 0.91 for the corresponding majority classes. These two minority cells rest on 8 and 17 consensus items respectively, and their bootstrap intervals are correspondingly wide (for right on Bluesky, $[0.33, 0.91]$). We therefore treat the direction of this bias as established and its magnitude as imprecisely estimated, and the label-noise analysis below tests whether the substantive conclusions survive errors at these rates.}
 
 \begin{table}[t]
 \centering
@@ -810,23 +812,23 @@ To assess the reliability of stance annotations, two authors independently label
 \rev{
 \begin{tabular}{llrrr}
 \toprule
-Scope & Class & Precision & Recall & $n$ \\
+Scope & Class & Precision [95\% CI] & Recall & $n$ \\
 \midrule
-Pooled & left & 0.64 & 0.74 & 38 \\
-Pooled & center & 0.93 & 0.74 & 68 \\
-Pooled & right & 0.80 & 0.88 & 80 \\
+Pooled & left & 0.68 [0.54, 0.82] & 0.80 & 35 \\
+Pooled & center & 0.96 [0.90, 1.00] & 0.85 & 59 \\
+Pooled & right & 0.89 [0.81, 0.95] & 0.90 & 77 \\
 \midrule
-Bluesky & left & 0.70 & 0.67 & 21 \\
-Bluesky & center & 0.95 & 0.82 & 49 \\
-Bluesky & right & 0.41 & 0.78 & 9 \\
+Bluesky & left & 0.74 [0.53, 0.93] & 0.78 & 18 \\
+Bluesky & center & 0.98 [0.92, 1.00] & 0.89 & 45 \\
+Bluesky & right & 0.64 [0.33, 0.91] & 0.88 & 8 \\
 \midrule
-Truth Social & left & 0.58 & 0.82 & 17 \\
-Truth Social & center & 0.83 & 0.53 & 19 \\
-Truth Social & right & 0.89 & 0.89 & 71 \\
+Truth Social & left & 0.64 [0.42, 0.83] & 0.82 & 17 \\
+Truth Social & center & 0.91 [0.69, 1.00] & 0.71 & 14 \\
+Truth Social & right & 0.93 [0.86, 0.98] & 0.90 & 69 \\
 \bottomrule
 \end{tabular}
 }
-\caption{\rev{Class-specific model performance against human consensus labels (186 of 200 validation items on which both annotators agree). $n$ is the consensus support per class.}}
+\caption{\rev{Class-specific and platform-specific model performance against human consensus labels (171 of 200 validation items on which both annotators agree). Intervals are percentile bootstrap 95\% intervals over 2{,}000 resamples of the validation items; $n$ is the consensus support per class. The two minority cells, right on Bluesky and left on Truth Social, carry the least support and the widest intervals.}}
 \label{tab:validation}
 \end{table}
 
@@ -946,7 +948,7 @@ Size $>1$ & Huber & depth & $-0.217$ & $0.029$ & 87\% \\
 
 \rev{First, the samples differ. Prior platform-wide estimates describe all users, most of whom post little political content, and are typically derived from the political leaning of the news domains a user shares. Our sample is restricted to accounts that posted in a conversation mentioning Biden or Trump during one month of a presidential campaign, and our labels come from the stance expressed in the post text itself. Later work on Bluesky reports a similarly homogeneous platform-wide composition \citep{salloum_politics_2025}, which reinforces that the contrast is between platform populations and politically engaged conversation samples rather than between two measurements of the same quantity. A candidate-mention sample selects for politically engaged users on both sides, including users who arrive to argue with the platform's majority, so its ideological mix should be less lopsided than the platform's.}
 
-\rev{Second, part of the gap is measurement error, and our validation lets us estimate how much. The classifier over-assigns each platform's minority position (Table~\ref{tab:validation}). Applying a standard prevalence correction, which inverts the measured confusion matrix to recover the label distribution implied by the observed one, lowers the estimated right-leaning share on Bluesky from 24.2\% to 6.9\%, close to the 4.8\% reported for the platform as a whole, and lowers the estimated left-leaning share on Truth Social from 11.5\% toward zero. These corrected values should be read as indicative rather than precise, since the correction inherits the imprecision of the minority cells in Table~\ref{tab:validation}. Their direction is nonetheless clear and consistent with the reviewer's expectation: our raw labels overstate each platform's ideological minority, the platforms are more homogeneous than the uncorrected shares suggest, and the label-noise analysis above shows the structural conclusions survive errors of this magnitude.}
+\rev{Second, part of the gap is measurement error, and our validation lets us estimate how much. The classifier over-assigns each platform's minority position (Table~\ref{tab:validation}). Applying a standard prevalence correction, which inverts the measured confusion matrix to recover the label distribution implied by the observed one, lowers the estimated right-leaning share on Bluesky from 24.2\% to 17.9\% and the estimated left-leaning share on Truth Social from 11.5\% to 1.9\%. Both corrections move in the expected direction, and the correction on Truth Social is large. For Bluesky, however, a substantial gap with the platform-wide estimate remains after correction, so label error alone does not account for it; we attribute the remainder to the sampling frame, since a candidate-mention conversation sample selects for politically engaged users on both sides and in particular for those who arrive to contest the platform's majority view. These corrected values are indicative rather than precise, because the correction inherits the imprecision of the minority cells in Table~\ref{tab:validation}. The conclusion we draw is limited and stated as such: our labels overstate each platform's ideological minority, our sample is not a platform-wide sample and should not be read as one, and the label-noise analysis above shows the structural findings survive errors of the measured size.}
 
 \section*{Modeling Strategy and Regression Framework}
 

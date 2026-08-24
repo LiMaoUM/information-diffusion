@@ -52,6 +52,21 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
   `experiments/repost-robustness.card.md`); caches in `data/interim/`,
   outputs in `results/repost_robustness/`.
 
+## Validation data (settled 2026-08-24)
+
+- The canonical stance validation is `src/val_ideology.csv`, NOT
+  `data/val_chen.csv`. The two share the same 200 posts and the same
+  Annotator 1, but Annotator 2 differs on 15 items. Using the wrong file
+  inflates human-human kappa to 0.89 and makes minority-class precision look
+  much worse than it is.
+- With the correct file the published appendix kappas are essentially
+  confirmed (0.77 / 0.61 / 0.74 recomputed vs 0.78 / 0.64 / 0.73 published),
+  so those numbers do NOT need correcting in the revision.
+- Per Ceren (2026-08-17): do not stratify-upsample the rare classes, since a
+  reviewer can call that cheating. Report the numbers we have with bootstrap
+  intervals; if they fluctuate, that is the argument for collecting a modest
+  amount more, not for reweighting what we have.
+
 ## Paper status (2026-07)
 
 - ICWSM 2027, paper 1217, **R&R received 2026-07-17, revision due 2026-09-15**

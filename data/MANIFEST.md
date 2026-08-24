@@ -33,7 +33,8 @@ is. PII rule: nothing in this directory is ever committed or published.
 | `eval_bsky_chen.xlsx`, `eval_bsky_Li.xlsx`, `eval_ts_chen.xlsx`, `eval_ts_Li.xlsx` | TOPIC validation: 224 (bsky) + 257 (ts) cascades, coders Chen and Li assign Primary/Secondary topic labels. Appendix topic kappas (0.53 / 0.67 / 0.67) come from these via `src/eval_topmod/eval.ipynb` |
 | `topic_eval_*_sample*.csv` | Topic eval samples incl. llama3-70b LLM labeling comparison |
 | `annotation_bsky_ts.xlsx` | USER-level ideology annotation, 295 users, single annotator session 2025-12-14, options Left/Center/Right + undecided, thread-context prompts. Copied from Google Drive (file id 1TsGmieCddZBWgYTv2cdWHU3_wWT3pPZd) on 2026-07-18. Provenance/purpose to confirm with Mao |
-| `val_chen.csv` | THE 200-item stance validation (identified 2026-08-17): post text, model label (stance), two human annotators (Ideology, Ideology2), three-category. Platform recoverable by text match (86 bsky / 114 ts). NOTE: appendix says five-category and kappas 0.78/0.64/0.73; this file yields 0.89/0.61/0.66 after case normalization, so the appendix numbers need recomputing in the revision. Metrics: results/ideology_validation/ via src/analysis/ideology_validation.py |
+| `val_chen.csv` | SUPERSEDED, DO NOT USE. An earlier/incorrect version of the stance validation: same 200 posts and same Annotator 1, but Annotator 2's labels differ on 15 of 200 items. Kept only for provenance. |
+| `../src/val_ideology.csv` | **CANONICAL** 200-item stance validation (confirmed by Mao 2026-08-24): post text, model label (`stance`), two human annotators (`Ideology`, `Ideology2`), three-category after case normalization. Platform recovered by text match (86 bsky / 114 ts). Reproduces the published appendix kappas (0.77 human-human, 0.61 and 0.74 model-human vs published 0.78/0.64/0.73). Metrics + bootstrap CIs: results/ideology_validation/ via src/analysis/ideology_validation.py |
 
 ## Figure assets
 

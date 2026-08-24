@@ -1,4 +1,4 @@
-scope,n,n_consensus,kappa_h1_h2,kappa_model_h1,kappa_model_h2
-all,200,186,0.891,0.611,0.658
-bsky,86,79,0.85,0.516,0.585
-ts,114,107,0.88,0.57,0.608
+scope,n,n_consensus,kappa_h1_h2,kappa_h1_h2_lo,kappa_h1_h2_hi,kappa_model_h1,kappa_model_h2,accuracy_vs_consensus
+all,200,171,0.774,0.696,0.85,0.611,0.742,0.86
+bsky,86,71,0.687,0.537,0.819,0.516,0.706,0.859
+ts,114,100,0.759,0.634,0.868,0.57,0.689,0.86
