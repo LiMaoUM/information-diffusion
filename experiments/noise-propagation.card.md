@@ -37,3 +37,7 @@
     keeps >=83% attenuation in all 100 draws (median ~95%); pooled stress
     test keeps ~62-71%. Conclusion robust under measured error rates.
     Artifacts: results/noise_propagation/.
+  - 2026-08-24 RERUN against corrected confusion matrices (Mao identified
+    src/val_ideology.csv as canonical; the prior run used a superseded copy).
+    Result strengthened: worst draw now keeps 85% attenuation (was 83%),
+    median ~96%; pooled stress test ~70% (was ~two thirds).
