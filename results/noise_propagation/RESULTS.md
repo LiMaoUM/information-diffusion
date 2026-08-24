@@ -32,7 +32,7 @@ less error, so the attenuation result strengthened slightly.
 ## Reading
 
 1. Under noise at the MEASURED platform-specific error rates, the conclusion
-   fully survives: every one of 100 draws keeps at least 83% of the baseline
+   fully survives: every one of 100 draws keeps at least 85% of the baseline
    divergence absorbed, and the median draw is indistinguishable from the
    unperturbed model. This is the scenario that corresponds to the validation
    evidence, including the left-overassignment on Truth Social and
