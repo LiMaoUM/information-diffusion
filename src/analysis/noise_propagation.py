@@ -294,7 +294,7 @@ def fit_b3(frame, y):
     return float(fit.params[key[0]]), len(d)
 
 
-def run(k=100, smoke=False):
+def run(k=100, smoke=False, scenarios=None):
     OUT.mkdir(parents=True, exist_ok=True)
     nodes = pd.read_parquet(CACHE / "trees_nodes.parquet")
     edges = pd.read_parquet(CACHE / "trees_edges.parquet")
@@ -332,8 +332,9 @@ def run(k=100, smoke=False):
               apply_ratios=apply_ratios)
 
     import multiprocessing as mp
-    jobs = [(scen, d) for scen in ["per_platform", "pooled", "bootstrap_matrix",
-                                   "annotator1"] for d in range(k)]
+    scen_list = scenarios or ["per_platform", "pooled", "bootstrap_matrix",
+                              "annotator1"]
+    jobs = [(scen, d) for scen in scen_list for d in range(k)]
     nproc = 1 if smoke else min(12, mp.cpu_count() - 2)
     if nproc == 1:
         for j, job in enumerate(jobs):
@@ -347,10 +348,12 @@ def run(k=100, smoke=False):
                     log(f"{j + 1}/{len(jobs)} draws done")
 
     res = pd.DataFrame(results)
-    res.to_csv(OUT / ("b3_draws_smoke.csv" if smoke else "b3_draws.csv"), index=False)
+    name = "b3_draws_smoke.csv" if smoke else (
+        "b3_draws_extra.csv" if scenarios else "b3_draws.csv")
+    res.to_csv(OUT / name, index=False)
     for y in ["log_breadth", "log_depth"]:
         ref = res[(res.scenario == "reconstructed_unperturbed") & (res.y == y)]["b3"].iloc[0]
-        for scen in ["per_platform", "pooled", "bootstrap_matrix", "annotator1"]:
+        for scen in scen_list:
             d = res[(res.scenario == scen) & (res.y == y)]["b3"]
             log(f"HEADLINE {y} [{scen}]: unperturbed {ref:.4f}, perturbed "
                 f"median {d.median():.4f}, range [{d.min():.4f}, {d.max():.4f}]")
@@ -361,6 +364,13 @@ if __name__ == "__main__":
     ap.add_argument("cmd", choices=["prepare", "validate", "run"])
     ap.add_argument("--k", type=int, default=100)
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--scenarios", default=None,
+                    help="comma-separated subset of scenarios to run")
     a = ap.parse_args()
-    {"prepare": prepare, "validate": validate,
-     "run": lambda: run(a.k, a.smoke)}[a.cmd]()
+    if a.cmd == "prepare":
+        prepare()
+    elif a.cmd == "validate":
+        validate()
+    else:
+        run(k=a.k, smoke=a.smoke,
+            scenarios=a.scenarios.split(",") if a.scenarios else None)

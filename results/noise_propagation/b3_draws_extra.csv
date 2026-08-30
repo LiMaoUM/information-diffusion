@@ -1,0 +1,13 @@
+scenario,draw,y,b3,n
+paper_frame,-1,log_breadth,0.023037570595806633,123189
+paper_frame,-1,log_depth,-0.054704138644025214,123189
+reconstructed_unperturbed,-1,log_breadth,0.016096230044169185,120693
+reconstructed_unperturbed,-1,log_depth,-0.049445565829344486,120693
+bootstrap_matrix,0,log_breadth,0.012030710931836136,120693
+bootstrap_matrix,0,log_depth,-0.01783696619372462,120693
+annotator1,1,log_breadth,0.03315743040437577,120693
+annotator1,1,log_depth,-0.03649606231398736,120693
+annotator1,0,log_breadth,0.05307679188035162,120693
+annotator1,0,log_depth,-0.06377760618451789,120693
+bootstrap_matrix,1,log_breadth,3.0461744238152733e-15,120693
+bootstrap_matrix,1,log_depth,-6.254795012727522e-12,120693
