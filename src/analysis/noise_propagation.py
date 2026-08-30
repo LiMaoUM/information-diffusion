@@ -185,6 +185,48 @@ def validate():
 
 # ----------------------------------------------------------------- simulate
 
+def validation_items():
+    """The 200 canonical validation items with platform, for bootstrapping
+    the confusion matrix itself."""
+    d = pd.read_csv(ROOT / "src" / "val_ideology.csv")
+    for c in ["stance", "Ideology", "Ideology2"]:
+        d[c] = d[c].astype(str).str.strip().str.lower()
+    bsky = json.load(open(DATA / "bsky_post_to_label.json"))
+    d["platform"] = d["post"].map(lambda p: "bsky" if p in bsky else "ts")
+    return d[d["Ideology"] == d["Ideology2"]][["platform", "Ideology", "stance"]]
+
+
+def validation_items_a1():
+    """All 200 items scored against Annotator 1 alone. Consensus items are the
+    ones both annotators found easy, so a single-annotator reference yields a
+    harsher error rate; this scenario tests the conclusion against it."""
+    d = pd.read_csv(ROOT / "src" / "val_ideology.csv")
+    for c in ["stance", "Ideology"]:
+        d[c] = d[c].astype(str).str.strip().str.lower()
+    bsky = json.load(open(DATA / "bsky_post_to_label.json"))
+    d["platform"] = d["post"].map(lambda p: "bsky" if p in bsky else "ts")
+    return d[["platform", "Ideology", "stance"]]
+
+
+def conf_from_items(items):
+    """Column-normalized P(human | model) per platform from a set of items."""
+    cats = ["left", "center", "right"]
+    out = {}
+    items = items.reset_index(drop=True)  # resamples carry duplicate labels
+    for plat in ["bsky", "ts"]:
+        g = items[items.platform == plat]
+        cm = pd.crosstab(g["Ideology"], g["stance"]).reindex(
+            index=cats, columns=cats).fillna(0.0)
+        col = cm.sum(axis=0).replace(0, np.nan)
+        cm = cm.div(col, axis=1)
+        # a model class never seen in this resample keeps its label
+        for c in cats:
+            if cm[c].isna().all():
+                cm[c] = [1.0 if r == c else 0.0 for r in cats]
+        out[plat] = cm.fillna(0.0)
+    return out
+
+
 def confusions():
     """Column-normalized P(human | model) per scope from validation output."""
     out = {}
@@ -201,12 +243,23 @@ _G = {}  # populated by run() before forking; workers inherit via fork
 
 def _one_draw(args):
     scen, draw = args
-    drng = np.random.default_rng(1000 * (scen == "pooled") + draw)
+    seed_base = {"per_platform": 0, "pooled": 1000, "bootstrap_matrix": 5000,
+                 "annotator1": 9000}[scen]
+    drng = np.random.default_rng(seed_base + draw)
     users, base_arr = _G["users"], _G["base_arr"]
     cats = ["left", "center", "right"]
+    if scen == "annotator1":
+        boot_conf = _G["conf_a1"]
+    if scen == "bootstrap_matrix":
+        items = _G["items"]
+        idx = drng.integers(0, len(items), len(items))
+        boot_conf = conf_from_items(items.iloc[idx])
     pick = {}
     for plat in ["bsky", "ts"]:
-        cm = _G["conf"][plat if scen == "per_platform" else "all"]
+        if scen in ("bootstrap_matrix", "annotator1"):
+            cm = boot_conf[plat]
+        else:
+            cm = _G["conf"][plat if scen == "per_platform" else "all"]
         idx = [i for i, u in enumerate(users) if u[0] == plat]
         labs = base_arr[idx]
         new = labs.copy()
@@ -272,13 +325,15 @@ def run(k=100, smoke=False):
         results.append({"scenario": "reconstructed_unperturbed", "draw": -1, "y": y, "b3": b3, "n": n})
     log(f"references done: {results}")
 
-    _G.update(frame=frame, conf=conf,
+    _G.update(frame=frame, conf=conf, items=validation_items(),
+              conf_a1=conf_from_items(validation_items_a1()),
               users=list(base.keys()),
               base_arr=np.array([base[u] for u in base]),
               apply_ratios=apply_ratios)
 
     import multiprocessing as mp
-    jobs = [(scen, d) for scen in ["per_platform", "pooled"] for d in range(k)]
+    jobs = [(scen, d) for scen in ["per_platform", "pooled", "bootstrap_matrix",
+                                   "annotator1"] for d in range(k)]
     nproc = 1 if smoke else min(12, mp.cpu_count() - 2)
     if nproc == 1:
         for j, job in enumerate(jobs):
@@ -295,7 +350,7 @@ def run(k=100, smoke=False):
     res.to_csv(OUT / ("b3_draws_smoke.csv" if smoke else "b3_draws.csv"), index=False)
     for y in ["log_breadth", "log_depth"]:
         ref = res[(res.scenario == "reconstructed_unperturbed") & (res.y == y)]["b3"].iloc[0]
-        for scen in ["per_platform", "pooled"]:
+        for scen in ["per_platform", "pooled", "bootstrap_matrix", "annotator1"]:
             d = res[(res.scenario == scen) & (res.y == y)]["b3"]
             log(f"HEADLINE {y} [{scen}]: unperturbed {ref:.4f}, perturbed "
                 f"median {d.median():.4f}, range [{d.min():.4f}, {d.max():.4f}]")

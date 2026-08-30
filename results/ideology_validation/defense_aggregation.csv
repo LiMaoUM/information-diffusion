@@ -1,0 +1,3 @@
+platform,n_users,median_posts_per_user,mean_posts_per_user,post_level_acc,user_level_acc,user_acc_left,user_acc_center,user_acc_right
+bsky,27027,2,7.3,0.847,0.883,0.801,0.949,0.899
+ts,134096,2,10.2,0.812,0.874,0.853,0.853,0.916

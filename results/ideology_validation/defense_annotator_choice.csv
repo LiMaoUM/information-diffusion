@@ -1,0 +1,28 @@
+reference,scope,cls,n,precision
+consensus,all,left,171,0.6829268292682927
+consensus,all,center,171,0.9615384615384616
+consensus,all,right,171,0.8846153846153846
+consensus,bsky,left,71,0.7368421052631579
+consensus,bsky,center,71,0.975609756097561
+consensus,bsky,right,71,0.6363636363636364
+consensus,ts,left,100,0.6363636363636364
+consensus,ts,center,100,0.9090909090909091
+consensus,ts,right,100,0.9253731343283582
+annotator 1,all,left,200,0.5957446808510638
+annotator 1,all,center,200,0.8771929824561403
+annotator 1,all,right,200,0.75
+annotator 1,bsky,left,86,0.6666666666666666
+annotator 1,bsky,center,86,0.9090909090909091
+annotator 1,bsky,right,86,0.3333333333333333
+annotator 1,ts,left,114,0.5384615384615384
+annotator 1,ts,center,114,0.7692307692307693
+annotator 1,ts,right,114,0.8666666666666667
+annotator 2,all,left,200,0.7021276595744681
+annotator 2,all,center,200,0.9649122807017544
+annotator 2,all,right,200,0.8229166666666666
+annotator 2,bsky,left,86,0.7619047619047619
+annotator 2,bsky,center,86,0.9772727272727273
+annotator 2,bsky,right,86,0.5714285714285714
+annotator 2,ts,left,114,0.6538461538461539
+annotator 2,ts,center,114,0.9230769230769231
+annotator 2,ts,right,114,0.8933333333333333
