@@ -7,8 +7,12 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 
 ## Ops facts
 
-- Python env: `uv venv` + `requirements.txt`. The old `.venv` here had no pip
-  (see freeze_err.log pattern); prefer recreating with uv over reusing it.
+- Python env: this repo has NO local venv, and bare `uv run` builds an empty
+  ephemeral env that fails on numpy. Run analysis scripts as
+  `uv run --with numpy --with pandas --with statsmodels --with pyarrow \
+   --with patsy --with scipy python src/analysis/<script>.py`.
+  Do NOT use `/home/maolee/.virtualenv/ai-lab`: its pyarrow 19.0.0 cannot read
+  `data/interim/trees_*.parquet` ("Repetition level histogram size mismatch").
 - `data/` is ~45 GB of raw, PII-bearing social media JSON (post text, handles,
   follow graphs, coder-named eval spreadsheets). Git-ignored. Never commit,
   publish, or paste its contents.
