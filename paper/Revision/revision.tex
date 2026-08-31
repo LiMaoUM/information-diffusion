@@ -336,22 +336,22 @@ Figure~\ref{fig:bd} presents robust linear fits between log-transformed cascade 
 \hline
 \multicolumn{5}{l}{\textbf{Breadth (Log)}} \\
 \hline
-Model 1 (Baseline) & $0.4999^{***} (0.001)$ & $0.3988^{***} (0.002)$ & $0.9107$ & $0.1373$  \\
-Model 2 (Influencers) & $0.5000^{***} (0.001)$ & $0.3915^{***} (0.002)^{\dagger}$ & $0.9117$ & $0.1365$  \\
-Model 3a (Alignment) &  $0.0000^{***} (0.001)$  & $0.2022^{***} (0.000)$ & $0.9326$ &$0.1192$ \\
-Model 3b (Composition) &$0.3646^{***} (0.001)$  & $0.2579^{***} (0.000)$ & $0.9312$ &$0.1205$ \\
-Model 3c (Combined) & $0.2526^{***} (0.000)$ & $0.0230^{***} (0.000)$ & $0.9517$ & $0.1010$  \\
-Model 4 (Topic) & $0.5070^{***} (0.002)$ & $0.4286^{***} (0.005)$ & $0.9125$ & $0.1359$  \\
+Model 1 (Baseline) & $0.5043\ (0.0010)$ & $+0.4187\ (0.0012)$ & $0.9176$ & $0.1319$ \\
+Model 2 (Influencers) & $0.5042\ (0.0010)$ & $+0.4121\ (0.0012)^{\dagger}$ & $0.9182$ & $0.1314$ \\
+Model 3a (Alignment) & $0.1713\ (0.0012)$ & $+0.2362\ (0.0007)$ & $0.9432$ & $0.1095$ \\
+Model 3b (Composition) & $0.3692\ (0.0014)$ & $+0.2887\ (0.0019)$ & $0.9364$ & $0.1159$ \\
+Model 3c (Combined) & $0.2137\ (0.0016)$ & $+0.0706\ (0.0015)$ & $0.9546$ & $0.0979$ \\
+Model 4 (Topic) & $0.5140\ (0.0014)$ & $+0.4260\ (0.0012)$ & $0.9191$ & $0.1307$ \\
 \hline
 \hline
 \multicolumn{5}{l}{\textbf{Depth (Log)}} \\
 \hline
-Model 1 (Baseline) & $0.7737^{***} (0.001)$ & $-0.3344^{***} (0.001)$ & $0.8483$ & $0.1076$  \\
-Model 2 (Influencers) & $0.7737^{***} (0.001)$ & $-0.3254^{***} (0.001)^{\dagger}$ & $0.8499$ & $0.1070$  \\
-Model 3a (Alignment) & $0.7956^{***} (0.001)$ &$-0.1831^{***} (0.001)$ & $0.8965$ & $0.0889$ \\
-Model 3b (Composition) & $0.9002^{***} (0.001)$ &$-0.1950^{***} (0.001)$ & $0.8781$ & $0.0964$  \\
-Model 3c (Combined) & $0.9286^{***} (0.000)$ & $-0.0547^{***} (0.000)$ & $0.9049$ & $ 0.0852$  \\
-Model 4 (Topic) & $0.7808^{***} (0.002)$ & $-0.2374^{***} (0.003)$ & $0.7882$ & $0.1271$  \\
+Model 1 (Baseline) & $0.7320\ (0.0008)$ & $-0.3214\ (0.0009)$ & $0.8608$ & $0.1031$ \\
+Model 2 (Influencers) & $0.7322\ (0.0008)$ & $-0.3134\ (0.0009)^{\dagger}$ & $0.8618$ & $0.1027$ \\
+Model 3a (Alignment) & $0.9097\ (0.0010)$ & $-0.1889\ (0.0006)$ & $0.8926$ & $0.0905$ \\
+Model 3b (Composition) & $0.8432\ (0.0011)$ & $-0.1955\ (0.0015)$ & $0.8870$ & $0.0929$ \\
+Model 3c (Combined) & $0.9497\ (0.0014)$ & $-0.0491\ (0.0013)$ & $0.9085$ & $0.0835$ \\
+Model 4 (Topic) & $0.7168\ (0.0011)$ & $-0.3302\ (0.0009)$ & $0.8623$ & $0.1025$ \\
 \hline
 \hline
 \end{tabular}
@@ -359,16 +359,17 @@ Model 4 (Topic) & $0.7808^{***} (0.002)$ & $-0.2374^{***} (0.003)$ & $0.7882$ & 
 \vspace{1em}
 \begin{minipage}{0.95\linewidth}
 \footnotesize
-\textit{Notes:} Standard errors in parentheses. *$p<0.05$; **$p<0.01$; ***$p<0.001$. $N=123189$ \\
-\textsuperscript{†} In Model 2, interaction is with \texttt{outlier}, not platform.
+\rev{\textit{Notes:} Robust linear models (Huber $M$-estimator) fitted with Huber's proposal 2 scale estimate; asymptotic standard errors in parentheses. Every coefficient shown is more than 25 standard errors from zero, so significance stars are omitted as uninformative. $N=123{,}189$ for every model. The second column reports the interaction between $\log(\text{size})$ and the platform indicator.\\
+\textsuperscript{†} Model 2 replaces the binary platform indicator with a three-category variable (Bluesky, Truth Social non-influencer, Truth Social influencer); the entry shown is the Truth Social non-influencer contrast against Bluesky.\\
+This table is re-estimated relative to the submitted version. The submitted table used the default median-absolute-deviation scale, which degenerates on these data (see Sensitivity of the Modeling Specification), yielding standard errors that could not be interpreted. Point estimates shift modestly under the corrected scale, most visibly for Model 3c on breadth ($0.023$ to $0.071$).}
 \end{minipage}
 \end{table*}
 
 The modeling results, reported in Table~\ref{model}, highlight clear differences in explanatory power across the three mechanisms. Model 2 (\textit{Influencers}) indicates that cascades initiated by high-follower accounts on Truth Social are only marginally broader on average, and the platform–size slope gap remains largely unchanged relative to the baseline. This suggests that the broad–shallow structure of Truth Social cascades is not simply the product of a small elite of prominent accounts, but rather reflects more widespread interaction patterns across the platform.
 
-Model 3 (\textit{Ideological Structure}) is decomposed into three specifications. Model 3a incorporates only the alignment ratio, Model 3b incorporates only user-level ideological composition, and Model 3c combines both. This decomposition shows that composition alone (Model 3b) reduces the divergence, yet substantial residual differences persist ($0.2579$ for breadth and $-0.1950$ for depth). Alignment alone (Model 3a) likewise attenuates but does not eliminate platform differences: the size-platform interaction for breadth remains positive ($0.2022$), and the size-platform interaction for depth remains negative ($-0.1831$). By contrast, the combined model (3c) drives both interaction terms close to zero ($0.0230$ for breadth and $-0.0547$ for depth), indicating that only when both ideological composition and cross-ideological alignment are included together does the platform-specific scaling gap become statistically negligible. \rev{We describe this as statistical accounting rather than explanation: these covariates absorb the platform difference, \rev{which is what a mediating role would produce, and is also what several non-causal arrangements would produce; the design does not separate them.}}
+Model 3 (\textit{Ideological Structure}) is decomposed into three specifications. Model 3a incorporates only the alignment ratio, Model 3b incorporates only user-level ideological composition, and Model 3c combines both. This decomposition shows that composition alone (Model 3b) reduces the divergence, yet substantial residual differences persist \rev{($0.289$ for breadth and $-0.196$ for depth)}. Alignment alone (Model 3a) likewise attenuates but does not eliminate platform differences: the size-platform interaction for breadth remains positive \rev{($0.236$)}, and the size-platform interaction for depth remains negative \rev{($-0.189$)}. By contrast, the combined model (3c) \rev{reduces both interaction terms by roughly five-sixths relative to the baseline, to $0.071$ for breadth and $-0.049$ for depth against baseline values of $0.419$ and $-0.321$. Only when both ideological composition and cross-ideological alignment are included together does the platform-specific scaling gap shrink this far, though for breadth a small positive interaction remains.} \rev{We describe this as statistical accounting rather than explanation: these covariates absorb the platform difference, \rev{which is what a mediating role would produce, and is also what several non-causal arrangements would produce; the design does not separate them.}}
 
-Model fit statistics reinforce this conclusion. While Models 3a and 3b improve pseudo-$R^2$ and RMSE relative to the baseline, the gains are modest. The combined specification produces the strongest fit, with pseudo-$R^2$ increasing to $0.95$ for breadth and $0.90$ for depth, with corresponding reductions in RMSE, \rev{indicating that ideological structure jointly accounts for a large share of the observed divergence.} Substantively, \rev{the platform difference is associated with both within-cascade conflict (alignment) and broader differences in the ideological makeup of user communities, and neither covariate absorbs it alone.} 
+Model fit statistics reinforce this conclusion. While Models 3a and 3b improve pseudo-$R^2$ and RMSE relative to the baseline, the gains are modest. The combined specification produces the strongest fit, with pseudo-$R^2$ increasing to \rev{$0.95$ for breadth and $0.91$ for depth}, with corresponding reductions in RMSE, \rev{indicating that ideological structure jointly accounts for a large share of the observed divergence.} Substantively, \rev{the platform difference is associated with both within-cascade conflict (alignment) and broader differences in the ideological makeup of user communities, and neither covariate absorbs it alone.} 
 
 Model 4 (\textit{Topic Variability}) shows a more modest effect. While platform-size interactions remain significant, the slope gaps shrink only slightly, by about 8\% for breadth and 29\% for depth, indicating that topic exerts some influence on cascade geometry, but not enough to explain most of the platform difference.
 
@@ -916,7 +917,7 @@ Total & 318,502 & 233,481,534 & 60,768 & 578,307 \\
 
 \rev{Two features of the reply-cascade data warrant an explicit sensitivity check. First, 61.3\% of reply cascades consist of a root post with no replies (71.3\% on Bluesky, 43.3\% on Truth Social). These cascades are structurally degenerate: breadth and depth are fixed by definition, so they sit exactly at the origin of the log--log scaling plot and carry no information about how structure scales with size. Second, because this mass of exactly-fitted points makes the median absolute deviation of the residuals vanish, the default scale estimator of the robust regression collapses toward zero. Point estimates are unaffected, but standard errors computed from a near-zero scale are not interpretable.}
 
-\rev{Table~\ref{tab:specrob} therefore re-estimates the baseline model and Model 3c across the four combinations of sample (all cascades, or only those with more than one post) and scale estimator (the default median absolute deviation, or Huber's proposal 2, which does not degenerate here). The platform-by-size interaction in the baseline model is smaller when single-post cascades are excluded, as expected once the degenerate points are removed, but the substantive result is stable throughout: including ideological composition and alignment absorbs between 81\% and 94\% of the baseline platform difference in every specification, for both breadth and depth. The values reported in the main text correspond to the first row block. For inference we rely on the Huber proposal 2 rows.}
+\rev{Table~\ref{tab:specrob} therefore re-estimates the baseline model and Model 3c across the four combinations of sample (all cascades, or only those with more than one post) and scale estimator (the default median absolute deviation, or Huber's proposal 2, which does not degenerate here). The platform-by-size interaction in the baseline model is smaller when single-post cascades are excluded, as expected once the degenerate points are removed, but the substantive result is stable throughout: including ideological composition and alignment absorbs between 81\% and 94\% of the baseline platform difference in every specification, for both breadth and depth. \rev{Table~\ref{model} in the main text reports the Huber proposal 2 fit on all cascades, corresponding to the third and fourth rows here; the first two rows reproduce the degenerate fit used in the submitted version, for comparison.}}
 
 \begin{table}[t]
 \centering
@@ -1074,6 +1075,7 @@ $\beta_{\log(\text{size})\times \text{platform(ts)}}$
 
 \vspace{0.75ex}
 \footnotesize
+\rev{\textit{Estimator note:} entries in this table use the default median-absolute-deviation scale, as in the submitted version of Table~\ref{model}, and are reported without standard errors. The comparison of interest is between the two encodings, which share the estimator, so the scale issue documented for Table~\ref{model} affects both columns identically.}\\
 \textit{Notes:}
 Left/Right (L/R) specification models the \emph{left-user share} with a spline (df=3) and the \emph{right-user share} linearly, interacted with $\log(\text{size})$ and platform.
 Majority/Minority (Maj/Min) re-codes composition by platform-dominant ideology (majority) vs. opposing (minority); the \emph{majority share} is modeled with a spline (df=3) and the \emph{minority share} linearly, with the same interactions.
