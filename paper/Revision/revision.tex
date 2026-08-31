@@ -208,7 +208,15 @@ We measure the role of ideology in shaping cascade structure along two dimension
 We hypothesize that ideological alignment and user composition are the key factors shaping cascade structure. Specifically, cascades with more ideologically diverse participants and lower alignment ratios are expected to develop deeper and more layered patterns, particularly on platforms such as Bluesky, where cross-cutting discussion is more viable. Our models build on this logic, illustrating why incorporating these factors into the models substantially attenuates platform-level differences.
 
 \subsection{H3: Topic Variability}
-The content of a post also plays a crucial role in shaping how users interact with it. Content that is emotionally charged, controversial, or conspiratorial often spreads through deeper and more structurally viral cascades than neutral or factual information \cite{vosoughi_spread_2018, wang_factors_2022}. In this study, we identified \rev{eleven} salient topics across both platforms. Although all topics are politically related, the distribution of emphasis varies substantially between Truth Social and Bluesky. The procedure for topic identification, evaluation (with results validated through human judgment), and assignment is detailed in Appendix.
+The content of a post also plays a crucial role in shaping how users interact with it. Content that is emotionally charged, controversial, or conspiratorial often spreads through deeper and more structurally viral cascades than neutral or factual information \cite{vosoughi_spread_2018, wang_factors_2022}. In this study, we identified \rev{eleven} salient topics across both platforms. \rev{Figure~\ref{fig:topic_dis} shows how root posts are distributed across these topics on each platform: both are dominated by Trump's legal cases and the campaign, while Bluesky carries relatively more legal-accountability and international content and Truth Social relatively more celebratory and pro-Trump content.} Although all topics are politically related, the distribution of emphasis varies substantially between Truth Social and Bluesky. The procedure for topic identification, evaluation (with results validated through human judgment), and assignment is detailed in Appendix.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figures/topic_dis.png}
+    \caption{Topic distribution across \textit{Bluesky} and \textit{Truth Social}.  
+Bar plots show the number of unique root posts assigned to each of the \rev{11} topics, based on BERTopic clustering and manual labeling. While both platforms heavily feature discussions about Trump’s legal cases and the upcoming U.S. presidential election, \textit{Bluesky} content is more concentrated around policy and legal accountability, whereas \textit{Truth Social} emphasizes celebratory or supportive content related to Trump. These platform-level differences in topic salience inform subsequent analyses of cascade structure and alignment.}
+    \label{fig:topic_dis}
+\end{figure*}
 
 We hypothesize that certain topics, particularly those involving partisan conflict, institutional distrust, or election-related narratives, may elicit distinct structural diffusion patterns depending on their resonance within each platform’s community. For example, election-related topics (e.g., presidential debates) are more prevalent on certain platforms. If such topics also diffuse differently, these differences may help explain the contrasting cascade structures we observe.
 
@@ -735,19 +743,13 @@ To ensure topic interpretability, two human annotators independently reviewed a 
 
 We assessed the alignment between human and model-assigned topic labels by computing Cohen’s $\kappa$ coefficient. Inter-annotator agreement between the two human experts was moderate ($\kappa = 0.53$). Agreement between the model and Human 1 yielded $\kappa = 0.67$, while agreement between the model and Human 2 was $\kappa = 0.67$, suggesting that the model-generated clusters were generally consistent with human interpretations of topic structure.
 
-To compare topical emphasis across platforms, we plotted the distribution of root posts by topic label for \textit{Bluesky} and \textit{Truth Social} (Fig.~\ref{fig:topic_dis}). While both platforms exhibited substantial engagement with topics surrounding Donald Trump’s legal issues and the 2024 U.S. presidential election, there were notable differences. Posts on \textit{Bluesky} were more likely to focus on legal accountability, international affairs (e.g., the Israel–Hamas conflict), and broader campaign discourse. In contrast, \textit{Truth Social} featured a larger proportion of posts celebrating Trump (e.g., birthdays and tributes) and promoting pro-Trump narratives (e.g., “MAGA advocacy”), reflecting differences in user base ideology and agenda-setting priorities. These topical variations underscore the divergent discourse ecosystems that have emerged across platforms.
+To compare topical emphasis across platforms, we plotted the distribution of root posts by topic label for \textit{Bluesky} and \textit{Truth Social} (Figure~\ref{fig:topic_dis}, main text). While both platforms exhibited substantial engagement with topics surrounding Donald Trump’s legal issues and the 2024 U.S. presidential election, there were notable differences. Posts on \textit{Bluesky} were more likely to focus on legal accountability, international affairs (e.g., the Israel–Hamas conflict), and broader campaign discourse. In contrast, \textit{Truth Social} featured a larger proportion of posts celebrating Trump (e.g., birthdays and tributes) and promoting pro-Trump narratives (e.g., “MAGA advocacy”), reflecting differences in user base ideology and agenda-setting priorities. These topical variations underscore the divergent discourse ecosystems that have emerged across platforms.
 
 
 
 
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\linewidth]{figures/topic_dis.png}
-    \caption{Topic distribution across \textit{Bluesky} and \textit{Truth Social}.  
-Bar plots show the number of unique root posts assigned to each of the \rev{11} topics, based on BERTopic clustering and manual labeling. While both platforms heavily feature discussions about Trump’s legal cases and the upcoming U.S. presidential election, \textit{Bluesky} content is more concentrated around policy and legal accountability, whereas \textit{Truth Social} emphasizes celebratory or supportive content related to Trump. These platform-level differences in topic salience inform subsequent analyses of cascade structure and alignment.}
-    \label{fig:topic_dis}
-\end{figure*}
+
 
 \subsubsection*{Ideology Estimation and Aggregation}
 
