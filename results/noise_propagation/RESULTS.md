@@ -23,6 +23,8 @@ unperturbed refit on the 98%-matched reconstruction = 0.0161 / -0.0494.
 | Unperturbed | 0.016 | -0.049 | 96% / 85% |
 | Measured per-platform noise | 0.012 [0.000, 0.038] | -0.013 [-0.043, 0.000] | 97% / 96% (worst draw 90% / 85%) |
 | Pooled-matrix stress test | 0.096 [0.079, 0.119] | -0.086 [-0.103, -0.073] | 76% / 74% (worst draw 70% / 69%) |
+| Nested bootstrap of the validation set | 0.014 [-0.007, 0.091] | -0.018 [-0.082, 0.019] | 96% / 94% (worst draw 72% / 70%) |
+| Annotator-1 worst case (thin-cell precision 0.33) | 0.046 [0.015, 0.088] | -0.048 [-0.073, -0.008] | 88% / 86% (worst draw 77% / 77%) |
 
 NOTE: rerun 2026-08-24 against confusion matrices recomputed from the
 canonical validation file (src/val_ideology.csv). The earlier run used a

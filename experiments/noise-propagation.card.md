@@ -41,3 +41,8 @@
     src/val_ideology.csv as canonical; the prior run used a superseded copy).
     Result strengthened: worst draw now keeps 85% attenuation (was 83%),
     median ~96%; pooled stress test ~70% (was ~two thirds).
+  - 2026-08-31 Added two defense scenarios per Mao's "defend the data we have"
+    direction: a nested bootstrap that resamples the validation set before
+    perturbing (carries Table 3's uncertainty into the result) and an
+    annotator-1 worst case (thin-cell precision 0.33 vs 0.64). Worst draw
+    still absorbs 70-77% of the platform gap; median 86-96%.
