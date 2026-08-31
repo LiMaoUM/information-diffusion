@@ -1,0 +1,1609 @@
+@misc{fair,
+    title="The FAIR Data principles",
+year = 2020,
+    author="{FORCE11}",
+howpublished="\url{https://force11.org/info/the-fair-data-principles/}"
+}
+@article{lasade-anderson_ideology_2025,
+	title = {Ideology as/of {Platform} {Affordance} and {Black} {Feminist} {Conceptualizations} of ``{Canceling}'': {Reading} {Twitter}},
+	volume = {26},
+	number = {1},
+	journal = {Television \& New Media},
+	author = {lasade-anderson, temi and Sobande, Francesca},
+	year = {2025},
+	pages = {119--131}
+}
+@article{gebru2021datasheets,
+  title={Datasheets for datasets},
+  author={Gebru, Timnit and Morgenstern, Jamie and Vecchione, Briana and Vaughan, Jennifer Wortman and Wallach, Hanna and Iii, Hal Daum{\'e} and Crawford, Kate},
+  journal={Communications of the ACM},
+  volume={64},
+  number={12},
+  pages={86--92},
+  year={2021},
+  publisher={ACM New York, NY, USA}
+}
+@article{su_assembling_2025,
+	title = {Assembling platform governance as private ordering in the age of generative {AI}: platform interdependence in policy evolution},
+	volume = {0},
+	number = {0},
+	journal = {Information, Communication \& Society},
+	author = {Su, Chris Chao and Chan, Ngai Keung},
+	year = {2025},
+	pages = {1--25}
+}
+
+@article{bucher_want_2012,
+	title = {Want to be on the top? {Algorithmic} power and the threat of invisibility on {Facebook}},
+	volume = {14},
+	number = {7},
+	journal = {New Media \& Society},
+	author = {Bucher, Taina},
+	year = {2012},
+	pages = {1164--1180}
+}
+
+@article{evans_explicating_2017,
+	title = {Explicating {Affordances}: a {Conceptual} {Framework} for {Understanding} {Affordances} in {Communication} {Research}},
+	volume = {22},
+	number = {1},
+	journal = {Journal of Computer-Mediated Communication},
+	author = {Evans, Sandra K. and Pearce, Katy E. and Vitak, Jessica and Treem, Jeffrey W.},
+	year = {2017},
+	pages = {35--52}
+}
+
+@article{di_martino_ideological_2025,
+	title = {Ideological fragmentation of the social media ecosystem: {From} echo chambers to echo platforms},
+    volume={4},
+    number={9},
+	journal = {PNAS Nexus},
+	author = {Di Martino, Edoardo and Galeazzi, Alessandro and Starnini, Michele and Quattrociocchi, Walter and Cinelli, Matteo},
+	year = {2025},
+	pages = {pgaf262}
+}
+
+@inproceedings{rader_understanding_2015,
+	author = {Rader, Emilee and Gray, Rebecca},
+	title = {Understanding {User} {Beliefs} {About} {Algorithmic} {Curation} in the {Facebook} {News} {Feed}},
+	booktitle = {Proceedings of the 33rd {Annual} {ACM} {Conference} on {Human} {Factors} in {Computing} {Systems}},
+	year = {2015},
+	pages = {173--182},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+
+@inproceedings{adamic_political_2005,
+  author    = {Adamic, Lada A. and Glance, Natalie},
+  title     = {The Political Blogosphere and the 2004 U.S. Election: Divided They Blog},
+  booktitle = {Proceedings of the 3rd International Workshop on Link Discovery},
+  series    = {LinkKDD '05},
+  year      = {2005},
+  pages     = {36--43},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  doi       = {10.1145/1134271.1134277}
+}
+@misc{geiger_wider_2016,
+	author = {Geiger, Abigail},
+	title = {A wider ideological gap between more and less educated adults},
+	year = {2016},
+	howpublished = {\url{https://www.pewresearch.org/politics/2016/04/26/a-wider-ideological-gap-between-more-and-less-educated-adults/}},
+	note = {Accessed: 2025-07-30}
+}
+
+@inproceedings{metaxas_what_2015,
+	author = {Metaxas, Panagiotis and Mustafaraj, Eni and Wong, Kily and Zeng, Laura and O'Keefe, Megan and Finn, Samantha},
+	title = {What {Do} {Retweets} {Indicate}? {Results} from {User} {Survey} and {Meta}-{Review} of {Research}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2015},
+	pages = {658--661},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@article{dey_what_2019,
+	title = {What network motifs tell us about resilience and reliability of complex networks},
+	volume = {116},
+	number = {39},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Dey, Asim K. and Gel, Yulia R. and Poor, H. Vincent},
+	year = {2019},
+	pages = {19368--19373}
+}
+
+@article{cinelli_echo_2021,
+	title = {The echo chamber effect on social media},
+	volume = {118},
+	number = {9},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Cinelli, Matteo and De Francisci Morales, Gianmarco and Galeazzi, Alessandro and Quattrociocchi, Walter and Starnini, Michele},
+	year = {2021},
+	pages = {e2023301118}
+}
+
+@article{zhang_characterizing_2018,
+	title = {Characterizing {Online} {Public} {Discussions} through {Patterns} of {Participant} {Interactions}},
+	volume = {2},
+	number = {CSCW},
+	journal = {Proc. ACM Hum.-Comput. Interact.},
+	author = {Zhang, Justine and Danescu-Niculescu-Mizil, Cristian and Sauper, Christina and Taylor, Sean J.},
+	year = {2018},
+	pages = {198:1--198:27}
+}
+
+@inproceedings{zhang_conversations_2018,
+	author = {Zhang, Justine and Chang, Jonathan and Danescu-Niculescu-Mizil, Cristian and Dixon, Lucas and Hua, Yiqing and Taraborelli, Dario and Thain, Nithum},
+	title = {Conversations {Gone} {Awry}: {Detecting} {Early} {Signs} of {Conversational} {Failure}},
+	booktitle = {Proceedings of the 56th {Annual} {Meeting} of the {Association} for {Computational} {Linguistics}},
+	year = {2018},
+	pages = {1350--1361},
+	publisher = {Association for Computational Linguistics},
+	address = {Melbourne, Australia}
+}
+
+@inproceedings{cheng_can_2014,
+	author = {Cheng, Justin and Adamic, Lada and Dow, P. Alex and Kleinberg, Jon Michael and Leskovec, Jure},
+	title = {Can cascades be predicted?},
+	booktitle = {Proceedings of the 23rd {International} {Conference} on {World} {Wide} {Web}},
+	year = {2014},
+	pages = {925--936},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@inproceedings{conover_political_2011,
+	author = {Conover, Michael and Ratkiewicz, Jacob and Francisco, Matthew and Goncalves, Bruno and Menczer, Filippo and Flammini, Alessandro},
+	title = {Political {Polarization} on {Twitter}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2011},
+	pages = {89--96},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@inproceedings{bakshy_role_2012,
+	author = {Bakshy, Eytan and Rosenn, Itamar and Marlow, Cameron and Adamic, Lada},
+	title = {The role of social networks in information diffusion},
+	booktitle = {Proceedings of the 21st {International} {Conference} on {World} {Wide} {Web}},
+	year = {2012},
+	pages = {519--528},
+	publisher = {Association for Computing Machinery},
+	address = {Lyon, France}
+}
+
+@article{hao_proper_2024,
+	title = {Proper network randomization is key to assessing social balance},
+	volume = {10},
+	number = {18},
+	journal = {Science Advances},
+	author = {Hao, Bingjie and Kovács, István A.},
+	year = {2024},
+	pages = {eadj0104}
+}
+
+@article{zhao_fake_2020,
+	title = {Fake news propagates differently from real news even at early stages of spreading},
+	volume = {9},
+	number = {1},
+	journal = {EPJ Data Science},
+	author = {Zhao, Zilong and Zhao, Jichang and Sano, Yukie and Levy, Orr and Takayasu, Hideki and Takayasu, Misako and Li, Daqing and Wu, Junjie and Havlin, Shlomo},
+	year = {2020},
+	pages = {1--14}
+}
+
+@article{guille_information_2013,
+	title = {Information diffusion in online social networks: a survey},
+	volume = {42},
+	number = {2},
+	journal = {SIGMOD Rec.},
+	author = {Guille, Adrien and Hacid, Hakim and Favre, Cecile and Zighed, Djamel A.},
+	year = {2013},
+	pages = {17--28}
+}
+
+@article{juul_comparing_2021,
+	title = {Comparing information diffusion mechanisms by matching on cascade size},
+	volume = {118},
+	number = {46},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Juul, Jonas L. and Ugander, Johan},
+	year = {2021},
+	pages = {e2100786118}
+}
+
+@article{berger_what_2012,
+	title = {What {Makes} {Online} {Content} {Viral}?},
+	volume = {49},
+	number = {2},
+	journal = {Journal of Marketing Research},
+	author = {Berger, Jonah and Milkman, Katherine L.},
+	year = {2012},
+	pages = {192--205}
+}
+
+@article{liben-nowell_tracing_2008,
+	title = {Tracing information flow on a global scale using internet chain-letter data},
+	volume = {105},
+	number = {12},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Liben-Nowell, David and Kleinberg, Jon},
+	year = {2008},
+	pages = {4633--4638}
+}
+
+@article{barbera_tweeting_2015,
+	title = {Tweeting {From} {Left} to {Right}: {Is} {Online} {Political} {Communication} {More} {Than} an {Echo} {Chamber}?},
+	volume = {26},
+	number = {10},
+	journal = {Psychological Science},
+	author = {Barberá, Pablo and Jost, John T. and Nagler, Jonathan and Tucker, Joshua A. and Bonneau, Richard},
+	year = {2015},
+	pages = {1531--1542}
+}
+
+@article{goel_structural_2016,
+	title = {The {Structural} {Virality} of {Online} {Diffusion}},
+	volume = {62},
+	number = {1},
+	journal = {Management Science},
+	author = {Goel, Sharad and Anderson, Ashton and Hofman, Jake and Watts, Duncan J.},
+	year = {2016},
+	pages = {180--196}
+}
+
+@inproceedings{aragon_thread_2017,
+	author = {Aragón, Pablo and Gómez, Vicenç and Kaltenbrunner, Andreas},
+	title = {To thread or not to thread: the impact of conversation threading on online discussion},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2017},
+	pages = {12--21},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@inproceedings{levy_understanding_2022,
+	author = {Levy, Sharon and Kraut, Robert E. and Yu, Jane A. and Altenburger, Kristen M. and Wang, Yi-Chia},
+	title = {Understanding {Conflicts} in {Online} {Conversations}},
+	booktitle = {Proceedings of the {ACM} {Web} {Conference} 2022},
+	year = {2022},
+	pages = {2592--2602},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@inproceedings{goel_structure_2012,
+	author = {Goel, Sharad and Watts, Duncan J. and Goldstein, Daniel G.},
+	title = {The structure of online diffusion networks},
+	booktitle = {Proceedings of the 13th {ACM} {Conference} on {Electronic} {Commerce}},
+	year = {2012},
+	pages = {623--638},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{treem_social_2013,
+	title = {Social {Media} {Use} in {Organizations}: {Exploring} the {Affordances} of {Visibility}, {Editability}, {Persistence}, and {Association}},
+	volume = {36},
+	number = {1},
+	journal = {Annals of the International Communication Association},
+	author = {Treem, Jeffrey W. and Leonardi, Paul M.},
+	year = {2013},
+	pages = {143--189}
+}
+
+@article{gillespie_politics_2010,
+	title = {The politics of `platforms'},
+	volume = {12},
+	number = {3},
+	journal = {New Media \& Society},
+	author = {Gillespie, Tarleton},
+	year = {2010},
+	pages = {347--364}
+}
+
+@incollection{boyd_social_2010,
+	author = {Boyd, Danah},
+	title = {Social {Network} {Sites} as {Networked} {Publics}: {Affordances}, {Dynamics}, and {Implications}},
+	booktitle = {A {Networked} {Self}},
+	year = {2010},
+	publisher = {Routledge},
+	address = {New York, NY}
+}
+
+@article{zhao_sir_2013,
+	title = {{SIR} rumor spreading model in the new media age},
+	volume = {392},
+	number = {4},
+	journal = {Physica A: Statistical Mechanics and its Applications},
+	author = {Zhao, Laijun and Cui, Hongxin and Qiu, Xiaoyan and Wang, Xiaoli and Wang, Jiajia},
+	year = {2013},
+	pages = {995--1003}
+}
+
+@misc{niitsuma_prestige_2025,
+	author = {Niitsuma, Takuro and Yoshida, Mitsuo and Tamori, Hideaki and Nakawake, Yo},
+	title = {Prestige bias drives the viral spread of content reposted by influencers in online communities},
+	year = {2025},
+	eprint = {2411.05448},
+	archivePrefix = {arXiv}
+}
+
+@article{vosoughi_spread_2018,
+	title = {The spread of true and false news online},
+	volume = {359},
+	number = {6380},
+	journal = {Science},
+	author = {Vosoughi, Soroush and Roy, Deb and Aral, Sinan},
+	year = {2018},
+	pages = {1146--1151}
+}
+
+@inproceedings{friggeri_rumor_2014,
+	author = {Friggeri, Adrien and Adamic, Lada and Eckles, Dean and Cheng, Justin},
+	title = {Rumor {Cascades}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2014},
+	pages = {101--110},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@article{carstens_switching_2017,
+	title = {Switching edges to randomize networks: what goes wrong and how to fix it},
+	volume = {5},
+	number = {3},
+	journal = {Journal of Complex Networks},
+	author = {Carstens, C. J. and Horadam, K. J.},
+	year = {2017},
+	pages = {337--351}
+}
+
+@article{ugander_structural_2012,
+	title = {Structural diversity in social contagion},
+	volume = {109},
+	number = {16},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Ugander, Johan and Backstrom, Lars and Marlow, Cameron and Kleinberg, Jon},
+	year = {2012},
+	pages = {5962--5966}
+}
+
+@article{del_vicario_spreading_2016,
+	title = {The spreading of misinformation online},
+	volume = {113},
+	number = {3},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Del Vicario, Michela and Bessi, Alessandro and Zollo, Fabiana and Petroni, Fabio and Scala, Antonio and Caldarelli, Guido and Stanley, H. Eugene and Quattrociocchi, Walter},
+	year = {2016},
+	pages = {554--559}
+}
+
+@inproceedings{zhao_enquiring_2015,
+	author = {Zhao, Zhe and Resnick, Paul and Mei, Qiaozhu},
+	title = {Enquiring {Minds}: {Early} {Detection} of {Rumors} in {Social} {Media} from {Enquiry} {Posts}},
+	booktitle = {Proceedings of the 24th {International} {Conference} on {World} {Wide} {Web}},
+	year = {2015},
+	pages = {1395--1405},
+	publisher = {International World Wide Web Conferences Steering Committee},
+	address = {Geneva, Switzerland}
+}
+
+@inproceedings{gruhl_information_2004,
+	author = {Gruhl, Daniel and Guha, R. and Liben-Nowell, David and Tomkins, Andrew},
+	title = {Information diffusion through blogspace},
+	booktitle = {Proceedings of the 13th {International} {Conference} on {World} {Wide} {Web}},
+	year = {2004},
+	pages = {491--501},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{bakshy_exposure_2015,
+	title = {Exposure to ideologically diverse news and opinion on {Facebook}},
+	volume = {348},
+	number = {6239},
+	journal = {Science},
+	author = {Bakshy, Eytan and Messing, Solomon and Adamic, Lada A.},
+	year = {2015},
+	pages = {1130--1132}
+}
+
+@article{bail_exposure_2018,
+	title = {Exposure to opposing views on social media can increase political polarization},
+	volume = {115},
+	number = {37},
+	journal = {Proceedings of the National Academy of Sciences},
+	author = {Bail, Christopher A. and Argyle, Lisa P. and Brown, Taylor W. and Bumpus, John P. and Chen, Haohan and Hunzaker, M. B. Fallin and Lee, Jaemin and Mann, Marcus and Merhout, Friedolin and Volfovsky, Alexander},
+	year = {2018},
+	pages = {9216--9221}
+}
+
+@inproceedings{garimella_political_2018,
+	author = {Garimella, Kiran and De Francisci Morales, Gianmarco and Gionis, Aristides and Mathioudakis, Michael},
+	title = {Political {Discourse} on {Social} {Media}: {Echo} {Chambers}, {Gatekeepers}, and the {Price} of {Bipartisanship}},
+	booktitle = {Proceedings of the 2018 {World} {Wide} {Web} {Conference}},
+	year = {2018},
+	pages = {913--922},
+	publisher = {Association for Computing Machinery},
+	address = {Lyon, France}
+}
+
+@book{easley_networks_2010,
+	author = {Easley, David and Kleinberg, Jon},
+	title = {Networks, crowds, and markets: reasoning about a highly connected world},
+	year = {2010},
+	publisher = {Cambridge University Press},
+	address = {Cambridge, UK}
+}
+
+@article{wang_factors_2022,
+	title = {Factors influencing fake news rebuttal acceptance during the {COVID}-19 pandemic and the moderating effect of cognitive ability},
+	volume = {130},
+	journal = {Computers in Human Behavior},
+	author = {Wang, Xin and Chao, Fan and Yu, Guang and Zhang, Kaihang},
+	year = {2022},
+	pages = {107174}
+}
+
+@article{guess_how_2023,
+	title = {How do social media feed algorithms affect attitudes and behavior in an election campaign?},
+	volume = {381},
+	number = {6656},
+	journal = {Science},
+	author = {Guess, Andrew M. and Malhotra, Neil and Pan, Jennifer and Barberá, Pablo and Allcott, Hunt and Brown, Taylor and Crespo-Tenorio, Adriana and Dimmery, Drew and Freelon, Deen and Gentzkow, Matthew and González-Bailón, Sandra and Kennedy, Edward and Kim, Young Mie and Lazer, David and Moehler, Devra and Nyhan, Brendan and Rivera, Carlos Velasco and Settle, Jaime and Thomas, Daniel Robert and Thorson, Emily and Tromble, Rebekah and Wilkins, Arjun and Wojcieszak, Magdalena and Xiong, Beixian and de Jonge, Chad Kiewiet and Franco, Annie and Mason, Winter and Stroud, Natalie Jomini and Tucker, Joshua A.},
+	year = {2023},
+	pages = {398--404}
+}
+
+@article{guess_reshare_2023,
+  author  = {Guess, Andrew M. and Malhotra, Neil and Pan, Jennifer and Barberá, Pablo and Allcott, Hunt and Brown, Taylor and Crespo-Tenorio, Adriana and Dimmery, Drew and Freelon, Deen and Gentzkow, Matthew and González-Bailón, Sandra and Kennedy, Edward and Kim, Young Mie and Lazer, David and Moehler, Devra and Nyhan, Brendan and Rivera, Carlos Velasco and Settle, Jaime and Thomas, Daniel Robert and Thorson, Emily and Tromble, Rebekah and Wilkins, Arjun and Wojcieszak, Magdalena and Xiong, Beixian and de Jonge, Chad Kiewiet},
+  title   = {Reshares on social media amplify political news but do not detectably affect beliefs or opinions},
+  journal = {Science},
+  year    = {2023},
+  volume  = {381},
+  number  = {6656},
+  pages   = {404--408},
+  doi     = {10.1126/science.add8424}
+}
+
+@inproceedings{anderson_global_2015,
+	author = {Anderson, Ashton and Huttenlocher, Daniel and Kleinberg, Jon and Leskovec, Jure and Tiwari, Mitul},
+	title = {Global {Diffusion} via {Cascading} {Invitations}: {Structure}, {Growth}, and {Homophily}},
+	booktitle = {Proceedings of the 24th {International} {Conference} on {World} {Wide} {Web}},
+	year = {2015},
+	pages = {66--76},
+	publisher = {International World Wide Web Conferences Steering Committee},
+	address = {Geneva, Switzerland}
+}
+
+@inproceedings{bakshy_everyones_2011,
+	author = {Bakshy, Eytan and Hofman, Jake M. and Mason, Winter A. and Watts, Duncan J.},
+	title = {Everyone's an influencer: quantifying influence on twitter},
+	booktitle = {Proceedings of the 4th {ACM} {International} {Conference} on {Web} {Search} and {Data} {Mining}},
+	year = {2011},
+	pages = {65--74},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{mcloughlin_misinformation_2024,
+	title = {Misinformation exploits outrage to spread online},
+	volume = {386},
+	number = {6725},
+	journal = {Science},
+	author = {McLoughlin, Killian L. and Brady, William J. and Goolsbee, Aden and Kaiser, Ben and Klonick, Kate and Crockett, M. J.},
+	year = {2024},
+	pages = {991--996}
+}
+
+@article{aragon_generative_2017,
+	title = {Generative models of online discussion threads: state of the art and research challenges},
+	volume = {8},
+	number = {1},
+	journal = {Journal of Internet Services and Applications},
+	author = {Aragón, Pablo and Gómez, Vicenç and García, David and Kaltenbrunner, Andreas},
+	year = {2017},
+	pages = {15}
+}
+
+@article{zollo_emotional_2015,
+	title = {Emotional {Dynamics} in the {Age} of {Misinformation}},
+	volume = {10},
+	number = {9},
+	journal = {PLOS ONE},
+	author = {Zollo, Fabiana and Novak, Petra Kralj and Vicario, Michela Del and Bessi, Alessandro and Mozetič, Igor and Scala, Antonio and Caldarelli, Guido and Quattrociocchi, Walter},
+	year = {2015},
+	pages = {e0138740}
+}
+
+@article{papacharissi_affective_2016,
+	title = {Affective publics and structures of storytelling: sentiment, events and mediality},
+	volume = {19},
+	number = {3},
+	journal = {Information, Communication \& Society},
+	author = {Papacharissi, Zizi},
+	year = {2016},
+	pages = {307--324}
+}
+
+@misc{mikolov_efficient_2013,
+	author = {Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
+	title = {Efficient estimation of word representations in vector space},
+	year = {2013},
+	eprint = {1301.3781},
+	archivePrefix = {arXiv}
+}
+
+@incollection{datta_decentralized_2010,
+	author = {Datta, Anwitaman and Buchegger, Sonja and Vu, Le-Hung and Strufe, Thorsten and Rzadca, Krzysztof},
+	title = {Decentralized {Online} {Social} {Networks}},
+	booktitle = {Handbook of {Social} {Network} {Technologies} and {Applications}},
+	year = {2010},
+	pages = {349--378},
+	publisher = {Springer},
+	address = {New York, NY}
+}
+
+@article{hunt_algorithmic_2019,
+	title = {Algorithmic {Regulation} in {Media} and {Cultural} {Policy}: {A} {Framework} to {Evaluate} {Barriers} to {Accountability}},
+	volume = {9},
+	journal = {Journal of Information Policy},
+	author = {Hunt, Robert and McKelvey, Fenwick},
+	year = {2019},
+	pages = {307--335}
+}
+
+@misc{zhang_conversations_2018-1,
+	author = {Zhang, Justine and Chang, Jonathan P. and Danescu-Niculescu-Mizil, Cristian and Dixon, Lucas and Hua, Yiqing and Thain, Nithum and Taraborelli, Dario},
+	title = {Conversations gone awry: detecting early signs of conversational failure},
+	year = {2018},
+	eprint = {1805.05345},
+	archivePrefix = {arXiv}
+}
+
+@article{liang_broadcast_2018,
+	title = {Broadcast {Versus} {Viral} {Spreading}: {The} {Structure} of {Diffusion} {Cascades} and {Selective} {Sharing} on {Social} {Media}},
+	volume = {68},
+	number = {3},
+	journal = {Journal of Communication},
+	author = {Liang, Hai},
+	year = {2018},
+	pages = {525--546}
+}
+
+@article{hershey_echo_2009,
+	title = {Echo {Chamber}: {Rush} {Limbaugh} and the {Conservative} {Media} {Establishment}},
+	volume = {7},
+	number = {2},
+	journal = {Perspectives on Politics},
+	author = {Hershey, Marjorie Randon},
+	year = {2009},
+	pages = {415--417}
+}
+
+@article{garrett_echo_2009,
+	title = {Echo chambers online?: {Politically} motivated selective exposure among {Internet} news users},
+	volume = {14},
+	number = {2},
+	journal = {Journal of Computer-Mediated Communication},
+	author = {Garrett, R. Kelly},
+	year = {2009},
+	pages = {265--285}
+}
+
+@article{del_vicario_echo_2016,
+	title = {Echo {Chambers}: {Emotional} {Contagion} and {Group} {Polarization} on {Facebook}},
+	volume = {6},
+	number = {1},
+	journal = {Scientific Reports},
+	author = {Del Vicario, Michela and Vivaldo, Gianna and Bessi, Alessandro and Zollo, Fabiana and Scala, Antonio and Caldarelli, Guido and Quattrociocchi, Walter},
+	year = {2016},
+	pages = {37825}
+}
+
+@article{wernicke_efficient_2006,
+	title = {Efficient detection of network motifs},
+	volume = {3},
+	number = {4},
+	journal = {IEEE/ACM Transactions on Computational Biology and Bioinformatics},
+	author = {Wernicke, Sebastian},
+	year = {2006},
+	pages = {347--359}
+}
+
+@misc{noauthor_what_2024,
+	author = {{AP News}},
+	title = {What we know about {Truth} {Social}, {Donald} {Trump}'s social media platform},
+	year = {2024},
+	howpublished = {\url{https://apnews.com/article/truth-social-donald-trump-djt-ipo-digital-world-7437d5dcc491a1459a078195ae547987}},
+	note = {Accessed: 2024-06-19}
+}
+
+@inproceedings{kwak_what_2010,
+	author = {Kwak, Haewoon and Lee, Changhyun and Park, Hosung and Moon, Sue},
+	title = {What is {Twitter}, a social network or a news media?},
+	booktitle = {Proceedings of the 19th {International} {Conference} on {World} {Wide} {Web}},
+	year = {2010},
+	pages = {591--600},
+	publisher = {Association for Computing Machinery},
+	address = {Raleigh, NC}
+}
+
+
+
+@inproceedings{jeong_user_2024,
+	author = {Jeong, Ujun and Nirmal, Ayushi and Jha, Kritshekhar and Tang, Susan Xu and Bernard, H. Russell and Liu, Huan},
+	title = {User {Migration} across {Multiple} {Social} {Media} {Platforms}},
+	booktitle = {Proceedings of the 2024 {SIAM} {International} {Conference} on {Data} {Mining} ({SDM})},
+	year = {2024},
+	pages = {436--444},
+	publisher = {Society for Industrial and Applied Mathematics},
+	address = {Philadelphia, PA}
+}
+
+@inproceedings{gerard_truth_2023,
+	author = {Gerard, Patrick and Botzer, Nicholas and Weninger, Tim},
+	title = {Truth {Social} {Dataset}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2023},
+	pages = {1034--1040},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@article{zhang_trump_2024,
+	title = {Trump, {Twitter}, and {Truth} {Social}: how {Trump} used both mainstream and alt-tech social media to drive news media attention},
+	volume = {0},
+	number = {0},
+	journal = {Journal of Information Technology \& Politics},
+	author = {Zhang, Yini and Lukito, Josephine and Suk, Jiyoun and McGrady, Ryan},
+	year = {2024},
+	pages = {1--14}
+}
+
+@book{klapper_effects_1960,
+	author = {Klapper, Joseph T.},
+	title = {The effects of mass communication},
+	year = {1960},
+	publisher = {Free Press},
+	address = {New York, NY}
+}
+
+@inproceedings{garimella_effect_2017,
+	author = {Garimella, Kiran and De Francisci Morales, Gianmarco and Gionis, Aristides and Mathioudakis, Michael},
+	title = {The {Effect} of {Collective} {Attention} on {Controversial} {Debates} on {Social} {Media}},
+	booktitle = {Proceedings of the 2017 {ACM} on {Web} {Science} {Conference}},
+	year = {2017},
+	pages = {43--52},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@inproceedings{du_echo_2017,
+	author = {Du, Siying and Gregory, Steve},
+	title = {The echo chamber effect in twitter: does community polarization increase?},
+	booktitle = {Complex {Networks} \& {Their} {Applications} {V}},
+	year = {2017},
+	pages = {373--378},
+	publisher = {Springer International Publishing},
+	address = {Cham, Switzerland}
+}
+
+@article{valensise_drivers_2023,
+	title = {The drivers of online polarization: {Fitting} models to data},
+	volume = {642},
+	journal = {Information Sciences},
+	author = {Valensise, Carlo M. and Cinelli, Matteo and Quattrociocchi, Walter},
+	year = {2023},
+	pages = {119152}
+}
+
+@article{kor-sins_alt-right_2023,
+	title = {The alt-right digital migration: {A} heterogeneous engineering approach to social media platform branding},
+	volume = {25},
+	number = {9},
+	journal = {New Media \& Society},
+	author = {Kor-Sins, Ryan},
+	year = {2023},
+	pages = {2321--2338}
+}
+
+@article{proferes_studying_2021,
+	title = {Studying {Reddit}: {A} {Systematic} {Overview} of {Disciplines}, {Approaches}, {Methods}, and {Ethics}},
+	volume = {7},
+	number = {2},
+	journal = {Social Media + Society},
+	author = {Proferes, Nicholas and Jones, Naiyan and Gilbert, Sarah and Fiesler, Casey and Zimmer, Michael},
+	year = {2021},
+	pages = {20563051211019004}
+}
+
+@article{hong-lin_social_2014,
+	title = {Social {Network} {Analysis} {Based} on {Network} {Motifs}},
+	volume = {2014},
+	number = {1},
+	journal = {Journal of Applied Mathematics},
+	author = {Hong-lin, Xu and Han-bing, Yan and Cui-fang, Gao and Ping, Zhu},
+	year = {2014},
+	pages = {874708}
+}
+
+@book{persily_social_2020,
+	author = {Persily, Nathaniel and Tucker, Joshua A.},
+	title = {Social {Media} and {Democracy}},
+	year = {2020},
+	publisher = {Cambridge University Press},
+	address = {Cambridge, UK}
+}
+
+@article{olteanu_social_2019,
+	title = {Social {Data}: {Biases}, {Methodological} {Pitfalls}, and {Ethical} {Boundaries}},
+	volume = {2},
+	journal = {Frontiers in Big Data},
+	author = {Olteanu, Alexandra and Castillo, Carlos and Diaz, Fernando and Kıcıman, Emre},
+	year = {2019}
+}
+
+@article{garrett_selective_2013,
+	title = {Selective {Exposure}: {New} {Methods} and {New} {Directions}},
+	volume = {7},
+	number = {3-4},
+	journal = {Communication Methods and Measures},
+	author = {Garrett, R. Kelly},
+	year = {2013},
+	pages = {247--256}
+}
+
+@article{zulli_rethinking_2020,
+	title = {Rethinking the ``social'' in ``social media'': {Insights} into topology, abstraction, and scale on the {Mastodon} social network},
+	volume = {22},
+	number = {7},
+	journal = {New Media \& Society},
+	author = {Zulli, Diana and Liu, Miao and Gehl, Robert},
+	year = {2020},
+	pages = {1188--1205}
+}
+
+@article{freelon_quantifying_2018,
+	title = {Quantifying the power and consequences of social media protest},
+	volume = {20},
+	number = {3},
+	journal = {New Media \& Society},
+	author = {Freelon, Deen and McIlwain, Charlton and Clark, Meredith},
+	year = {2018},
+	pages = {990--1011}
+}
+
+@inproceedings{alatawi_quantifying_2024,
+	author = {Alatawi, Faisal and Sheth, Paras and Liu, Huan},
+	title = {Quantifying the {Echo} {Chamber} {Effect}: {An} {Embedding} {Distance}-based {Approach}},
+	booktitle = {Proceedings of the 2023 {IEEE}/{ACM} {International} {Conference} on {Advances} in {Social} {Networks} {Analysis} and {Mining}},
+	year = {2024},
+	pages = {38--45},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{cota_quantifying_2019,
+	title = {Quantifying echo chamber effects in information spreading over political communication networks},
+	volume = {8},
+	number = {1},
+	journal = {EPJ Data Science},
+	author = {Cota, Wesley and Ferreira, Silvio C. and Pastor-Satorras, Romualdo and Starnini, Michele},
+	year = {2019},
+	pages = {1--13}
+}
+
+@incollection{bridle_probabilistic_1990,
+	author = {Bridle, John S.},
+	title = {Probabilistic {Interpretation} of {Feedforward} {Classification} {Network} {Outputs}, with {Relationships} to {Statistical} {Pattern} {Recognition}},
+	booktitle = {Neurocomputing},
+	year = {1990},
+	pages = {227--236},
+	publisher = {Springer},
+	address = {Berlin, Heidelberg}
+}
+
+@article{dehghan_politicization_2022,
+	title = {Politicization and {Radicalization} of {Discourses} in the {Alt}-{Tech} {Ecosystem}: {A} {Case} {Study} on {Gab} {Social}},
+	volume = {8},
+	number = {3},
+	journal = {Social Media + Society},
+	author = {Dehghan, Ehsan and Nagappa, Ashwin},
+	year = {2022},
+	pages = {20563051221113075}
+}
+
+@article{flamino_political_2023,
+	title = {Political polarization of news media and influencers on {Twitter} in the 2016 and 2020 {US} presidential elections},
+	volume = {7},
+	number = {6},
+	journal = {Nature Human Behaviour},
+	author = {Flamino, James and Galeazzi, Alessandro and Feldman, Stuart and Macy, Michael W. and Cross, Brendan and Zhou, Zhenkun and Serafino, Matteo and Bovet, Alexandre and Makse, Hernán A. and Szymanski, Boleslaw K.},
+	year = {2023},
+	pages = {904--916}
+}
+
+@article{amaya_new_2021,
+	title = {New {Data} {Sources} in {Social} {Science} {Research}: {Things} to {Know} {Before} {Working} {With} {Reddit} {Data}},
+	volume = {39},
+	number = {5},
+	journal = {Social Science Computer Review},
+	author = {Amaya, Ashley and Bach, Ruben and Keusch, Florian and Kreuter, Frauke},
+	year = {2021},
+	pages = {943--960}
+}
+
+@article{alon_network_2007,
+	title = {Network motifs: theory and experimental approaches},
+	volume = {8},
+	number = {6},
+	journal = {Nature Reviews Genetics},
+	author = {Alon, Uri},
+	year = {2007},
+	pages = {450--461}
+}
+
+@article{milo_network_2002,
+	title = {Network {Motifs}: {Simple} {Building} {Blocks} of {Complex} {Networks}},
+	volume = {298},
+	number = {5594},
+	journal = {Science},
+	author = {Milo, R. and Shen-Orr, S. and Itzkovitz, S. and Kashtan, N. and Chklovskii, D. and Alon, U.},
+	year = {2002},
+	pages = {824--827}
+}
+
+@article{yu_motifs_2019,
+	title = {Motifs in {Big} {Networks}: {Methods} and {Applications}},
+	volume = {7},
+	journal = {IEEE Access},
+	author = {Yu, Shuo and Xu, Jin and Zhang, Chen and Xia, Feng and Almakhadmeh, Zafer and Tolba, Amr},
+	year = {2019},
+	pages = {183322--183338}
+}
+
+@article{yu_motif_2020,
+	title = {Motif discovery in networks: {A} survey},
+	volume = {37},
+	journal = {Computer Science Review},
+	author = {Yu, Shuo and Feng, Yufan and Zhang, Da and Bedru, Hayat Dino and Xu, Bo and Xia, Feng},
+	year = {2020},
+	pages = {100267}
+}
+
+@inproceedings{rowe_mining_2014,
+	author = {Rowe, Matthew and Alani, Harith},
+	title = {Mining and comparing engagement dynamics across multiple social media platforms},
+	booktitle = {Proceedings of the 2014 {ACM} conference on {Web} science},
+	year = {2014},
+	pages = {229--238},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{erkan_lexrank_2004,
+	title = {{LexRank}: {Graph}-based {Lexical} {Centrality} as {Salience} in {Text} {Summarization}},
+	volume = {22},
+	journal = {Journal of Artificial Intelligence Research},
+	author = {Erkan, G. and Radev, D. R.},
+	year = {2004},
+	pages = {457--479}
+}
+
+@article{abramowitz_is_2008,
+	title = {Is {Polarization} a {Myth}?},
+	volume = {70},
+	number = {2},
+	journal = {The Journal of Politics},
+	author = {Abramowitz, Alan I. and Saunders, Kyle L.},
+	year = {2008},
+	pages = {542--555}
+}
+
+@inproceedings{ver_steeg_information_2012,
+	author = {Ver Steeg, Greg and Galstyan, Aram},
+	title = {Information transfer in social media},
+	booktitle = {Proceedings of the 21st {International} {Conference} on {World} {Wide} {Web}},
+	year = {2012},
+	pages = {509--518},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{schenker_improving_2010,
+	title = {Improving on analyses of self-reported data in a large-scale health survey by using information from an examination-based survey},
+	volume = {29},
+	number = {5},
+	journal = {Statistics in Medicine},
+	author = {Schenker, Nathaniel and Raghunathan, Trivellore E. and Bondarenko, Irina},
+	year = {2010},
+	pages = {533--545}
+}
+
+@misc{failla_im_2024,
+	author = {Failla, Andrea and Rossetti, Giulio},
+	title = {"{I}'m in the {Bluesky} {Tonight}": {Insights} from a {Year} {Worth} of {Social} {Data}},
+	year = {2024},
+	eprint = {2404.18984},
+	archivePrefix = {arXiv}
+}
+
+@article{benson_higher-order_2016,
+	title = {Higher-order organization of complex networks},
+	volume = {353},
+	number = {6295},
+	journal = {Science},
+	author = {Benson, Austin R. and Gleich, David F. and Leskovec, Jure},
+	year = {2016},
+	pages = {163--166}
+}
+
+@article{traag_louvain_2019,
+	title = {From {Louvain} to {Leiden}: guaranteeing well-connected communities},
+	volume = {9},
+	number = {1},
+	journal = {Scientific Reports},
+	author = {Traag, V. A. and Waltman, L. and van Eck, N. J.},
+	year = {2019},
+	pages = {5233}
+}
+
+@inproceedings{zignani_follow_2018,
+	author = {Zignani, Matteo and Gaito, Sabrina and Rossi, Gian Paolo},
+	title = {Follow the ``{Mastodon}'': {Structure} and {Evolution} of a {Decentralized} {Online} {Social} {Network}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2018},
+	pages = {541--550},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@misc{li_fastlexrank_2024,
+	author = {Li, Mao and Conrad, Frederick and Gagnon-Bartsch, Johann},
+	title = {{FastLexRank}: {Efficient} {Lexical} {Ranking} for {Structuring} {Social} {Media} {Posts}},
+	year = {2024},
+	eprint = {2410.01183},
+	archivePrefix = {arXiv}
+}
+
+@article{blondel_fast_2008,
+	title = {Fast unfolding of communities in large networks},
+	volume = {2008},
+	number = {10},
+	journal = {Journal of Statistical Mechanics: Theory and Experiment},
+	author = {Blondel, Vincent D. and Guillaume, Jean-Loup and Lambiotte, Renaud and Lefebvre, Etienne},
+	year = {2008},
+	pages = {P10008}
+}
+
+@inproceedings{cossard_falling_2020,
+	author = {Cossard, Alessandro and Morales, Gianmarco De Francisci and Kalimeri, Kyriaki and Mejova, Yelena and Paolotti, Daniela and Starnini, Michele},
+	title = {Falling into the {Echo} {Chamber}: {The} {Italian} {Vaccination} {Debate} on {Twitter}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2020},
+	pages = {130--140},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@article{king_ensuring_2011,
+	title = {Ensuring the {Data}-{Rich} {Future} of the {Social} {Sciences}},
+	volume = {331},
+	number = {6018},
+	journal = {Science},
+	author = {King, Gary},
+	year = {2011},
+	pages = {719--721}
+}
+
+@article{boulianne_engagement_2023,
+	title = {Engagement with candidate posts on {Twitter}, {Instagram}, and {Facebook} during the 2019 election},
+	volume = {25},
+	number = {1},
+	journal = {New Media \& Society},
+	author = {Boulianne, Shelley and Larsson, Anders Olof},
+	year = {2023},
+	pages = {119--140}
+}
+
+@inproceedings{sun_echo_2022,
+	author = {Sun, Yingping and Liu, Fengming},
+	title = {Echo {Chamber} {Super}-{Network} in {Online} social media},
+	booktitle = {2022 5th {International} {Conference} on {Advanced} {Electronic} {Materials}, {Computers} and {Software} {Engineering} ({AEMCSE})},
+	year = {2022},
+	pages = {772--775},
+	publisher = {IEEE},
+	address = {Piscataway, NJ}
+}
+
+@inproceedings{ratkiewicz_detecting_2011,
+	author = {Ratkiewicz, Jacob and Conover, Michael and Meiss, Mark and Goncalves, Bruno and Flammini, Alessandro and Menczer, Filippo},
+	title = {Detecting and tracking political abuse in social media},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2011},
+	pages = {297--304},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@article{davern_creating_2019,
+	title = {Creating {Improved} {Survey} {Data} {Products} {Using} {Linked} {Administrative}-{Survey} {Data}},
+	volume = {7},
+	number = {3},
+	journal = {Journal of Survey Statistics and Methodology},
+	author = {Davern, Michael E and Meyer, Bruce D and Mittag, Nikolas K},
+	year = {2019},
+	pages = {440--463}
+}
+
+@article{nickerson_confirmation_1998,
+	title = {Confirmation {Bias}: {A} {Ubiquitous} {Phenomenon} in {Many} {Guises}},
+	volume = {2},
+	number = {2},
+	journal = {Review of General Psychology},
+	author = {Nickerson, Raymond S.},
+	year = {1998},
+	pages = {175--220}
+}
+
+@article{rossetti_community_2018,
+	title = {Community {Discovery} in {Dynamic} {Networks}: {A} {Survey}},
+	volume = {51},
+	number = {2},
+	journal = {ACM Comput. Surv.},
+	author = {Rossetti, Giulio and Cazabet, Rémy},
+	year = {2018},
+	pages = {35:1--35:37}
+}
+
+@article{lohr_combining_2017,
+	title = {Combining {Survey} {Data} with {Other} {Data} {Sources}},
+	volume = {32},
+	number = {2},
+	journal = {Statistical Science},
+	author = {Lohr, Sharon L. and Raghunathan, Trivellore E.},
+	year = {2017}
+}
+
+@article{schenker_combining_2007,
+	title = {Combining information from multiple surveys to enhance estimation of measures of health},
+	volume = {26},
+	number = {8},
+	journal = {Statistics in Medicine},
+	author = {Schenker, Nathaniel and Raghunathan, Trivellore E.},
+	year = {2007},
+	pages = {1802--1811}
+}
+
+@incollection{kenett_combining_2018,
+	author = {Elliott, Michael R. and Raghunathan, Trivellore E. and Schenker, Nathaniel},
+	title = {Combining {Estimates} from {Multiple} {Surveys}},
+	booktitle = {Wiley {StatsRef}: {Statistics} {Reference} {Online}},
+	year = {2018},
+	pages = {1--10},
+	publisher = {Wiley},
+	address = {Hoboken, NJ}
+}
+
+@misc{quelle_bluesky_2024,
+	author = {Quelle, Dorian and Bovet, Alexandre},
+	title = {Bluesky: {Network} {Topology}, {Polarisation}, and {Algorithmic} {Curation}},
+	year = {2024},
+	eprint = {2405.17571},
+	archivePrefix = {arXiv}
+}
+
+@inproceedings{tufekci_big_2014,
+	author = {Tufekci, Zeynep},
+	title = {Big {Questions} for {Social} {Media} {Big} {Data}: {Representativeness}, {Validity} and {Other} {Methodological} {Pitfalls}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2014},
+	pages = {505--514},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@inproceedings{jenders_analyzing_2013,
+	author = {Jenders, Maximilian and Kasneci, Gjergji and Naumann, Felix},
+	title = {Analyzing and predicting viral tweets},
+	booktitle = {Proceedings of the 22nd {International} {Conference} on {World} {Wide} {Web}},
+	year = {2013},
+	pages = {657--664},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@article{shaughnessy_attack_2024,
+	title = {An attack on free speech? {Examining} content moderation, (de-), and (re-) platforming on {American} right-wing alternative social media},
+	journal = {New Media \& Society},
+	author = {Shaughnessy, Brittany and DuBosar, Eliana and Hutchens, Myiah J. and Mann, Ilyssa},
+	year = {2024},
+	pages = {14614448241228850}
+}
+
+@article{liao_note_2000,
+	title = {A {Note} on {Concordance} {Correlation} {Coefficient}},
+	volume = {54},
+	number = {1},
+	journal = {PDA Journal of Pharmaceutical Science and Technology},
+	author = {Liao, Jason J. Z. and Lewis, Jerry W.},
+	year = {2000},
+	pages = {23--26}
+}
+
+@inproceedings{coletto_motif-based_2017,
+	author = {Coletto, Mauro and Garimella, Kiran and Gionis, Aristides and Lucchese, Claudio},
+	title = {A {Motif}-{Based} {Approach} for {Identifying} {Controversy}},
+	booktitle = {Proceedings of the International AAAI Conference on Web and Social Media},
+	year = {2017},
+	pages = {496--499},
+	publisher = {AAAI Press},
+	address = {Washington, DC}
+}
+
+@inproceedings{galuba_outtweeting_2010,
+	author = {Galuba, Wojciech and Aberer, Karl and Chakraborty, Dipanjan and Despotovic, Zoran and Kellerer, Wolfgang},
+	title = {Outtweeting the twitterers - predicting information cascades in microblogs},
+	booktitle = {Proceedings of the 3rd {Workshop} on {Online} social networks},
+	year = {2010},
+	pages = {3},
+	publisher = {USENIX Association},
+	address = {Berkeley, CA}
+}
+
+@article{flaxman_filter_2016,
+	title = {Filter {Bubbles}, {Echo} {Chambers}, and {Online} {News} {Consumption}},
+	volume = {80},
+	number = {S1},
+	journal = {Public Opinion Quarterly},
+	author = {Flaxman, Seth and Goel, Sharad and Rao, Justin M.},
+	year = {2016},
+	pages = {298--320}
+}
+
+@article{lee_social_2014,
+	title = {Social {Media}, {Network} {Heterogeneity}, and {Opinion} {Polarization}},
+	volume = {64},
+	number = {4},
+	journal = {Journal of Communication},
+	author = {Lee, Jae Kook and Choi, Jihyang and Kim, Cheonsoo and Kim, Yonghwan},
+	year = {2014},
+	pages = {702--722}
+}
+
+@article{iandoli_impact_2021,
+	title = {The impact of group polarization on the quality of online debate in social media: {A} systematic literature review},
+	volume = {170},
+	journal = {Technological Forecasting and Social Change},
+	author = {Iandoli, Luca and Primario, Simonetta and Zollo, Giuseppe},
+	year = {2021},
+	pages = {120924}
+}
+
+@misc{sunstein_law_1999,
+	author = {Sunstein, Cass R.},
+	title = {The {Law} of {Group} {Polarization}},
+	year = {1999},
+	howpublished = {\url{https://papers.ssrn.com/abstract=199668}},
+	note = {Accessed: 2024-11-03}
+}
+
+@article{esteve_del_valle_echo_2018,
+	title = {Echo chambers in parliamentary twitter networks: the catalan case},
+	volume = {12},
+	number = {1932–8036/20180005},
+	journal = {International Journal of Communication},
+	author = {Esteve Del Valle, Marc and Borge Bravo, Rosa},
+	year = {2018},
+	pages = {1715--1735}
+}
+
+@misc{page_pagerank_1999,
+	author = {Page, Lawrence and Brin, Sergey and Motwani, R. and Winograd, T.},
+	title = {The {PageRank} {Citation} {Ranking}: {Bringing} {Order} to the {Web}},
+	year = {1999},
+	howpublished = {Stanford InfoLab Technical Report}
+}
+
+@article{markgraf_quantification_2019,
+	title = {{QUANTIFICATION} {OF} {ECHO} {CHAMBERS}: {A} {METHODOLOGICAL} {FRAMEWORK} {CONSIDERING} {MULTI}-{PARTY} {SYSTEMS}},
+	journal = {Research Papers},
+	author = {Markgraf, Moritz and Schoch, Manfred},
+	year = {2019}
+}
+
+@inproceedings{kuncoro_algorithmic_2024,
+	author = {Kuncoro, Hestutomo Restu and Hasanah, Khuswatun and Sari, Dyah Lupita and Kurniawati, Erna},
+	title = {Algorithmic {Influence}: {Twitter}'s {Role} in {Shaping} {Public} {Discourse} and {Amplifying} {Radical} {Content}},
+	booktitle = {Proceedings of the International Conference on Applied Research in Social Sciences},
+	year = {2024},
+	pages = {549--553},
+	publisher = {Atlantis Press},
+	address = {Paris, France}
+}
+
+@book{jamieson_echo_2010,
+	author = {Jamieson, Kathleen Hall and Cappella, Joseph N.},
+	title = {Echo {Chamber}: {Rush} {Limbaugh} and the {Conservative} {Media} {Establishment}},
+	year = {2010},
+	publisher = {Oxford University Press},
+	address = {Oxford, UK}
+}
+
+@article{bode_political_2016,
+	title = {Political {News} in the {News} {Feed}: {Learning} {Politics} from {Social} {Media}},
+	volume = {19},
+	number = {1},
+	journal = {Mass Communication and Society},
+	author = {Bode, Leticia},
+	year = {2016},
+	pages = {24--48}
+}
+
+@misc{treuillier_multi-factorial_2023,
+	author = {Treuillier, Celina and Castagnos, Sylvain and Brun, Armelle},
+	title = {A {Multi}-{Factorial} {Analysis} of {Polarization} on {Social} {Media}},
+	year = {2023},
+	eprint = {2306.00032},
+	archivePrefix = {arXiv}
+}
+
+@incollection{tucker_social_2020,
+	author = {Barberá, Pablo},
+	title = {Social {Media}, {Echo} {Chambers}, and {Political} {Polarization}},
+	booktitle = {Social {Media} and {Democracy}},
+	year = {2020},
+	pages = {34--55},
+	publisher = {Cambridge University Press},
+	address = {Cambridge, UK}
+}
+
+@article{oleary_whats_2024,
+	title = {What's in a name? {Political} and economic concepts differ in social media references to harmful algae blooms},
+	volume = {357},
+	journal = {Journal of Environmental Management},
+	author = {O'Leary, Heather and Alvarez, Sergio and Bahja, Frida},
+	year = {2024},
+	pages = {120799}
+}
+
+@article{theocharis_platform_2023,
+	title = {Platform affordances and political participation: how social media reshape political engagement},
+	volume = {46},
+	number = {4},
+	journal = {West European Politics},
+	author = {Theocharis, Yannis and Boulianne, Shelley and Koc-Michalska, Karolina and Bimber, Bruce},
+	year = {2023},
+	pages = {788--811}
+}
+
+@misc{radford_language_nodate,
+	author = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+	title = {Language {Models} are {Unsupervised} {Multitask} {Learners}},
+	year = {2019},
+	howpublished = {OpenAI Blog}
+}
+
+@inproceedings{brown_blue_2024,
+	author = {Brown, Joseph and Onik, Abdur Rahman and Baggili, Ibrahim},
+	title = {Blue {Skies} from ({X}'s) {Pain}: {A} {Digital} {Forensic} {Analysis} of {Threads} and {Bluesky}},
+	booktitle = {Proceedings of the 19th {International} {Conference} on {Availability}, {Reliability} and {Security}},
+	year = {2024},
+	pages = {1--12},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY}
+}
+
+@misc{pew_truthsocial_2022,
+  author       = {Forman-Katz, Naomi and Stocking, Galen},
+  title        = {Key facts about Truth Social},
+  year         = {2022},
+  month        = nov,
+  day          = {18},
+  publisher    = {Pew Research Center},
+  url          = {https://www.pewresearch.org/short-reads/2022/11/18/key-facts-about-truth-social-as-donald-trump-runs-for-u-s-president-again/},
+  note         = {Accessed May 8, 2026}
+}
+
+@misc{pew_bluesky_influencers_2025,
+  author       = {Stocking, Galen and Widjaya, Regina and Wang, Luxuan and Forman-Katz, Naomi},
+  title        = {Bluesky has caught on with many news influencers, but X remains popular},
+  year         = {2025},
+  month        = may,
+  day          = {29},
+  publisher    = {Pew Research Center},
+  url          = {https://www.pewresearch.org/short-reads/2025/05/29/bluesky-has-caught-on-with-many-news-influencers-but-x-remains-popular/},
+  note         = {Accessed May 8, 2026}
+}
+
+@misc{pew_socialmedia_use_2025,
+  author       = {Gottfried, Jeffrey and Park, Eugenie},
+  title        = {Americans' Social Media Use 2025},
+  year         = {2025},
+  month        = nov,
+  day          = {20},
+  publisher    = {Pew Research Center},
+  url          = {https://www.pewresearch.org/internet/2025/11/20/americans-social-media-use-2025/},
+  note         = {Accessed May 8, 2026}
+}
+
+@inproceedings{rowe_mining_2014,
+  author    = {Rowe, Matthew and Alani, Harith},
+  title     = {{Mining and comparing engagement dynamics across multiple social media platforms}},
+  booktitle = {Proceedings of the 2014 ACM Conference on Web Science},
+  pages     = {229--238},
+  year      = {2014},
+  doi       = {10.1145/2615569.2615677},
+  url       = {https://doi.org/10.1145/2615569.2615677}
+}
+
+@article{boulianne_engagement_2023,
+  author  = {Theocharis, Yannis and Boulianne, Shelley and Koc-Michalska, Karolina and Bimber, Bruce},
+  title   = {{Platform affordances and political participation: how social media reshape political engagement}},
+  journal = {West European Politics},
+  volume  = {46},
+  number  = {4},
+  pages   = {788--811},
+  year    = {2023},
+  doi     = {10.1080/01402382.2022.2087410},
+  url     = {https://doi.org/10.1080/01402382.2022.2087410}
+}
+
+@inproceedings{zannettou_what_2018,
+  author    = {Zannettou, Savvas and Bradlyn, Barry and De Cristofaro, Emiliano and Kwak, Haewoon and Sirivianos, Michael and Stringhini, Gianluca and Blackburn, Jeremy},
+  title     = {{What is Gab? A Bastion of Free Speech or an Alt-Right Echo Chamber?}},
+  booktitle = {Companion Proceedings of the Web Conference 2018},
+  series    = {WWW '18 Companion},
+  pages     = {1007--1014},
+  year      = {2018},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  doi       = {10.1145/3184558.3191531},
+  url       = {https://doi.org/10.1145/3184558.3191531}
+}
+
+@article{shaughnessy_attack_2024,
+  author  = {Shaughnessy, Brittany and DuBosar, Eliana and Hutchens, Myiah J. and Mann, Ilyssa},
+  title   = {{An attack on free speech? Examining content moderation, (de-), and (re-) platforming on American right-wing alternative social media}},
+  journal = {New Media \& Society},
+  volume  = {27},
+  number  = {6},
+  pages   = {3618--3636},
+  year    = {2025},
+  doi     = {10.1177/14614448241228850},
+  url     = {https://doi.org/10.1177/14614448241228850}
+}
+
+@article{cinelli_echo_2021,
+  author  = {Cinelli, Matteo and {De Francisci Morales}, Gianmarco and Galeazzi, Alessandro and Quattrociocchi, Walter and Starnini, Michele},
+  title   = {{The echo chamber effect on social media}},
+  journal = {Proceedings of the National Academy of Sciences of the United States of America},
+  volume  = {118},
+  number  = {9},
+  pages   = {e2023301118},
+  year    = {2021},
+  doi     = {10.1073/pnas.2023301118},
+  url     = {https://doi.org/10.1073/pnas.2023301118}
+}
+
+@article{gerard_truth_2023,
+  author  = {Gerard, Patrick and Botzer, Nicholas and Weninger, Tim},
+  title   = {{Truth Social Dataset}},
+  journal = {Proceedings of the International AAAI Conference on Web and Social Media},
+  volume  = {17},
+  number  = {1},
+  pages   = {1034--1040},
+  year    = {2023},
+  doi     = {10.1609/icwsm.v17i1.22211},
+  url     = {https://doi.org/10.1609/icwsm.v17i1.22211}
+}
+
+@article{failla_im_2024,
+  author  = {Failla, Andrea and Rossetti, Giulio},
+  title   = {{"I'm in the Bluesky Tonight": Insights from a year worth of social data}},
+  journal = {PLOS ONE},
+  volume  = {19},
+  number  = {11},
+  pages   = {e0310330},
+  year    = {2024},
+  doi     = {10.1371/journal.pone.0310330},
+  url     = {https://doi.org/10.1371/journal.pone.0310330}
+}
+
+@article{quelle_bluesky_2024,
+  author  = {Quelle, Dorian and Bovet, Alexandre},
+  title   = {{Bluesky: Network topology, polarization, and algorithmic curation}},
+  journal = {PLOS ONE},
+  volume  = {20},
+  number  = {2},
+  pages   = {e0318034},
+  year    = {2025},
+  doi     = {10.1371/journal.pone.0318034},
+  url     = {https://doi.org/10.1371/journal.pone.0318034}
+}
+
+@inproceedings{brown_blue_2024,
+  author    = {Brown, Joseph and Onik, Abdur Rahman and Baggili, Ibrahim},
+  title     = {{Blue Skies from (X's) Pain: A Digital Forensic Analysis of Threads and Bluesky}},
+  booktitle = {Proceedings of the 19th International Conference on Availability, Reliability and Security},
+  pages     = {1--12},
+  articleno = {201},
+  year      = {2024},
+  doi       = {10.1145/3664476.3670904},
+  url       = {https://doi.org/10.1145/3664476.3670904}
+}
+
+
+@article{boulianne_social_2025,
+	title = {Social media platforms for politics: {A} comparison of {Facebook}, {Instagram}, {Twitter}, {YouTube}, {Reddit}, {Snapchat}, and {WhatsApp}},
+	volume = {27},
+	issn = {1461-4448, 1461-7315},
+	shorttitle = {Social media platforms for politics},
+	url = {https://journals.sagepub.com/doi/10.1177/14614448241262415},
+	doi = {10.1177/14614448241262415},
+	language = {en},
+	number = {11},
+	urldate = {2026-05-09},
+	journal = {New Media \& Society},
+	author = {Boulianne, Shelley and Hoffmann, Christian P. and Bossetta, Michael},
+	month = nov,
+	year = {2025},
+	pages = {6006--6037},
+	file = {Full Text PDF:C\:\\Users\\Mao\\Zotero\\storage\\9D65P5SN\\Boulianne et al. - 2025 - Social media platforms for politics A comparison of Facebook, Instagram, Twitter, YouTube, Reddit,.pdf:application/pdf},
+}
+@article{mosleh_crossplatform_2025,
+  author  = {Mosleh, Mohsen and Allen, Jennifer and Rand, David G.},
+  title   = {{Divergent patterns of engagement with partisan and low-quality news across seven social media platforms}},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {122},
+  number  = {44},
+  pages   = {e2425739122},
+  year    = {2025},
+  doi     = {10.1073/pnas.2425739122},
+  url     = {https://doi.org/10.1073/pnas.2425739122}
+}
+
+@inproceedings{hughes_truthsocial_2025,
+  author    = {Hughes, Emelia May and Weninger, Tim},
+  title     = {{Echo Chambers and Information Brokers on Truth Social: A Study of Network Dynamics and Political Discourse}},
+  booktitle = {{Companion Publication of the 2025 Conference on Computer-Supported Cooperative Work and Social Computing}},
+  series    = {{CSCW Companion '25}},
+  year      = {2025},
+  pages     = {292--296},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  doi       = {10.1145/3715070.3749241},
+  url       = {https://doi.org/10.1145/3715070.3749241}
+}
+@article{nogara_bluesky_2026,
+  author  = {Nogara, Gianluca and Sahneh, Erfan Samieyan and DeVerna, Matthew R. and Liu, Nick and Luceri, Luca and Menczer, Filippo and Pierri, Francesco and Giordano, Silvia},
+  title   = {{A longitudinal analysis of misinformation, polarization and toxicity on Bluesky after its public launch}},
+  journal = {{Online Social Networks and Media}},
+  volume  = {51},
+  pages   = {100342},
+  year    = {2026},
+  doi     = {10.1016/j.osnem.2025.100342},
+  url     = {https://doi.org/10.1016/j.osnem.2025.100342}
+}
+
+@misc{shah_unfiltered_2024,
+  author        = {Shah, Kashish and Gerard, Patrick and Luceri, Luca and Ferrara, Emilio},
+  title         = {{Unfiltered Conversations: A Dataset of 2024 U.S. Presidential Election Discourse on Truth Social}},
+  year          = {2024},
+  month         = nov,
+  eprint        = {2411.01330},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SI},
+  doi           = {10.48550/arXiv.2411.01330},
+  url           = {https://doi.org/10.48550/arXiv.2411.01330},
+  note          = {{HUMANS Lab Working Paper No. 2024.8}}
+}
+
+@inproceedings{boyd_tweet_2010,
+  author    = {boyd, danah and Golder, Scott and Lotan, Gilad},
+  title     = {{Tweet, Tweet, Retweet: Conversational Aspects of Retweeting on Twitter}},
+  booktitle = {{Proceedings of the 43rd Hawaii International Conference on System Sciences}},
+  series    = {{HICSS '10}},
+  year      = {2010},
+  pages     = {1--10},
+  publisher = {IEEE},
+  doi       = {10.1109/HICSS.2010.412},
+  url       = {https://doi.org/10.1109/HICSS.2010.412}
+}
+
+@article{park_expanding_2019,
+  author  = {Park, Chang Sup and Kaye, Barbara K.},
+  title   = {{Expanding Visibility on Twitter: Author and Message Characteristics and Retweeting}},
+  journal = {{Social Media + Society}},
+  volume  = {5},
+  number  = {2},
+  year    = {2019},
+  doi     = {10.1177/2056305119834595},
+  url     = {https://doi.org/10.1177/2056305119834595}
+}
+
+@inproceedings{guerra_antagonism_2017,
+  author    = {Guerra, Pedro Calais and Souza, Roberto C. S. N. P. and Assun{\c{c}}{\~a}o, Renato M. and Meira Jr., Wagner},
+  title     = {{Antagonism Also Flows through Retweets: The Impact of Out-of-Context Quotes in Opinion Polarization Analysis}},
+  booktitle = {{Proceedings of the Eleventh International AAAI Conference on Web and Social Media}},
+  series    = {{ICWSM '17}},
+  year      = {2017},
+  pages     = {536--539},
+  publisher = {AAAI Press},
+  doi       = {10.1609/icwsm.v11i1.14971},
+  url       = {https://doi.org/10.1609/icwsm.v11i1.14971}
+}
+
+@article{toraman_understanding_2022,
+  author  = {Toraman, Cagri and {\c{S}}ahinu{\c{c}}, Furkan and Yilmaz, Eyup Halit and Akkaya, Ibrahim Batuhan},
+  title   = {{Understanding Social Engagements: A Comparative Analysis of User and Text Features in Twitter}},
+  journal = {{Social Network Analysis and Mining}},
+  volume  = {12},
+  number  = {1},
+  pages   = {47},
+  year    = {2022},
+  doi     = {10.1007/s13278-022-00872-1},
+  url     = {https://doi.org/10.1007/s13278-022-00872-1}
+}
+
+@article{shugars_why_2019,
+  author  = {Shugars, Sarah and Beauchamp, Nicholas},
+  title   = {{Why Keep Arguing? Predicting Engagement in Political Conversations Online}},
+  journal = {{SAGE Open}},
+  volume  = {9},
+  number  = {1},
+  year    = {2019},
+  doi     = {10.1177/2158244019828850},
+  url     = {https://doi.org/10.1177/2158244019828850}
+}
+
+@article{guerrero_sole_interactive_2018,
+  author  = {Guerrero-Sol{\'e}, Frederic},
+  title   = {{Interactive Behavior in Political Discussions on Twitter: Politicians, Media, and Citizens' Patterns of Interaction in the 2015 and 2016 Electoral Campaigns in Spain}},
+  journal = {{Social Media + Society}},
+  volume  = {4},
+  number  = {4},
+  pages   = {2056305118808776},
+  year    = {2018},
+  doi     = {10.1177/2056305118808776},
+  url     = {https://doi.org/10.1177/2056305118808776}
+}
+@inproceedings{kim_role_2012,
+  author    = {Kim, Jihie and Yoo, Jaebong},
+  title     = {{Role of Sentiment in Message Propagation: Reply vs. Retweet Behavior in Political Communication}},
+  booktitle = {{Proceedings of the 2012 ASE International Conference on Social Informatics, SocialInformatics 2012}},
+  
+  pages     = {131--136},
+  year      = {2012},
+  publisher = {IEEE Computer Society},
+  address   = {Washington, D.C., United States},
+  doi       = {10.1109/SocialInformatics.2012.33},
+  url       = {https://doi.org/10.1109/SocialInformatics.2012.33}
+}
+
+@article{rathje_outgroup_2021,
+  author  = {Rathje, Steve and Van Bavel, Jay J. and van der Linden, Sander},
+  title   = {{Out-group animosity drives engagement on social media}},
+  journal = {{Proceedings of the National Academy of Sciences}},
+  volume  = {118},
+  number  = {26},
+  pages   = {e2024292118},
+  year    = {2021},
+  doi     = {10.1073/pnas.2024292118},
+  url     = {https://doi.org/10.1073/pnas.2024292118}
+}
+
+@article{chang_share_2025,
+  author  = {Chang, Ho-Chun Herbert and Druckman, James N. and Ferrara, Emilio and Willer, Robb},
+  title   = {{Liberals and Conservatives Share Information Differently on Social Media}},
+  journal = {{PNAS Nexus}},
+  volume  = {4},
+  number  = {7},
+  pages   = {pgaf206},
+  year    = {2025},
+  doi     = {10.1093/pnasnexus/pgaf206},
+  url     = {https://doi.org/10.1093/pnasnexus/pgaf206}
+}
