@@ -133,9 +133,9 @@ By contrast, recent work on Bluesky describes a Twitter-like platform with a mar
 \subsection{Information Diffusion and Cascade Structure}
 
 
-Research on information diffusion has developed a rich vocabulary for describing how online content spreads through networks, including cascade size, depth, breadth, and structural virality \cite{gruhl_information_2004, guille_information_2013, easley_networks_2010, goel_structural_2016}. This literature has linked cascade structure to content attributes such as veracity, novelty, emotional tone, and topic salience. Most prominently, \citet{vosoughi_spread_2018} show that false news on Twitter spreads farther, faster, deeper, and more broadly than true news. Further work examines how topic salience~\cite{wang_factors_2022}, cascade predictability~\cite{cheng_can_2014}, and misinformation propagation~\cite{zhao_fake_2020} shape diffusion.
+Research on information diffusion has developed a rich vocabulary for describing how online content spreads through networks, including cascade size, depth, breadth, and structural virality \cite{gruhl_information_2004, guille_information_2013, easley_networks_2010, goel_structural_2016}. This literature has linked cascade structure to content attributes such as veracity, novelty, emotional tone, and topic salience. Most prominently, \citet{vosoughi_spread_2018} show that false news on Twitter spreads farther, faster, deeper, and more broadly than true news. Further work examines how topic salience~\cite{wang_factors_2022}, cascade predictability~\cite{cheng_can_2014}, and misinformation propagation~\cite{zhao_fake_2020} shape diffusion. \rev{Recent work continues to separate these structural dimensions: \citet{gonzalezbailon_diffusion_2024} distinguish broadcast-like spread from long peer-to-peer reshare chains across roughly a billion Facebook reshares, and \citet{slaughter_community_2025} separate depth from breadth when assessing what a platform intervention changes. A parallel line of work concerns whether such structures can be measured at all when platforms do not record diffusion paths: \citet{deverna_cascade_2024} show for Twitter and Bluesky that reconstruction assumptions can distort both local and global properties of the resulting cascades.}
 
-A related development concerns interaction type. Diffusion studies often prioritize reposting or retweeting because these traces are easy to reconstruct and map directly onto dissemination. Reposting is especially important for political amplification: experimental evidence from Facebook shows that reshared content substantially increases exposure to political news and low-quality sources, demonstrating the centrality of reshare mechanisms to political visibility \cite{guess_reshare_2023}. Foundational work on retweeting also shows that reposts are socially meaningful acts of redistribution, attribution, and audience management, rather than neutral transmission alone \cite{boyd_tweet_2010, park_expanding_2019}. 
+A related development concerns interaction type. Diffusion studies often prioritize reposting or retweeting because these traces are easy to reconstruct and map directly onto dissemination. Reposting is especially important for political amplification: experimental evidence from Facebook shows that reshared content substantially increases exposure to political news and low-quality sources, demonstrating the centrality of reshare mechanisms to political visibility \cite{guess_reshare_2023}. Foundational work on retweeting also shows that reposts are socially meaningful acts of redistribution, attribution, and audience management, rather than neutral transmission alone \cite{boyd_tweet_2010, park_expanding_2019}. \rev{At scale, who does the resharing matters: on Twitter/X, across 55 million posts and 520 million reposts, content reshared by high-influence accounts is more likely to be reshared again, and a small elite of accounts carries roughly half of all repost-cascade flow \citep{niitsuma_prestige_2025}.} 
 
 Yet reposting is only one mode of information flow. Prior work shows that retweets, mentions, replies, and quote tweets capture different forms of political engagement. In U.S. election discourse, retweet networks are highly segregated by ideology, whereas mention networks are more politically heterogeneous and contain more cross-ideological interaction \cite{conover_political_2011}. Studies of political discussions similarly treat retweeting, mentioning, and replying as distinct behavioral traces, with retweet networks more likely to resemble echo chambers and replies or mentions more likely to reflect direct interaction \cite{guerrero_sole_interactive_2018}. Other work finds that emotional and textual features affect replies and retweets differently, suggesting that response-oriented conversation and amplification-oriented redistribution follow different behavioral logics \cite{kim_role_2012, toraman_understanding_2022}. Finally, studies of threaded political conversations show that replies can sustain extended argument across ideological divides, making reply trees especially useful for studying conversational engagement rather than simple visibility \cite{shugars_why_2019}.
 
@@ -576,7 +576,9 @@ We analyzed the distribution of user-level activity—specifically, the number o
 The distribution of follower counts reveals strong skewness on both platforms. On Truth Social, a small number of users amass an exceptionally large following, with $\gamma = 1.76$ and $x_{\min} \approx 13{,}515$. Bluesky shows a slightly less extreme concentration ($\gamma = 1.84$, $x_{\min} \approx 1{,}498$). Repost and reply behaviors also exhibit heavy-tailed patterns. On Bluesky, replies decay rapidly ($\gamma = 3.02$) while reposts follow a shallower slope ($\gamma = 2.43$). Truth Social displays flatter distributions for both reposts ($\gamma = 1.84$) and replies ($\gamma = 1.79$), consistent with broader participation from users in redistributing and responding to content.
 
 \subsection*{Exclusion of Highly Followed Users for Robustness.}
-To identify unusually influential users, we examined the follower-count distribution on each platform. On Truth Social, we observed a marked discontinuity in the upper tail: a gap in the follower-rank plot revealed a distinct separation between the top 8 users and the rest of the distribution. Based on this natural break, we designated these 8 users as outliers for modeling purposes. This data-driven threshold captures extreme influence without imposing arbitrary cutoffs.
+To identify unusually influential users, we examined the follower-count distribution of every account in our data \rev{(134{,}100 on Truth Social; 41{,}566 on Bluesky). Both distributions are heavy tailed, but their upper tails differ in kind. On Truth Social the top eight accounts are separated from the body of the distribution: the largest (Donald Trump, 7{,}107{,}831 followers) has 56 times the followers of the platform's 99.9th-percentile account (127{,}082), the eighth-largest still holds 2{,}170{,}535 followers, and together these eight hold 16.4\% of the total follower count. On Bluesky no comparable class exists: the largest account (1{,}230{,}128) sits five times above the 99.9th percentile (238{,}048), continuous with the rest of the distribution, and the top eight hold 6.1\% of the total. The eighth-largest Truth Social account exceeds the largest Bluesky account.}
+
+\rev{We therefore designate the eight separated Truth Social accounts as influencers and apply no exclusion on Bluesky. A symmetric rule, such as excluding the top $n$ percent on both platforms, would not equalize the comparison: on Bluesky it would remove accounts continuous with the rest of the distribution, while on Truth Social any $n$ large enough to capture the separated class would also sweep in ordinary accounts.}
 
 \begin{figure}
     \centering
@@ -631,6 +633,162 @@ platform gaps in cascade breadth and depth are consistently reduced once ideolog
 % \label{app:topicdis}
 % To compare topical emphasis across platforms, we plotted the distribution of root posts by topic label for \textit{Bluesky} and \textit{Truth Social} (Fig.~\ref{fig:topic_dis}). While both platforms exhibited substantial engagement with topics surrounding Donald Trump’s legal issues and the 2024 U.S. presidential election, there were notable differences. Posts on \textit{Bluesky} were more likely to focus on legal accountability, international affairs (e.g., the Israel–Hamas conflict), and broader campaign discourse. In contrast, \textit{Truth Social} featured a larger proportion of posts celebrating Trump (e.g., birthdays and tributes) and promoting pro-Trump narratives (e.g., “MAGA advocacy”), reflecting differences in user base ideology and agenda-setting priorities. These topical variations underscore the divergent discourse ecosystems that have emerged across platforms.
 
+
+\subsection*{\rev{Class-Specific Validation Uncertainty.}}
+
+\rev{Inter-annotator agreement on the 200-item validation sample is substantial (Cohen's $\kappa = 0.77$, bootstrap 95\% interval $[0.70, 0.85]$), and model--human agreement is moderate ($\kappa = 0.61$ with Annotator 1 and $0.74$ with Annotator 2). Table~\ref{tab:validation} reports class-specific and platform-specific precision and recall against the 171 items on which both annotators agree, with bootstrap intervals. Overall accuracy against consensus is 0.86.}
+
+\rev{The errors are not uniform across classes, and the pattern matters for interpreting our composition estimates: the model over-assigns each platform's ideological minority. Precision is 0.64 for right-leaning labels on Bluesky and 0.64 for left-leaning labels on Truth Social, against 0.98 and 0.93 for the largest class on each platform. Because the minority-class estimates rest on relatively few consensus cases, we distinguish between the direction of the observed bias and its precise magnitude: the two minority cells rest on 8 and 17 consensus items and their intervals are correspondingly wide (for right on Bluesky, $[0.33, 0.91]$). Bootstrapping the difference between minority-class and majority-class precision within each platform gives $-0.34$ on Bluesky (one-sided $p = 0.017$) and $-0.29$ on Truth Social ($p = 0.004$), so the direction is supported on both platforms. Recomputing against each annotator alone gives lower precision throughout but leaves the ordering unchanged. Uneven performance across the ideological spectrum is a documented property of language-model annotators \citep{vallejovera_llms_2025}.}
+
+\begin{table}[t]
+\centering
+\small
+\rev{
+\begin{tabular}{llrrr}
+\toprule
+Scope & Class & Precision [95\% CI] & Recall & $n$ \\
+\midrule
+Pooled & left & 0.68 [0.54, 0.82] & 0.80 & 35 \\
+Pooled & center & 0.96 [0.90, 1.00] & 0.85 & 59 \\
+Pooled & right & 0.89 [0.81, 0.95] & 0.90 & 77 \\
+\midrule
+Bluesky & left & 0.74 [0.53, 0.93] & 0.78 & 18 \\
+Bluesky & center & 0.98 [0.92, 1.00] & 0.89 & 45 \\
+Bluesky & right & 0.64 [0.33, 0.91] & 0.88 & 8 \\
+\midrule
+Truth Social & left & 0.64 [0.42, 0.83] & 0.82 & 17 \\
+Truth Social & center & 0.91 [0.69, 1.00] & 0.71 & 14 \\
+Truth Social & right & 0.93 [0.86, 0.98] & 0.90 & 69 \\
+\bottomrule
+\end{tabular}
+}
+\caption{\rev{Class-specific and platform-specific model performance against human consensus labels (171 of 200 validation items on which both annotators agree). Intervals are percentile bootstrap 95\% intervals over 2{,}000 resamples; $n$ is the consensus support per class.}}
+\label{tab:validation}
+\end{table}
+
+\subsection*{\rev{Robustness to Ideology Label Noise.}}
+
+\rev{Because the stance labels contain measurement error, we tested whether the central result survives label noise at the measured rates. Misclassification by automated classifiers biases downstream regression even when overall accuracy is high \citep{teblunthuis_misclassification_2024}, and the same holds for language-model labels used as surrogates \citep{egami_imperfect_2023}. Those authors correct the bias analytically with a gold-standard subsample; we instead propagate the measured error through the full pipeline, because our labels enter through composition, alignment, splines, and interactions rather than as a single regressor. For each of 100 draws per scenario, every user's label was replaced by a draw from the measured confusion distribution, cascade-level composition and alignment were recomputed, and Model 3c was refit.}
+
+\rev{We ran this under four error processes: the measured platform-specific rates; a pooled matrix that applies each platform's dominant class the error rate measured largely on the other platform; a nested bootstrap that resamples the validation items and rebuilds the confusion matrix on each draw, carrying the uncertainty in Table~\ref{tab:validation} through; and the harsher rates measured against a single annotator, under which precision for right-leaning labels on Bluesky falls to 0.33. Relative to the baseline interactions without ideology controls ($0.398$ and $-0.334$), the median draw absorbs between 86\% and 96\% of the platform divergence, and the least favorable of the four hundred draws absorbs 70\%. No error process we simulated restores the platform gap. All fits here share one scale estimate and compare perturbed against unperturbed values, so the intervals are ranges across simulation draws rather than standard errors.}
+
+\subsection*{\rev{The Center Category.}}
+
+\rev{The center label is a residual, mixing genuinely moderate users, users who post about politics inconsistently, and users whose stance the classifier could not resolve. To test whether this residual carries the explanatory work, we recomputed composition and alignment using partisan users only, so that center-labeled users enter as unlabeled; alignment is then measured over reply edges whose two endpoints are both partisan. On the resulting subset of 28,083 cascades, composition and alignment still absorb 61\% of the baseline breadth divergence and 64\% of the depth divergence, compared with 99\% and 77\% under the published specification on the same sample. Under the partisan-only specification, ideological composition and alignment still account for a substantial, although smaller, share of the platform divergence. Part of the accounting in the three-category specification depends on separating users the classifier places confidently on one side from the residual center category; because center collects moderate, inconsistent, and unresolved users alike, this contrast is not the same as one between partisan and non-partisan participation.}
+
+\subsection*{\rev{Ideological Composition Compared With Prior Estimates.}}
+
+\rev{Our labels place 41.4\% of Bluesky users in our sample on the left, 34.4\% at center, and 24.2\% on the right; on Truth Social the shares are 11.5\% left, 19.3\% center, and 69.2\% right. The Bluesky figures show a larger right-leaning presence than platform-wide estimates: \citet{quelle_bluesky_2024} classify 75.3\% of Bluesky users as left of center and 4.8\% as right of center, and \citet{nogara_bluesky_2026}, scoring active users by the leaning of the domains they share, report 74.61\% left-leaning, 18.17\% centrist, and 7.21\% right-leaning.}
+
+\rev{Two differences account for most of this gap. First, the samples differ: platform-wide estimates describe all users, most of whom post little political content, and are typically derived from shared news domains, whereas our sample is restricted to accounts posting in a conversation mentioning Biden or Trump during one campaign month, labeled from post text. Second, part of the gap is measurement error. Applying a prevalence correction that inverts the measured confusion matrix lowers the estimated right-leaning share on Bluesky from 24.2\% to 17.9\% and the left-leaning share on Truth Social from 11.5\% to 1.9\%. Both corrections move in the expected direction, but for Bluesky a substantial gap remains after correction, so label error alone does not account for it. The remaining discrepancy may partly reflect differences in sampling frame, since a candidate-centered conversation sample is not a sample of the platform population. These corrected values are indicative rather than precise, because the correction inherits the imprecision of the minority cells in Table~\ref{tab:validation}.}
+
+\section{\rev{Descriptive Statistics}}
+
+\rev{Table~\ref{tab:descriptives} reports cascade counts, post counts, and the cascade size distribution for both platforms and both cascade types.}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\rev{
+\begin{tabular}{llrrrrrr}
+\toprule
+ & & & & \multicolumn{4}{c}{Share of cascades by size (\%)} \\
+\cmidrule(lr){5-8}
+Type & Platform & Cascades & Posts & 1 & 2--5 & 6--50 & $>$50 \\
+\midrule
+Reply & Bluesky & 79{,}348 & 199{,}413 & 71.3 & 21.2 & 7.2 & 0.3 \\
+Reply & Truth Soc. & 43{,}841 & 1{,}369{,}497 & 43.3 & 25.2 & 22.5 & 9.0 \\
+Repost & Bluesky & 25{,}550 & 184{,}807 & 46.3 & 33.6 & 17.8 & 2.3 \\
+Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & 51.4 & 29.7 & 13.9 & 5.0 \\
+\bottomrule
+\end{tabular}
+}
+\caption{\rev{Cascade counts and size distributions. For reply cascades, size is the number of posts in the thread including the root. For repost cascades, size is the number of reposts.}}
+\label{tab:descriptives}
+\end{table}
+
+\section{\rev{Robustness of Repost Cascade Reconstruction}}
+
+\rev{Any reconstruction rule could in principle shape the structural comparison \citep{deverna_cascade_2024}, so we re-derived every repost cascade under alternative rules and re-estimated the platform-by-size interaction ($\beta_3$ in Eq.~\ref{eq:eq1}) for each. Every admissible rule selects each repost's parent from the same candidate set: the original post, plus earlier reposters whom the reposting user follows. We compare the rule used in the paper against the earliest eligible reposter, the most recent eligible reposter, and a uniformly random eligible reposter (40 draws), each under both readings of the repost list order.}
+
+\rev{Figure~\ref{fig:repost_robustness} summarizes the result over 244{,}129 repost cascades (4.03 million reposts). No rule yields a breadth interaction outside $[-0.036, +0.038]$ or a depth interaction outside $[-0.083, +0.028]$. The same estimator applied to reply cascades gives $+0.170$ (breadth) and $-0.182$ (depth), exceeding the most extreme repost estimate under any rule by a factor of four and two respectively. The original reconstruction rule yields the largest estimated platform difference among the specifications considered; every alternative moves the repost estimates closer to zero. The similarity in repost scaling is therefore robust to the reconstruction rules examined here. (Because log breadth and log depth of small trees take few distinct values, the scale estimate of a Huber robust regression degenerates on repost cascades; the interactions in this analysis are estimated by OLS with HC3 standard errors.)}
+
+\rev{The rule has limited room to matter in the first place: 55\% of Bluesky reposts and 59\% of Truth Social reposts have no eligible prior reposter and attach to the root under every rule, and a further 21\% and 12\% have exactly one candidate. A second concern is that the follower network is a post-collection snapshot without edge creation dates, so a follow created after a repost could produce a spurious parent. Deleting follow edges at random at rates from 5\% to 30\% to simulate such edges moves the breadth interaction only from $0.031$ to $0.005$ and the depth interaction from $0.004$ to $0.013$, both far below the reply values. Both follow networks were collected at the same time, so this source of error applies comparably to the two platforms.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/repost_robustness.png}
+\caption{\rev{Platform-by-size interaction $\beta_3$ for repost cascades under alternative reconstruction rules (dots with 95\% confidence intervals; shaded band, range over 40 random-rule draws), for log breadth (A) and log depth (B). The diamond marks the reply-cascade interaction under the same estimator.}}
+\label{fig:repost_robustness}
+\end{figure}
+
+\section{\rev{Unit of Analysis: Posts Versus Users}}
+
+\rev{Reply cascades are trees of posts, so a user who replies several times appears once per reply. An alternative representation collapses each user to a single node at the shallowest depth at which they appear. We recomputed all reply-cascade metrics both ways from the raw thread data. The post-level reconstruction reproduces the metrics used throughout the paper (correlations of $0.999$ for size, $0.999$ for breadth, $0.988$ for depth), confirming the reported analyses are post-level.}
+
+\rev{Under the user-collapsed representation the depth divergence persists at baseline ($-0.132$, against $-0.194$ at post level) and is again largely absorbed by composition and alignment. The breadth divergence is much smaller under collapsing ($-0.032$, against $0.168$). A substantial part of the raw breadth gap therefore reflects the same Truth Social users posting repeatedly within a thread, which widens a level of the post tree without adding distinct participants. Conditional on size, Truth Social conversations are wider in posts, and part of that width comes from repeat participation rather than from a broader set of participants. The depth contrast holds under both representations.}
+
+\section{\rev{Two-User Exchanges in Reply Cascades}}
+
+\rev{Depth would mean something different if it largely measured back-and-forth exchange between the same two accounts rather than extended multi-party discussion. We therefore counted, for every reply, whether its author also wrote its grandparent post, that is, an $A \rightarrow B \rightarrow A$ pattern. Among all cascades, 9.3\% on Bluesky and 20.8\% on Truth Social contain at least one such exchange, reflecting mainly that Truth Social cascades are larger. Conditioning on cascades of depth two or more, the share is 68.8\% on Bluesky and 70.0\% on Truth Social, and such exchanges account for 20.0\% and 15.6\% of reply edges respectively. Dyadic back-and-forth is therefore common on both platforms to a very similar degree, so the depth difference we report is not explained by one platform hosting more two-user conversations.}
+
+\section{\rev{Motif Frequencies and the Null Model}}
+
+\rev{Table~\ref{tab:motifcounts} reports the raw observed frequency of every ideology-labeled three-node motif on each platform, alongside which the z-scores should be read. The two platforms differ by orders of magnitude in absolute motif volume, so a large z-score does not imply a common configuration.}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\rev{
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{Star} & \multicolumn{2}{c}{Chain} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Ideology triple & Bluesky & Truth Soc. & Bluesky & Truth Soc. \\
+\midrule
+L--L--L & 13,436 & 1,423,162 & 6,519 & 4,747 \\
+L--L--C & 20,482 & 1,361,062 & 2,659 & 3,270 \\
+L--L--R & 3,869 & 4,721,187 & 346 & 11,883 \\
+L--C--L & 18,970 & 1,695,796 & 4,966 & 3,727 \\
+L--C--C & 31,468 & 2,929,973 & 3,113 & 7,194 \\
+L--C--R & 6,179 & 6,432,294 & 290 & 8,869 \\
+L--R--L & 3,751 & 4,837,988 & 471 & 26,476 \\
+L--R--C & 5,846 & 5,384,674 & 191 & 10,673 \\
+L--R--R & 1,462 & 20,194,975 & 88 & 40,264 \\
+C--L--L & 16,997 & 158,383 & 1,533 & 2,040 \\
+C--L--C & 36,051 & 137,961 & 6,197 & 3,390 \\
+C--L--R & 8,058 & 437,959 & 249 & 5,929 \\
+C--C--L & 30,243 & 142,810 & 2,930 & 3,421 \\
+C--C--C & 74,502 & 197,087 & 25,971 & 13,261 \\
+C--C--R & 15,559 & 458,039 & 980 & 8,179 \\
+C--R--L & 6,786 & 466,118 & 161 & 7,371 \\
+C--R--C & 15,173 & 458,308 & 1,518 & 8,093 \\
+C--R--R & 4,093 & 1,929,621 & 171 & 16,393 \\
+R--L--L & 407 & 11,197,554 & 89 & 15,565 \\
+R--L--C & 841 & 6,961,901 & 111 & 14,127 \\
+R--L--R & 281 & 24,241,501 & 307 & 66,065 \\
+R--C--L & 778 & 8,183,288 & 111 & 15,549 \\
+R--C--C & 1,735 & 6,435,618 & 384 & 30,188 \\
+R--C--R & 625 & 19,234,403 & 819 & 48,366 \\
+R--R--L & 238 & 23,352,704 & 74 & 45,060 \\
+R--R--C & 448 & 15,651,387 & 163 & 30,149 \\
+R--R--R & 224 & 64,855,781 & 357 & 128,058 \\
+\midrule
+Total & 318,502 & 233,481,534 & 60,768 & 578,307 \\
+\bottomrule
+\end{tabular}
+}
+\caption{\rev{Observed counts of ideology-labeled three-node motifs (L = left, C = center, R = right). For chains the triple is ordered along the reply path; for stars it lists the root followed by the two leaves.}}
+\label{tab:motifcounts}
+\end{table}
+
+\rev{Motifs of this kind are not mutually independent: a chain of four nodes contains two overlapping three-node chains. This dependence does not bias the z-scores, because the null model is subjected to the identical counting procedure. We generate 100 randomized graphs by double-edge swaps performed within each cascade: two reply edges are chosen at random and their targets exchanged, together with the target's ideology label, with $5m$ swap attempts in a cascade of $m$ edges. This holds fixed the set of cascades and their sizes, each node's out-degree, and the ideology attached to every participant, while randomizing who replies to whom. What the dependence does affect is the joint interpretation of several motifs at once: neighboring motif types share substructure, so their z-scores are correlated and we read them as a pattern across families rather than as independent evidence.}
+
+\section{\rev{Topic Model Details}}
+
+\rev{The topic model was fit over 125,623 root posts pooled across platforms. HDBSCAN initially assigns low-density documents to an outlier class; we applied BERTopic's outlier reduction step with default settings, which reassigns those documents to their nearest topic, leaving 21 documents (0.02\%) unassigned. Clustering yields 12 topics plus a residual outlier class. Manual labeling then produced the 11 coherent and interpretable categories used in the analysis: the residual class, which retains only 21 posts, is excluded, and two near-duplicate pro-Trump categories are treated as one. Every cascade in the modeling sample carries one of these 11 labels. Because topic variation accounts for relatively little of the platform difference (Model 4), uncertainty introduced by outlier reassignment is unlikely to affect the main comparison.}
 
 \section{Modeling Strategy and Regression Diagnostics}
 \label{app:strategy}
