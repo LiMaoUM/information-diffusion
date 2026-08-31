@@ -143,7 +143,15 @@ The reviewer is right that "no natural gap" understated the reasoning, and we re
 A fair observation, and now stated as a limitation rather than left implicit. We note that both platforms are US centered, that the alignment of partisanship with platform choice is itself a feature of this ecosystem, and that applying the same design outside the United States is the natural next step.
 
 **R1-12. Unexplained notation; stray paragraph indents; the literature is somewhat old.**
-We have defined notation at first use in the revised sections and fixed the stray indentation. On references, we updated the Bluesky ideology study to its published version and added more recent work on Bluesky politics. We would welcome pointers to specific recent work the reviewer has in mind, since this is a fast moving area and their expertise here is evident.
+We have defined notation at first use in the revised sections and fixed the stray indentation. On references, we have added ten recent works and integrated each where it does argumentative work, rather than appending them as a block.
+
+The most consequential is DeVerna et al. (2024) on the cascade inference problem, which shows for Twitter and Bluesky that reconstruction assumptions can distort both local and global cascade properties and that no ground truth exists to check a reconstruction against. That is precisely the concern the reviewers raised about our repost trees, so we now cite it where we introduce the reconstruction and again in the robustness appendix, and we frame our rule-envelope analysis as the appropriate response to it: establishing which conclusions hold across the space of admissible reconstructions rather than defending one of them.
+
+For the structural framework we add Gonzalez-Bailon et al. (2024, Sociological Science), who separate broadcast spread from long peer-to-peer chains across roughly a billion Facebook reshares, and Slaughter et al. (2025, PNAS), who separate depth from breadth when assessing platform interventions; both show the depth/breadth vocabulary remains in current use. For the influencer hypothesis we add Niitsuma et al. (2025, Scientific Reports) on the concentration of repost-cascade flow among high-influence accounts, and we upgraded that reference from the preprint we had cited to the published version. For platform context we add Nogara et al. (2025) on Bluesky, Shah et al. (2024) on Truth Social during the same campaign, and Quelle et al. (2025) on migration to Bluesky as a contagion process, which supports our self-selection interpretation.
+
+For the labeling questions the reviewers pressed, we add TeBlunthuis et al. (2024, Communication Methods and Measures) and Egami et al. (2023, NeurIPS), which establish that classifier and LLM label error bias downstream regression even at high accuracy, and Vallejo Vera and Driggers (2025), who find that LLM annotation reliability varies with the political position being labeled. That last one matters for our own results: the weakest cells in our validation being each platform's ideological minority is the pattern this literature would predict.
+
+Nogara et al. also gives us a second independent platform-wide estimate of Bluesky's composition (7.2 percent right-leaning, against 4.8 percent in Quelle and Bovet), which we now report alongside our own figures.
 
 ---
 
