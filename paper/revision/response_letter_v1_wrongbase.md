@@ -29,7 +29,7 @@ We validated it, and we now call them reconstructed cascades throughout.
 
 The key observation is that every admissible reconstruction rule chooses each repost's parent from the same candidate set: the original post, plus earlier reposters whom the reposting user follows. The rule only decides which candidate is selected. We therefore re-derived every repost cascade under the rule used in the paper, the earliest eligible reposter, the most recent eligible reposter, and a uniformly random eligible reposter drawn 40 times, each under both readings of the repost list order, over all 244,129 repost cascades and 4.03 million reposts.
 
-No rule produces a platform by size interaction outside [-0.036, +0.038] for breadth or [-0.083, +0.028] for depth. The same estimator applied to reply cascades gives +0.170 and -0.182, five times the most extreme repost estimate for breadth and twice for depth. The rule used in the paper produced the largest apparent cross platform difference of any rule we tested, so every alternative moves the repost result further toward similarity, not away from it.
+No rule produces a platform by size interaction outside [-0.036, +0.038] for breadth or [-0.083, +0.028] for depth. The same estimator applied to reply cascades gives +0.170 and -0.182, five to eight times larger than any repost estimate under any rule. The rule used in the paper produced the largest apparent cross platform difference of any rule we tested, so every alternative moves the repost result further toward similarity, not away from it.
 
 Two diagnostics explain why the rule has so little room to matter: 55 percent of Bluesky reposts and 59 percent of Truth Social reposts have no eligible prior reposter at all and attach to the root under every rule, and a further 21 percent and 12 percent have exactly one candidate.
 
@@ -79,7 +79,7 @@ Added: a descriptive statistics table (cascade counts, message counts, and size 
 
 On motif dependence, which Reviewer 1 raised: overlapping motifs do not bias the z-scores, because the randomized graphs are counted with the identical enumeration, so overlap inflates observed and null counts alike. We now describe the null model precisely, including that rewiring happens within each cascade and preserves cascade sizes, out degrees, and each participant's ideology. We also state the real consequence of the dependence, which is that neighboring motif z-scores are correlated and should be read as a pattern across families rather than as independent evidence.
 
-**Changes**: Table 4, Table 5, new sections "Motif Frequencies and the Null Model" and "Topic Model Details."
+**Changes**: Table 2, Table 4, new sections "Motif Frequencies and the Null Model" and "Topic Model Details."
 
 ### SPC-6. Resolve the inconsistency between robust regression with Huber loss and OLS with HC3 standard errors.
 
@@ -87,11 +87,11 @@ The reviewers are right that these are different estimators and that the paper d
 
 While checking this we found a related issue and have acted on it rather than leaving it for a reader to find. Because 61 percent of reply cascades consist of a root with no replies, and these sit exactly at the origin of the scaling plot, the default median absolute deviation scale collapses toward zero on the reply data. Every model in the submitted Table 1 was fitted that way, with scale estimates on the order of 1e-16, so the standard errors and significance stars in that table could not be interpreted.
 
-We have therefore re-estimated Table 1 with Huber's proposal 2 scale, which does not degenerate here, and the table now reports asymptotic standard errors from that fit. Point estimates shift modestly, most visibly for Model 3c on breadth, from 0.023 to 0.071 against a baseline of 0.419. The substantive conclusion holds: composition and alignment together still remove roughly five sixths of the baseline platform gap, and a sensitivity table (Table 6) shows ideology absorbs between 81 and 94 percent of it across two samples and two scale estimators. We now state the estimator and the covariance basis explicitly rather than referring to robust standard errors.
+We have therefore re-estimated Table 1 with Huber's proposal 2 scale, which does not degenerate here, and the table now reports asymptotic standard errors from that fit. Point estimates shift modestly, most visibly for Model 3c on breadth, from 0.023 to 0.071 against a baseline of 0.419. The substantive conclusion holds: composition and alignment together still remove roughly five sixths of the baseline platform gap, and a sensitivity table (Table 5) shows ideology absorbs between 81 and 94 percent of it across two samples and two scale estimators. We now state the estimator and the covariance basis explicitly rather than referring to robust standard errors.
 
 Re-estimating the table surfaced two further errors in the submitted version, which we have corrected. The footnote to Model 2 stated that the interaction was with an outlier indicator; the model is in fact a three category platform variable (Bluesky, Truth Social non influencer, Truth Social influencer) and the reported entry is the Truth Social non influencer contrast against Bluesky. Model 4 for breadth was reported as 0.4286 while its own fit statistics correspond to 0.4086, and the Model 4 depth row did not reproduce from the stated specification. All Model 4 entries are now re estimated on the same sample as the other models. Neither correction affects the conclusion that topic does not account for the platform gap.
 
-**Changes**: corrected appendix paragraph; new section "Sensitivity of the Modeling Specification" with Table 6.
+**Changes**: corrected appendix paragraph; new section "Sensitivity of the Modeling Specification" with Table 5.
 
 ### SPC-7. Sharpen implications and limitations.
 
@@ -119,7 +119,7 @@ We want to be straightforward about what this does and does not settle. On Truth
 We audited all twelve figures. Resolution was not the problem: every figure is at or above 300 dpi. The real defect was the one the reviewer is most likely to have meant. In both motif figures the family names were drawn as semi transparent watermarks inside the panel, where they sat directly on top of the data points. Both figures are rebuilt with those labels moved into a header band above the axes, so nothing overlaps the data, and the captions now explain what the groupings mean. The underlying values, ordering, palette and significance thresholds are unchanged, and we verified the plotted z scores against the pipeline's output files.
 
 **R1-4. How many of each motif are actually present?**
-Table 5 now reports the raw observed count of all 54 ideology labeled motifs on both platforms. This matters exactly as the reviewer suggests: on Truth Social, Left to Right chain motifs are strongly overrepresented against the null model while remaining rare in absolute terms, and the counts make that visible.
+Table 4 now reports the raw observed count of all 54 ideology labeled motifs on both platforms. This matters exactly as the reviewer suggests: on Truth Social, Left to Right chain motifs are strongly overrepresented against the null model while remaining rare in absolute terms, and the counts make that visible.
 
 **R1-5. Motifs are not independent; does the randomisation account for this?**
 It does, in the sense that matters for the z-scores: the randomized graphs are counted with the identical overlapping instance enumeration, so a chain of four contributing two three chains inflates observed and null counts alike. We now describe the null model precisely rather than in passing. The dependence does have a real consequence, which we now state: neighboring motif z-scores are correlated, so we read them as patterns across motif families rather than as 54 independent tests.
@@ -128,7 +128,7 @@ It does, in the sense that matters for the z-scores: the randomized graphs are c
 Reported. The model covers 125,623 root posts. HDBSCAN does assign many short posts to the outlier class initially, and we applied BERTopic's outlier reduction step, after which 21 documents (0.02 percent) remain unassigned. We now state this explicitly along with the trade off it involves, since reassigned documents carry less certain labels. We also note that topic enters only as a categorical moderator and that the topic hypothesis is not supported, so this choice does not carry the paper's conclusions.
 
 **R1-7. Far more information about the data; the CCDFs do not show how many cascades of size N exist.**
-Table 4 now gives, for each platform and cascade type, the number of cascades, the number of posts, and the share of cascades in each size band.
+Table 2 now gives, for each platform and cascade type, the number of cascades, the number of messages, and the share of cascades in each size band.
 
 **R1-8. How many reply chains are back and forth between the same two accounts?**
 We measured it. Counting replies whose author also wrote the grandparent post, 9.3 percent of Bluesky cascades and 20.8 percent of Truth Social cascades contain such an exchange, which mostly reflects that Truth Social cascades are larger. Conditioning on cascades deep enough to allow the pattern, the shares are nearly identical: 68.8 percent on Bluesky and 70.0 percent on Truth Social, accounting for 20.0 and 15.6 percent of reply edges. Dyadic exchange is therefore common on both platforms to a very similar degree, so the depth difference is not explained by one platform hosting more two user conversations.
