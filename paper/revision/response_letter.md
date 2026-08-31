@@ -47,7 +47,7 @@ Because this choice affects depth and breadth, we rebuilt every reply cascade fr
 
 We report all three.
 
-*Per class and per platform performance.* Table 4 gives precision and recall for left, center, and right, pooled and separately by platform, against the 171 of 200 validation items where both annotators agree, each with a percentile bootstrap confidence interval over 2,000 resamples. Overall accuracy against consensus is 0.86, and inter annotator agreement is 0.77 with a bootstrap interval of 0.70 to 0.85. The errors are not uniform, and they run in the direction the reviewers suspected: the classifier over assigns each platform's ideological minority, with precision of 0.64 for right on Bluesky and 0.64 for left on Truth Social, against 0.93 and 0.91 for the corresponding majority classes.
+*Per class and per platform performance.* Table 3 gives precision and recall for left, center, and right, pooled and separately by platform, against the 171 of 200 validation items where both annotators agree, each with a percentile bootstrap confidence interval over 2,000 resamples. Overall accuracy against consensus is 0.86, and inter annotator agreement is 0.77 with a bootstrap interval of 0.70 to 0.85. The errors are not uniform, and they run in the direction the reviewers suspected: the classifier over assigns each platform's ideological minority, with precision of 0.64 for right on Bluesky and 0.64 for left on Truth Social, against 0.93 and 0.91 for the corresponding majority classes.
 
 *On the size of the validation sample.* We report bootstrap intervals for every rate so that the precision of each estimate is visible: the pooled rates and both majority classes are tightly estimated, while the two minority cells rest on 8 and 17 items and are correspondingly wide, from 0.33 to 0.91 for right on Bluesky. We then asked what the sample we have does and does not license, and added three checks.
 
@@ -57,7 +57,7 @@ Second, our rates are computed against the items where both annotators agree, an
 
 Third, the validation measures post level accuracy while the analysis uses user level labels formed by thresholding a user's posts. Simulating that threshold with the measured post level confusion and the observed posts per user raises accuracy from 0.85 to 0.88 on Bluesky and 0.81 to 0.87 on Truth Social, so perturbing user labels at post level rates overstates the error the pipeline carries.
 
-Most directly, we no longer rely on a single point estimate of the error rates at all. The label noise analysis below includes a nested bootstrap that resamples the validation set itself, so the uncertainty in Table 4, including the wide interval on the thin cell, is carried through into the substantive result.
+Most directly, we no longer rely on a single point estimate of the error rates at all. The label noise analysis below includes a nested bootstrap that resamples the validation set itself, so the uncertainty in Table 3, including the wide interval on the thin cell, is carried through into the substantive result.
 
 *On the labeling scheme.* The submitted text described a five category scheme. The five category model output is collapsed to three categories for all analyses, and the validation uses the collapsed scheme; the text now says so.
 
@@ -65,7 +65,7 @@ Most directly, we no longer rely on a single point estimate of the error rates a
 
 *Label noise.* We perturbed every user's label by drawing from the measured confusion distribution and refit Model 3c, 100 times. Under platform specific error rates the platform by size interaction stays near zero in every draw, with at least 85 percent of the baseline divergence still absorbed in the least favorable draw and about 96 percent in the median draw. Under a deliberately harsher pooled matrix, roughly 70 percent is still absorbed. Because noise in a regressor attenuates its measured explanatory power, these are lower bounds on what error free labels would show.
 
-**Changes**: rewritten validation appendix with Table 4; new sections "Robustness to Ideology Label Noise," "The Center Category," and "Ideological Composition Compared With Prior Estimates."
+**Changes**: rewritten validation appendix with Table 3; new sections "Robustness to Ideology Label Noise," "The Center Category," and "Ideological Composition Compared With Prior Estimates."
 
 ### SPC-4. Replace causal language with association; discuss endogeneity between alignment and cascade structure.
 
@@ -79,13 +79,13 @@ Added: a descriptive statistics table (cascade counts, message counts, and size 
 
 On motif dependence, which Reviewer 1 raised: overlapping motifs do not bias the z-scores, because the randomized graphs are counted with the identical enumeration, so overlap inflates observed and null counts alike. We now describe the null model precisely, including that rewiring happens within each cascade and preserves cascade sizes, out degrees, and each participant's ideology. We also state the real consequence of the dependence, which is that neighboring motif z-scores are correlated and should be read as a pattern across families rather than as independent evidence.
 
-**Changes**: Table 2, Table 3, new sections "Motif Frequencies and the Null Model" and "Topic Model Details."
+**Changes**: Table 2, Table 4, new sections "Motif Frequencies and the Null Model" and "Topic Model Details."
 
 ### SPC-6. Resolve the inconsistency between robust regression with Huber loss and OLS with HC3 standard errors.
 
 The reviewers are right that these are different estimators and that the paper described both. The models reported in the paper are robust regressions with the Huber loss; the appendix paragraph describing OLS with HC3 was left over from an earlier specification and has been removed. The only analysis in the paper that uses OLS with HC3 is the new repost reconstruction check, for a reason we now state: repost cascades are small enough that log breadth and log depth take few distinct values, which makes the robust regression's scale estimate degenerate.
 
-While checking this we found a related issue and report it rather than leaving it for a reader to find. Because 61 percent of reply cascades consist of a root with no replies, and these sit exactly at the origin of the scaling plot, the default scale estimator collapses toward zero on the reply data as well. Point estimates are unaffected, but standard errors computed from that scale are not interpretable. We therefore added a sensitivity table re-estimating the models across two samples and two scale estimators. Ideology absorbs between 81 and 94 percent of the baseline platform difference in all eight combinations, and we rely on the non degenerate estimator for inference.
+While checking this we found a related issue and report it rather than leaving it for a reader to find. Because 61 percent of reply cascades consist of a root with no replies, and these sit exactly at the origin of the scaling plot, the default scale estimator collapses toward zero on the reply data as well. Point estimates are unaffected, but standard errors computed from that scale are not interpretable. We therefore added a sensitivity table (Table 5) re-estimating the models across two samples and two scale estimators. Ideology absorbs between 81 and 94 percent of the baseline platform difference in all eight combinations, and we rely on the non degenerate estimator for inference.
 
 **Changes**: corrected appendix paragraph; new section "Sensitivity of the Modeling Specification" with Table 5.
 
@@ -115,7 +115,7 @@ We want to be straightforward about what this does and does not settle. On Truth
 The new figure follows the journal's sizing with axis labels and a self contained caption. We are completing a pass over the existing figures for overlapping labels and unreadable quantities for the camera ready version; we would welcome specifics on which panels were hardest to read.
 
 **R1-4. How many of each motif are actually present?**
-Table 3 now reports the raw observed count of all 54 ideology labeled motifs on both platforms. This matters exactly as the reviewer suggests: on Truth Social, Left to Right chain motifs are strongly overrepresented against the null model while remaining rare in absolute terms, and the counts make that visible.
+Table 4 now reports the raw observed count of all 54 ideology labeled motifs on both platforms. This matters exactly as the reviewer suggests: on Truth Social, Left to Right chain motifs are strongly overrepresented against the null model while remaining rare in absolute terms, and the counts make that visible.
 
 **R1-5. Motifs are not independent; does the randomisation account for this?**
 It does, in the sense that matters for the z-scores: the randomized graphs are counted with the identical overlapping instance enumeration, so a chain of four contributing two three chains inflates observed and null counts alike. We now describe the null model precisely rather than in passing. The dependence does have a real consequence, which we now state: neighboring motif z-scores are correlated, so we read them as patterns across motif families rather than as 54 independent tests.
