@@ -9,18 +9,24 @@ We thank the reviewers and the SPC for a careful and specific set of comments. E
 is answered below, with what we did and where to find it. Additions are highlighted in blue
 in the revised manuscript.
 
-Four changes are substantive rather than editorial. The repost reconstruction is now
-validated against an envelope of alternative linking rules, which is what the similarity
-claim rests on (C1, C2). The ideology labels carry class-specific and platform-specific
-validation and a noise-propagation analysis (C4, C6). Cascades are reported under both a
-post-level and a user-collapsed definition (C3). And we corrected a degenerate scale
-estimate in the regression models, then refitted every specification (C12).
+Four changes are substantive rather than editorial: the repost reconstruction is validated
+against an envelope of alternative linking rules (C1, C2); the ideology labels carry
+class-specific and platform-specific validation plus a noise-propagation analysis (C4, C6);
+cascades are reported under both a post-level and a user-collapsed definition (C3); and a
+degenerate scale estimate in the regression models is corrected, with every specification
+refitted (C12).
 
-Two of these did not simply confirm what we had. The user-collapsed representation shows
-that part of the raw breadth gap comes from repeat posting rather than from more distinct
-participants, and the center-category check shows that some of the statistical accounting
-runs through partisan versus non-partisan participation. We report both and have narrowed
-the claims accordingly.
+The central finding survived every check. Ideological composition and alignment absorb 81 to
+94 percent of the baseline platform interaction across two samples and two scale estimators,
+never below 68 percent under any spline placement, and never below 70 percent in the worst of
+four label-noise processes. It also holds across ideology thresholds from 0.5 to 0.7, under
+both composition encodings, and under every repost reconstruction rule.
+
+Two checks qualified a magnitude rather than the conclusion, and we report both rather than
+only the stronger specification. The user-collapsed representation shows that part of the
+raw breadth gap comes from repeat posting rather than from more distinct participants, and
+the center-category check shows that some of the statistical accounting runs through
+partisan versus non-partisan participation. We have narrowed the claims accordingly.
 
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | #    | Raised by  | Reviewer point              | What we did                                                | Where        |
@@ -76,7 +82,16 @@ the claims accordingly.
 |      |            | language is too strong.     |                                                            |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C9   | SPC-5, R1  | Readable descriptive        | Added cascade counts, post counts, and the cascade size    | App. C,      |
-|      |            | statistics are missing.     | distribution by platform and cascade type.                 | Table 4      |
+|      |            | statistics are missing.     | distribution by platform and cascade type. Compiling it    | Table 4;     |
+|      |            |                             | surfaced something we had not reported: most cascades are  | App. I,      |
+|      |            |                             | a single post, and the share differs sharply by platform,  | Table 6      |
+|      |            |                             | 71.3 percent of Bluesky reply cascades against 43.3        |              |
+|      |            |                             | percent on Truth Social. Those cascades sit at the origin  |              |
+|      |            |                             | of the scaling plot, so we refitted every model on the     |              |
+|      |            |                             | 47,670 cascades with more than one post. The baseline      |              |
+|      |            |                             | interaction is smaller there, as expected once those       |              |
+|      |            |                             | points are removed, and Model 3c still absorbs 81 to 92    |              |
+|      |            |                             | percent of it.                                             |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C10  | R1         | Report raw motif counts,    | Added observed counts for all 54 ideology-labeled          | App. G,      |
 |      |            | not only z-scores.          | three-node motifs on both platforms.                       | Table 5      |
@@ -108,10 +123,9 @@ the claims accordingly.
 |      |            | justified; why not the top  | followers of that platform's own 99.9th percentile         |              |
 |      |            | n percent on both?          | account; on Bluesky the ratio is 5. The top eight Truth    |              |
 |      |            |                             | Social accounts hold 16 percent of all followers against 6 |              |
-|      |            |                             | percent on Bluesky, and the eighth largest Truth Social    |              |
-|      |            |                             | account exceeds the largest Bluesky account. A symmetric   |              |
-|      |            |                             | top-n rule would delete ordinary Bluesky accounts to       |              |
-|      |            |                             | mirror a structure only Truth Social has.                  |              |
+|      |            |                             | percent on Bluesky. A symmetric top-n rule would delete    |              |
+|      |            |                             | ordinary Bluesky accounts to mirror a structure only Truth |              |
+|      |            |                             | Social has.                                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C15  | R1         | How many reply chains are   | Among cascades of depth two or more, 68.8 percent on       | App. F       |
 |      |            | two users going back and    | Bluesky and 70.0 percent on Truth Social contain an A to B |              |
