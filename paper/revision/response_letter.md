@@ -73,10 +73,12 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 |      |            |                             | considered platform-specific errors, pooled errors,        |              |
 |      |            |                             | uncertainty in the estimated confusion matrix, and the     |              |
 |      |            |                             | less favorable performance measured against a single       |              |
-|      |            |                             | annotator. Across these simulations the median run retains |              |
-|      |            |                             | 86 to 96 percent of the attenuation and the least          |              |
-|      |            |                             | favorable specification retains 70 percent, so the         |              |
-|      |            |                             | substantive conclusion is unchanged.                       |              |
+|      |            |                             | annotator. Across these simulations the median draw        |              |
+|      |            |                             | absorbs 70 to 86 percent of the platform divergence        |              |
+|      |            |                             | depending on the error process, against 84 and 86 percent  |              |
+|      |            |                             | with unperturbed labels, and the least favorable of the    |              |
+|      |            |                             | four hundred draws absorbs 66 percent, so the substantive  |              |
+|      |            |                             | conclusion is unchanged.                                   |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C7   | R1         | The estimated left share on | We agree that the ideological composition in our sample    | App. B       |
 |      |            | Truth Social and right      | differs from platform-wide estimates reported in previous  |              |
