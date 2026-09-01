@@ -18,11 +18,11 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      | R1-R3      | reconstructed rather than   | additional validation. We therefore rebuilt all 244,129    | 9            |
 |      |            | directly observed, so the   | repost cascades under alternative linking rules, together  |              |
 |      |            | apparent cross-platform     | with a 40-draw random-linking specification. Across these  |              |
-|      |            | similarity could depend on  | specifications, the platform-by-size interaction remains   |              |
-|      |            | the reconstruction method.  | small for both breadth and depth relative to the           |              |
-|      |            |                             | corresponding reply-cascade interactions. We also now      |              |
-|      |            |                             | refer to these cascades as reconstructed throughout the    |              |
-|      |            |                             | manuscript.                                                |              |
+|      |            | similarity could depend on  | specifications, the platform-by-size interaction stays     |              |
+|      |            | the reconstruction method.  | within [-0.012, +0.031] for breadth and [-0.083, +0.028]   |              |
+|      |            |                             | for depth, against +0.170 and -0.182 for the corresponding |              |
+|      |            |                             | reply cascades. We also now refer to these cascades as     |              |
+|      |            |                             | reconstructed throughout the manuscript.                   |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C2   | R3, SPC-1  | A follower relationship     | This is an important limitation because the follower       | App. D       |
 |      |            | observed after collection   | networks are post-collection snapshots without edge        |              |
@@ -73,9 +73,10 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      |            |                             | considered platform-specific errors, pooled errors,        |              |
 |      |            |                             | uncertainty in the estimated confusion matrix, and the     |              |
 |      |            |                             | less favorable performance measured against a single       |              |
-|      |            |                             | annotator. Across these simulations, the substantive       |              |
-|      |            |                             | conclusion remains unchanged; even the least favorable     |              |
-|      |            |                             | draw retains substantial attenuation of the platform gap.  |              |
+|      |            |                             | annotator. Across these simulations the median run retains |              |
+|      |            |                             | 86 to 96 percent of the attenuation and the least          |              |
+|      |            |                             | favorable specification retains 70 percent, so the         |              |
+|      |            |                             | substantive conclusion is unchanged.                       |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C7   | R1         | The estimated left share on | We agree that the ideological composition in our sample    | App. B       |
 |      |            | Truth Social and right      | differs from platform-wide estimates reported in previous  |              |
