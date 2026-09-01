@@ -697,10 +697,9 @@ Truth Social & right & 0.93 [0.86, 0.98] & 0.90 & 69 \\
 
 \rev{Table~\ref{tab:descriptives} reports cascade counts, post counts, and the cascade size distribution for both platforms and both cascade types.}
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\footnotesize
-\setlength{\tabcolsep}{3.5pt}
+\small
 \rev{
 \begin{tabular}{llrrrrrr}
 \toprule
@@ -717,7 +716,7 @@ Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & 51.4 & 29.7 & 13.9 & 5.0 \\
 }
 \caption{\rev{Cascade counts and size distributions. For reply cascades, size is the number of posts in the thread including the root. For repost cascades, size is the number of reposts.}}
 \label{tab:descriptives}
-\end{table}
+\end{table*}
 
 \section{\rev{Robustness of Repost Cascade Reconstruction}}
 
@@ -824,7 +823,7 @@ Top: quantile--quantile (QQ) plot of residuals indicating heavy-tailed error dis
 \begin{table}[t]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \rev{
 \begin{tabular}{llrrrr}
 \toprule
@@ -847,12 +846,16 @@ Size $>1$ & Huber & depth & $-0.217$ & $0.029$ & 87\% \\
 
 \section{Spline Transformations}
 \label{app:spline}
-To examine potential nonlinear predictor effects, we inspected partial residual plots for \texttt{author\_left\_ratio}, \texttt{author\_right\_ratio}, and \texttt{author\_alignment\_ratio} (Figure~\ref{fig:partial_residuals}). \texttt{author\_left\_ratio} shows a convex pattern (residuals above zero at both ends), motivating a spline basis. \texttt{author\_alignment\_ratio} shows a monotonic but curved relationship with increasing slope near 1, also motivating a spline. \texttt{author\_right\_ratio} appears approximately linear and is retained as a simple linear term. We apply spline transformations (\texttt{bs} basis, df\,=\,3) to \texttt{author\_left\_ratio} and \texttt{author\_alignment\_ratio}; B-splines are preferred over natural cubic splines here because the data are confined to [0,1] and used in interactions, where their local support provides greater numerical stability.
+\rev{To examine potential nonlinear predictor effects, we inspected partial residual plots for the three ratio predictors (Figure~\ref{fig:partial_residuals}). Each ratio enters the model both on its own and interacted with $\log(\text{size})$, so each panel plots the predictor's full contribution against a straight line carrying the slope that contribution has at mean cascade size. Departure of the smoother from that line is what a spline would capture.}
+
+\rev{The left-user ratio tracks its linear term closely across the range. The right-user ratio departs from it between roughly 0.6 and 0.95, and the alignment ratio departs from it across most of the range. The largest gap between smoother and line is $0.06$ for the left-user ratio, $0.17$ for the right-user ratio, and $0.23$ for the alignment ratio.}
+
+We apply spline transformations (\texttt{bs} basis, df\,=\,3) to \texttt{author\_left\_ratio} and \texttt{author\_alignment\_ratio}; B-splines are preferred over natural cubic splines here because the data are confined to [0,1] and used in interactions, where their local support provides greater numerical stability. \rev{This places a spline on the predictor with the least curvature and a linear term on one with more, so we report what the choice costs. Refitting Model 3c with all three ratios splined absorbs 98.8\% of the baseline breadth interaction and 93.5\% of the depth interaction; entering all three linearly absorbs 68.4\% and 69.7\%. The specification we report falls between these, at 83.1\% and 84.7\%. It is therefore the more conservative of the two spline choices, and the finding that ideological structure absorbs most of the platform gap holds wherever the splines are placed.}
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.6\linewidth]{figures/partial.png}
-    \caption{Partial residual plots under a linear baseline for (A) \texttt{author\_left\_ratio}, (B) \texttt{author\_right\_ratio}, and (C) \texttt{author\_alignment\_ratio}.}
+\includegraphics[width=\linewidth]{figures/partial.png}
+    \caption{Partial residual plots under a linear baseline for (A) \texttt{author\_left\_ratio}, (B) \texttt{author\_right\_ratio}, and (C) \texttt{author\_alignment\_ratio}. \rev{Points are a random 20{,}000 of the 123{,}189 cascades; the fit uses all of them. The dashed line is the predictor's linear contribution evaluated at mean cascade size, the solid curve a LOWESS smoother of the partial residuals. Separation between the two is the nonlinearity a spline basis would absorb.}}
     \label{fig:partial_residuals}
 \end{figure*}
 
@@ -929,7 +932,8 @@ The technical lineage of both platforms provides additional justification. Blues
 \small
 \caption{Platform affordances and technical lineage relevant to cascade construction.}
 \label{tab:platform_affordances}
-\begin{tabular}{p{0.23\linewidth}p{0.32\linewidth}p{0.32\linewidth}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.22\linewidth}p{0.31\linewidth}p{0.31\linewidth}}
 \toprule
 \textbf{Dimension} & \textbf{Truth Social} & \textbf{Bluesky} \\
 \midrule
