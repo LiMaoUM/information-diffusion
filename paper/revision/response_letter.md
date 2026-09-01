@@ -92,7 +92,7 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      |            |                             | we now state this cautiously in the manuscript.            |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C8   | SPC-4, R2, | Alignment is calculated     | We agree and have revised the manuscript throughout to     | Results;     |
-|      | R3         | from the same reply edges   | avoid a causal interpretation of the alignment results.    | Discussion   |
+|      | R3         | from the same reply edges   | avoid a causal interpretation of the alignment results.    | Limitations  |
 |      |            | that determine cascade      | Alignment and cascade geometry are jointly realized        |              |
 |      |            | structure, making causal    | features of the same conversation, so the observed         |              |
 |      |            | language inappropriate.     | association does not establish a direction of influence.   |              |
@@ -139,8 +139,8 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      |            |                             | only for the repost-reconstruction robustness analysis,    |              |
 |      |            |                             | where the Huber scale estimate also degenerates.           |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C13  | SPC-7,     | The paper examines one      | We revised the Discussion to state more clearly both the   | Discussion   |
-|      | R1-R3      | month of Biden- and         | substantive implications and the limits of the comparison. |              |
+| C13  | SPC-7,     | The paper examines one      | We revised the Discussion to state more clearly both the   | Discussion;  |
+|      | R1-R3      | month of Biden- and         | substantive implications and the limits of the comparison. | Limitations  |
 |      |            | Trump-related discussion    | In particular, we distinguish the structural               |              |
 |      |            | during an unusual election  | interpretation of broad/shallow and narrow/deep reply      |              |
 |      |            | period. The paper should    | cascades from any normative evaluation of those forms. We  |              |
@@ -194,7 +194,7 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      |            | unexplained and formatting  | inconsistent terminology, and formatting issues and        |              |
 |      |            | was inconsistent.           | corrected these throughout.                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C21  | R1         | The analysis is limited to  | We agree that this is an important limitation of the       | Discussion   |
+| C21  | R1         | The analysis is limited to  | We agree that this is an important limitation of the       | Limitations  |
 |      |            | a U.S. political context.   | present study. The revised Discussion states explicitly    |              |
 |      |            |                             | that the findings are based on U.S. candidate-centered     |              |
 |      |            |                             | political discussion during one election period and that   |              |
