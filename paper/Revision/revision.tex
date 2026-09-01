@@ -377,12 +377,12 @@ The motif analysis shows that cross-ideological interaction is not a single stru
 
 
 \section{Discussion}
-This study compares how candidate-centered conversations about the 2024 U.S. presidential election unfold on two ideologically distinct but technically comparable platforms, Truth Social and Bluesky. Whereas most prior work emphasizes how far or how fast information spreads, we focus on structural form: whether interactions broaden outward through shallow branching or deepen through sequential layering. By analyzing both reposts and replies, we show that reposts scale similarly across platforms, but reply cascades diverge sharply: Truth Social supports broader, shallower exchanges, while Bluesky produces narrower, deeper threads. These results demonstrate that identical affordances can give rise to fundamentally different conversational dynamics, depending on the social and ideological composition of the communities that use them.
+This study compares how candidate-centered conversations about the 2024 U.S. presidential election unfold on two ideologically distinct but technically comparable platforms, Truth Social and Bluesky. Whereas most prior work emphasizes how far or how fast information spreads, we focus on structural form: whether interactions broaden outward through shallow branching or deepen through sequential layering. By analyzing both reposts and replies, we show that reposts scale similarly across platforms, but reply cascades diverge sharply: Truth Social supports broader, shallower exchanges, while Bluesky produces narrower, deeper threads. \rev{These results show that platforms with similar reply and repost affordances can exhibit different conversational dynamics, depending on the social and ideological composition of the communities that use them.}
 
 Our modeling results show that ideological composition and alignment together \rev{statistically account for} most of the platform divergence: \rev{cross-ideological exchanges are associated with greater depth, and more homogeneous cascades with flatter structures}. Yet alignment alone is insufficient. Even when disagreement occurs, reply structures on Truth Social often remain shallow. 
 Motif analysis clarifies this pattern: on Truth Social, disagreement frequently appears as star motifs---parallel replies directed at a single post. On Bluesky, disagreement more often takes the form of chain motifs, where replies build sequentially and support multi-turn interaction.
 
-Motif results highlight the combined role of interactional structure and user composition. On Truth Social, left-leaning users constitute \rev{about a tenth} of the population, yet appear disproportionately in Left$\leftrightarrow$Right bounce-back motifs: these are strongly overrepresented relative to the null model while remaining rare in absolute terms. \rev{This is why alignment alone cannot account for platform differences: it captures whether interactions cross ideological lines, but not how many users of each ideology are present to cross them.}
+Motif results highlight the combined role of interactional structure and user composition. On Truth Social, \rev{left-leaning users are a small minority of the users we observe}, yet appear disproportionately in Left$\leftrightarrow$Right bounce-back motifs: these are strongly overrepresented relative to the null model while remaining rare in absolute terms. \rev{This is why alignment alone cannot account for platform differences: it captures whether interactions cross ideological lines, but not how much participation comes from each ideological group.}
 
 \rev{Center-labeled users appear disproportionately in different local configurations across the two platforms. On Bluesky they occur more often in bounce-back motifs, as the targets of cross-ideological replies; on Truth Social they appear more often in several end-shift configurations. Because the center category is residual, we interpret these patterns as differences involving center-labeled users rather than as evidence about a distinct centrist group.}
 
@@ -701,14 +701,14 @@ Truth Social & right & 0.93 [0.86, 0.98] & 0.90 & 69 \\
 \rev{
 \begin{tabular}{llrrrrrr}
 \toprule
- & & & & \multicolumn{4}{c}{Share of cascades by size (\%)} \\
+ & & & & \multicolumn{4}{c}{\rev{Cascades by size, $n$ (\%)}} \\
 \cmidrule(lr){5-8}
 Type & Platform & Cascades & Posts & 1 & 2--5 & 6--50 & $>$50 \\
 \midrule
-Reply & Bluesky & 79{,}348 & 199{,}413 & 71.3 & 21.2 & 7.2 & 0.3 \\
-Reply & Truth Soc. & 43{,}841 & 1{,}369{,}497 & 43.3 & 25.2 & 22.5 & 9.0 \\
-Repost & Bluesky & 25{,}550 & 184{,}807 & 46.3 & 33.6 & 17.8 & 2.3 \\
-Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & 51.4 & 29.7 & 13.9 & 5.0 \\
+Reply & Bluesky & 79{,}348 & 199{,}413 & \rev{56{,}552 (71.3)} & \rev{16{,}823 (21.2)} & \rev{5{,}710 (7.2)} & \rev{263 (0.3)} \\
+Reply & Truth Soc. & 43{,}841 & 1{,}369{,}497 & \rev{18{,}967 (43.3)} & \rev{11{,}057 (25.2)} & \rev{9{,}868 (22.5)} & \rev{3{,}949 (9.0)} \\
+Repost & Bluesky & 25{,}550 & 184{,}807 & \rev{11{,}821 (46.3)} & \rev{8{,}584 (33.6)} & \rev{4{,}546 (17.8)} & \rev{599 (2.3)} \\
+Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & \rev{112{,}266 (51.4)} & \rev{64{,}991 (29.7)} & \rev{30{,}490 (13.9)} & \rev{10{,}832 (5.0)} \\
 \bottomrule
 \end{tabular}
 }
@@ -735,9 +735,9 @@ Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & 51.4 & 29.7 & 13.9 & 5.0 \\
 
 \rev{Reply cascades are trees of posts, so a user who replies several times appears once per reply. An alternative representation collapses each user to a single node at the shallowest depth at which they appear. We recomputed all reply-cascade metrics both ways from the raw thread data. The post-level reconstruction reproduces the metrics used throughout the paper (correlations of $0.999$ for size, $0.999$ for breadth, $0.988$ for depth), confirming the reported analyses are post-level.}
 
-\rev{The two representations are compared to each other within a common subsample, not to Table~\ref{tab:model_comparison}. Both estimates are restricted to cascades that actually contain a reply, since a lone root post has the same structure under either representation: 47{,}106 cascades at post level, and 42{,}947 once repeat posters are merged and single-participant threads drop out. Coefficients are therefore not comparable in level to the main table, whose baseline $\beta_3$ of $0.419$ and $-0.321$ is estimated on all 123{,}189 cascades, 61\% of which are single posts. Within this subsample, estimated with the same Huber proposal 2 specification, the post-level baseline is $0.168$ for breadth and $-0.194$ for depth.}
+\rev{To isolate the change of unit from a change of sample, both representations are estimated on the same set of threads: the 42{,}947 that still contain more than one node after collapsing. Collapsing can only reduce the node count, so this set is a subset of the threads with more than one post, and restricting to it leaves the post-level baseline almost unchanged ($0.160$ for breadth and $-0.184$ for depth, against $0.168$ and $-0.194$ on the 47{,}106 threads with more than one post). These coefficients are not comparable in level to the main table, whose baseline $\beta_3$ of $0.419$ and $-0.321$ is estimated on all 123{,}189 cascades, 61\% of which are single posts.}
 
-\rev{Against those subsample baselines, the depth divergence persists under user collapsing ($-0.132$, against $-0.194$ at post level) and is again largely absorbed by composition and alignment. The breadth divergence is much smaller under collapsing ($-0.032$, against $0.168$). A substantial part of the raw breadth gap therefore reflects the same Truth Social users posting repeatedly within a thread, which widens a level of the post tree without adding distinct participants. Conditional on size, Truth Social conversations are wider in posts, and part of that width comes from repeat participation rather than from a broader set of participants. The depth contrast holds under both representations.}
+\rev{On those matched threads the depth divergence persists under user collapsing ($-0.132$, against $-0.184$ at post level) and is again largely absorbed by composition and alignment. The breadth divergence does not: it falls to $-0.032$ from $0.160$, so the two representations disagree about breadth on identical data. A substantial part of the raw breadth gap therefore reflects the same Truth Social users posting repeatedly within a thread, which widens a level of the post tree without adding distinct participants. Conditional on size, Truth Social conversations are wider in posts, and part of that width comes from repeat participation rather than from a broader set of participants. The depth contrast holds under both representations.}
 
 \section{\rev{Two-User Exchanges in Reply Cascades}}
 

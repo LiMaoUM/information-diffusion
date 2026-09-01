@@ -287,8 +287,11 @@ def fit_b3(frame, y):
     d = frame.replace([np.inf, -np.inf], np.nan).dropna(
         subset=[y, "log_size", "author_left_ratio", "author_right_ratio",
                 "author_alignment_ratio", "platform"])
+    # Huber's proposal 2 scale, matching Table 1: the default MAD scale
+    # degenerates here because 61% of cascades sit at the origin.
     fit = smf.rlm(FORMULA.format(y=y), data=d,
-                  M=sm.robust.norms.HuberT()).fit(maxiter=350)
+                  M=sm.robust.norms.HuberT()).fit(
+                      maxiter=350, scale_est=sm.robust.scale.HuberScale())
     key = [k for k in fit.params.index
            if "log_size" in k and "platform" in k and "bs(" not in k]
     return float(fit.params[key[0]]), len(d)
