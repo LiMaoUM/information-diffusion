@@ -46,21 +46,18 @@ repeated. Items C8 onward are the remaining reviewer-specific comments.
 |      |            |                             | post-level breadth contrast reflects repeat participation  |              |
 |      |            |                             | within threads.                                            |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C3   | SPC-3, R1, | The ideology validation was | We treated this as one measurement package. First,         | App. B,      |
-|      | R2         | limited, the Center         | validation: we report class-specific and platform-specific | Table 3      |
-|      |            | category may combine        | precision and recall with bootstrap intervals on the 171   |              |
-|      |            | moderate with uncertain     | cases where both annotators agreed. Accuracy against       |              |
-|      |            | classifications, and the    | consensus is 0.86, inter-annotator kappa is 0.77, and      |              |
-|      |            | manuscript should show      | model-human kappa is 0.61 and 0.74; we also report the     |              |
-|      |            | robustness to plausible     | lower precision for each platform's ideological minority   |              |
-|      |            | label error.                | class and its uncertainty. Second, the Center category: it |              |
-|      |            |                             | is now defined explicitly as a residual that includes      |              |
-|      |            |                             | users reaching neither partisan threshold, and we          |              |
-|      |            |                             | recompute composition and alignment using partisan users   |              |
-|      |            |                             | only, where the association remains substantial although   |              |
-|      |            |                             | smaller. Third, label noise: we perturbed user labels      |              |
-|      |            |                             | under four error processes and refit Model 3c over 100     |              |
-|      |            |                             | draws per scenario, 400 in total. Median attenuation       |              |
+| C3   | SPC-3, R1, | The ideology validation was | We addressed these concerns together because they all bear | App. B,      |
+|      | R2         | limited, the Center         | on the measurement of ideology. We now report              | Table 3      |
+|      |            | category may combine        | class-specific and platform-specific precision and recall  |              |
+|      |            | moderate with uncertain     | with bootstrap intervals on the 171 cases where both       |              |
+|      |            | classifications, and the    | annotators agreed. Accuracy against consensus is 0.86,     |              |
+|      |            | manuscript should show      | inter-annotator kappa is 0.77, and model-human kappa is    |              |
+|      |            | robustness to plausible     | 0.61 and 0.74. We also define the Center category          |              |
+|      |            | label error.                | explicitly as a residual and recompute composition and     |              |
+|      |            |                             | alignment using partisan users only, where the association |              |
+|      |            |                             | remains substantial although smaller. Finally, we          |              |
+|      |            |                             | propagate label error through Model 3c under four error    |              |
+|      |            |                             | processes, with 100 draws per scenario. Median attenuation |              |
 |      |            |                             | ranges from 70 to 86 percent, against 84 and 86 percent    |              |
 |      |            |                             | with unperturbed labels, and even the least favorable draw |              |
 |      |            |                             | retains 66 percent. The pooled-error scenario produces the |              |
@@ -125,35 +122,25 @@ repeated. Items C8 onward are the remaining reviewer-specific comments.
 |      |            |                             | elsewhere are needed to establish how broadly they         |              |
 |      |            |                             | generalize.                                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C8   | R1         | The estimated left share on | We agree that these estimates should not be interpreted as | App. B;      |
-|      |            | Truth Social and right      | platform-wide ideological prevalence. The available        | Limitations  |
-|      |            | share on Bluesky appear     | comparisons do not provide a single directly comparable    |              |
-|      |            | high relative to previous   | benchmark: prior studies use different user populations,   |              |
-|      |            | estimates.                  | sampling frames, and behavioral measures of ideology,      |              |
-|      |            |                             | whereas our sample is restricted to accounts participating |              |
-|      |            |                             | in Biden- or Trump-related conversations during one        |              |
-|      |            |                             | campaign month and our labels are inferred from expressed  |              |
-|      |            |                             | stance in those conversations. The labels should therefore |              |
-|      |            |                             | be understood as an operational measure of political       |              |
-|      |            |                             | position within the sampled discourse rather than as       |              |
-|      |            |                             | context-independent measures of users' full political      |              |
-|      |            |                             | ideology. Political positions that appear left-leaning in  |              |
-|      |            |                             | a Trump-centered conversation need not imply a             |              |
-|      |            |                             | consistently left-wing position across candidates or       |              |
-|      |            |                             | issues. Our goal is therefore not to reproduce a           |              |
-|      |            |                             | particular platform-wide prevalence estimate, but to       |              |
-|      |            |                             | establish that the labels are interpretable and            |              |
-|      |            |                             | sufficiently reliable for the comparative analysis in      |              |
-|      |            |                             | which they are used. To that end we report human           |              |
-|      |            |                             | validation by class and platform, quantify the direction   |              |
-|      |            |                             | and uncertainty of classification error, apply a           |              |
+| C8   | R1         | The estimated left share on | These estimates are not directly comparable to prior       | App. B;      |
+|      |            | Truth Social and right      | platform-wide prevalence estimates because the studies     | Limitations  |
+|      |            | share on Bluesky appear     | differ in both sampling frame and how ideology is          |              |
+|      |            | high relative to previous   | measured. Our labels summarize expressed political         |              |
+|      |            | estimates.                  | position within the sampled Biden and Trump discourse      |              |
+|      |            |                             | rather than a context-independent ideology, and a position |              |
+|      |            |                             | that appears left-leaning in a Trump-centered conversation |              |
+|      |            |                             | need not imply a consistently left-wing position across    |              |
+|      |            |                             | candidates or issues. We therefore do not treat exact      |              |
+|      |            |                             | agreement with a particular platform-wide percentage as    |              |
+|      |            |                             | the validation criterion. Instead, we evaluate whether the |              |
+|      |            |                             | labels are interpretable and sufficiently reliable for the |              |
+|      |            |                             | comparative analysis in which they are used. We report     |              |
+|      |            |                             | human validation by class and platform, quantify the       |              |
+|      |            |                             | direction and uncertainty of classification error, apply a |              |
 |      |            |                             | prevalence correction, and propagate measured label error  |              |
 |      |            |                             | through the downstream models. The correction reduces the  |              |
 |      |            |                             | estimated Bluesky right share from 24.2% to 17.9% and the  |              |
-|      |            |                             | Truth Social left share from 11.5% to 1.9%. The remaining  |              |
-|      |            |                             | discrepancy may partly reflect the candidate-centered      |              |
-|      |            |                             | sampling frame and differences in measurement across       |              |
-|      |            |                             | studies.                                                   |              |
+|      |            |                             | Truth Social left share from 11.5% to 1.9%.                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C9   | R1         | The rationale for examining | We expanded the justification for treating the unusually   | App. A       |
 |      |            | highly followed users only  | high-follower Truth Social accounts separately. The upper  |              |
