@@ -69,20 +69,21 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 |      |            | whether the findings are    | the full analysis rather than treating the ideology labels |              |
 |      |            | robust to plausible         | as error-free. For each error specification, user labels   |              |
 |      |            | ideology-label error.       | were perturbed, cascade-level composition and alignment    |              |
-|      |            |                             | were recomputed, and Model 3c was refit over 100 draws. We |              |
-|      |            |                             | considered platform-specific errors, pooled errors,        |              |
-|      |            |                             | uncertainty in the estimated confusion matrix, and         |              |
-|      |            |                             | performance measured against a single annotator. Median    |              |
-|      |            |                             | attenuation ranges from 70 to 86 percent, against 84 and   |              |
-|      |            |                             | 86 percent with unperturbed labels, and even the least     |              |
-|      |            |                             | favorable of the 400 draws retains 66 percent. The         |              |
-|      |            |                             | pooled-error scenario produces the largest reduction; the  |              |
-|      |            |                             | platform-specific and bootstrap scenarios, closest to the  |              |
-|      |            |                             | error we measured, stay nearest the unperturbed estimates. |              |
-|      |            |                             | Label noise therefore reduces the estimated degree of      |              |
-|      |            |                             | accounting under some specifications, but composition and  |              |
-|      |            |                             | alignment still account for a majority of the baseline     |              |
-|      |            |                             | divergence in every simulation.                            |              |
+|      |            |                             | were recomputed, and Model 3c was refit over 100 draws per |              |
+|      |            |                             | scenario, 400 in total. We considered platform-specific    |              |
+|      |            |                             | errors, pooled errors, uncertainty in the estimated        |              |
+|      |            |                             | confusion matrix, and performance measured against a       |              |
+|      |            |                             | single annotator. Median attenuation ranges from 70 to 86  |              |
+|      |            |                             | percent, against 84 and 86 percent with unperturbed        |              |
+|      |            |                             | labels, and even the least favorable of the 400 draws      |              |
+|      |            |                             | retains 66 percent. The pooled-error scenario produces the |              |
+|      |            |                             | largest reduction; the platform-specific and bootstrap     |              |
+|      |            |                             | scenarios, closest to the error we measured, stay nearest  |              |
+|      |            |                             | the unperturbed estimates. Label noise therefore reduces   |              |
+|      |            |                             | the estimated degree of accounting under some              |              |
+|      |            |                             | specifications, but composition and alignment still        |              |
+|      |            |                             | account for a majority of the baseline divergence in every |              |
+|      |            |                             | simulation.                                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C7   | R1         | The estimated left share on | We agree that the ideological composition in our sample    | App. B       |
 |      |            | Truth Social and right      | differs from platform-wide estimates reported in previous  |              |
