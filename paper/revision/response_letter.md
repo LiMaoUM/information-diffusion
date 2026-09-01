@@ -71,14 +71,18 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 |      |            | ideology-label error.       | were perturbed, cascade-level composition and alignment    |              |
 |      |            |                             | were recomputed, and Model 3c was refit over 100 draws. We |              |
 |      |            |                             | considered platform-specific errors, pooled errors,        |              |
-|      |            |                             | uncertainty in the estimated confusion matrix, and the     |              |
-|      |            |                             | less favorable performance measured against a single       |              |
-|      |            |                             | annotator. Across these simulations the median draw        |              |
-|      |            |                             | absorbs 70 to 86 percent of the platform divergence        |              |
-|      |            |                             | depending on the error process, against 84 and 86 percent  |              |
-|      |            |                             | with unperturbed labels, and the least favorable of the    |              |
-|      |            |                             | four hundred draws absorbs 66 percent, so the substantive  |              |
-|      |            |                             | conclusion is unchanged.                                   |              |
+|      |            |                             | uncertainty in the estimated confusion matrix, and         |              |
+|      |            |                             | performance measured against a single annotator. Median    |              |
+|      |            |                             | attenuation ranges from 70 to 86 percent, against 84 and   |              |
+|      |            |                             | 86 percent with unperturbed labels, and even the least     |              |
+|      |            |                             | favorable of the 400 draws retains 66 percent. The         |              |
+|      |            |                             | pooled-error scenario produces the largest reduction; the  |              |
+|      |            |                             | platform-specific and bootstrap scenarios, closest to the  |              |
+|      |            |                             | error we measured, stay nearest the unperturbed estimates. |              |
+|      |            |                             | Label noise therefore reduces the estimated degree of      |              |
+|      |            |                             | accounting under some specifications, but composition and  |              |
+|      |            |                             | alignment still account for a majority of the baseline     |              |
+|      |            |                             | divergence in every simulation.                            |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C7   | R1         | The estimated left share on | We agree that the ideological composition in our sample    | App. B       |
 |      |            | Truth Social and right      | differs from platform-wide estimates reported in previous  |              |
@@ -105,14 +109,13 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C9   | SPC-5, R1  | The paper needs more        | We added a descriptive table reporting cascade counts,     | App. C,      |
 |      |            | readable descriptive        | post counts, and cascade-size distributions by platform    | Table 4;     |
-|      |            | statistics, including the   | and cascade type. This also made clear that root-only      | App. I,      |
-|      |            | number of cascades at       | cascades are common and substantially more frequent on     | Table 6      |
-|      |            | different sizes.            | Bluesky than on Truth Social. Because these observations   |              |
-|      |            |                             | contain no variation in breadth or depth, we additionally  |              |
-|      |            |                             | refit the models after excluding size-1 cascades. The      |              |
-|      |            |                             | baseline platform difference becomes smaller, but remains  |              |
-|      |            |                             | present, and the combined ideology specification continues |              |
-|      |            |                             | to account for most of the remaining difference.           |              |
+|      |            | statistics, including the   | and cascade type. This made clear that root-only cascades  | App. I,      |
+|      |            | number of cascades at       | are common and far more frequent on Bluesky, and because   | Table 6      |
+|      |            | different sizes.            | they carry no variation in breadth or depth we refit the   |              |
+|      |            |                             | models excluding them. The baseline platform difference    |              |
+|      |            |                             | becomes smaller, but remains present, and the combined     |              |
+|      |            |                             | ideology specification continues to account for most of    |              |
+|      |            |                             | the remaining difference.                                  |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C10  | R1         | Raw motif counts are needed | We added the observed counts for all 54 ideology-labeled   | App. G,      |
 |      |            | in addition to standardized | three-node motifs on both platforms so that the            | Table 5      |
@@ -121,25 +124,23 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C11  | R1         | Motifs overlap, so the      | We now describe the motif randomization and counting       | Methods;     |
 |      |            | manuscript should explain   | procedure explicitly. The same overlapping-instance        | App. G       |
-|      |            | whether the null model      | enumeration is applied to both the observed and randomized |              |
-|      |            | accommodates this           | graphs, so overlap is treated consistently in both. We     |              |
-|      |            | dependence.                 | also clarify that neighboring motif statistics are         |              |
-|      |            |                             | correlated because motifs share substructure. Accordingly, |              |
-|      |            |                             | we interpret the motif results as patterns across motif    |              |
-|      |            |                             | families rather than as independent pieces of evidence.    |              |
+|      |            | whether the null model      | enumeration is applied to the observed and randomized      |              |
+|      |            | accommodates this           | graphs alike, so overlap is treated consistently. Because  |              |
+|      |            | dependence.                 | motifs share substructure, neighboring statistics are      |              |
+|      |            |                             | correlated, and we interpret the results as patterns       |              |
+|      |            |                             | across motif families rather than as independent evidence. |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C12  | SPC-6, R2  | The main text describes     | We corrected this inconsistency. The main reply-cascade    | Methods;     |
-|      |            | robust regression with      | models use the Huber loss. In reviewing the estimation     | App. I,      |
-|      |            | Huber loss, whereas the     | procedure, we also found that the default                  | Table 6      |
-|      |            | appendix referred to OLS    | median-absolute-deviation scale estimate degenerates       |              |
-|      |            | with HC3 standard errors.   | because of the large mass of root-only cascades. We        |              |
-|      |            |                             | therefore refit the main models using Huber's Proposal 2   |              |
-|      |            |                             | scale, which does not degenerate in these data. Table 1    |              |
-|      |            |                             | now reports the corresponding estimates and standard       |              |
-|      |            |                             | errors, and Appendix I reports sensitivity results across  |              |
-|      |            |                             | samples and scale estimators. OLS with HC3 errors is used  |              |
-|      |            |                             | only for the repost-reconstruction robustness analysis,    |              |
-|      |            |                             | where the Huber scale estimate also degenerates.           |              |
+|      |            | robust regression with      | models use the Huber loss. Reviewing the procedure, we     | App. I,      |
+|      |            | Huber loss, whereas the     | found the default median-absolute-deviation scale          | Table 6      |
+|      |            | appendix referred to OLS    | degenerates because of the large mass of root-only         |              |
+|      |            | with HC3 standard errors.   | cascades, so the main models are refit with Huber's        |              |
+|      |            |                             | Proposal 2 scale. Table 1 now reports the corresponding    |              |
+|      |            |                             | estimates and standard errors, and Appendix I reports      |              |
+|      |            |                             | sensitivity results across samples and scale estimators.   |              |
+|      |            |                             | OLS with HC3 errors is used only for the                   |              |
+|      |            |                             | repost-reconstruction robustness analysis, where the Huber |              |
+|      |            |                             | scale estimate also degenerates.                           |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C13  | SPC-7,     | The paper examines one      | We revised the Discussion to state more clearly both the   | Discussion;  |
 |      | R1-R3      | month of Biden- and         | substantive implications and the limits of the comparison. | Limitations  |
@@ -152,15 +153,13 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C14  | R1         | The rationale for examining | We expanded the justification for treating the unusually   | App. A       |
 |      |            | highly followed users only  | high-follower Truth Social accounts separately. The upper  |              |
-|      |            | on Truth Social was not     | tail of the follower distribution is substantially more    |              |
-|      |            | sufficiently developed, and | concentrated on Truth Social: the largest account has 56   |              |
-|      |            | a symmetric top-n rule      | times the follower count of the platform's 99.9th          |              |
-|      |            | might be preferable.        | percentile account, compared with a ratio of 5 on Bluesky, |              |
-|      |            |                             | and the top eight accounts account for a much larger share |              |
-|      |            |                             | of total followers. We therefore treat the Truth Social    |              |
-|      |            |                             | group as a platform-specific concentration rather than     |              |
-|      |            |                             | imposing the same numerical cutoff on Bluesky, where there |              |
-|      |            |                             | is no comparable separation in the upper tail.             |              |
+|      |            | on Truth Social was not     | tail is far more concentrated on Truth Social: the largest |              |
+|      |            | sufficiently developed, and | account has 56 times the follower count of that platform's |              |
+|      |            | a symmetric top-n rule      | 99.9th percentile account, against a ratio of 5 on         |              |
+|      |            | might be preferable.        | Bluesky. We therefore treat this as a platform-specific    |              |
+|      |            |                             | concentration rather than imposing the same numerical      |              |
+|      |            |                             | cutoff on Bluesky, where the upper tail shows no           |              |
+|      |            |                             | comparable separation.                                     |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | C15  | R1         | How much of the observed    | We added a direct analysis of A -> B -> A exchanges. Among | App. F       |
 |      |            | reply depth consists of     | cascades with depth of at least two, 68.8% on Bluesky and  |              |
@@ -205,8 +204,10 @@ Across these sensitivity analyses, estimates sometimes change substantially in m
 |      |            |                             | generalize.                                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 
+\noindent\begin{minipage}{\textwidth}
 We thank the reviewers and the SPC again for their careful and constructive feedback. Regardless of the
 final decision, we feel that this revision has made the project substantially stronger and more robust.
 The comments pushed us to clarify several parts of the analysis, add sensitivity checks that we had not
 originally included, and narrow some of the interpretations where appropriate. We very much appreciate
 the time the reviewers spent on the paper and the opportunity to revise it.
+\end{minipage}
