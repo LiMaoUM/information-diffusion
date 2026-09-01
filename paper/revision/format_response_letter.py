@@ -38,8 +38,16 @@ def main():
     start = next(i for i, l in enumerate(lines)
                  if l.startswith("+") and set(l) <= set("+-="))
 
+    # the table runs from `start` to the last rule or row line; anything after
+    # it is trailing prose and must survive the rewrite
+    end = start
+    for i in range(start, len(lines)):
+        l = lines[i]
+        if l.startswith("|") or (l.startswith("+") and set(l) <= set("+-=")):
+            end = i
+
     blocks, cur, header_at = [], [], None
-    for l in lines[start:]:
+    for l in lines[start:end + 1]:
         if l.startswith("+") and set(l) <= set("+-="):
             if cur:
                 blocks.append(cur)
@@ -49,8 +57,6 @@ def main():
             continue
         if l.startswith("|"):
             cur.append(l)
-        elif l.strip() and not cur:
-            continue          # trailing prose after the table, if any
     if cur:
         blocks.append(cur)
 
@@ -71,7 +77,7 @@ def main():
         out += emit(r)
         out.append(rule("=") if header_at is not None and i + 1 == header_at else rule())
 
-    text = "\n".join(lines[:start] + out) + "\n"
+    text = "\n".join(lines[:start] + out + lines[end + 1:]).rstrip() + "\n"
     for ch in "–—":
         if ch in text:
             sys.exit("en or em dash in the letter")

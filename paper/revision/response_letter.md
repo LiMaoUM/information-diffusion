@@ -9,7 +9,7 @@ We thank the reviewers and the SPC for their careful and constructive comments. 
 
 The main changes include additional robustness checks for repost-cascade reconstruction, expanded validation of the ideology labels, clarification of the post-level unit of analysis, sensitivity analyses using alternative cascade and ideology specifications, and a revised regression specification after identifying a problem with the original scale estimator. We also expanded the descriptive reporting, motif analysis, and discussion of the scope and limitations of the findings.
 
-Across these sensitivity analyses, estimates sometimes change in magnitude, but the substantive conclusions remain consistent. In particular, the cross-platform difference in reply-cascade structure persists under alternative samples and cascade representations, and ideological composition and interaction alignment remain strongly associated with the remaining platform difference under alternative ideology thresholds, label-noise simulations, and composition specifications. Some checks also narrow the interpretation of particular findings. For example, collapsing repeated posts by the same user reduces the breadth difference, indicating that repeat participation contributes to the post-level breadth contrast, while the partisan-only analysis shows that the residual center category contributes to part of the statistical attenuation. We have revised the manuscript to make these qualifications explicit.
+Across these sensitivity analyses, estimates sometimes change substantially in magnitude, but none overturns the central conclusions. The depth difference persists across alternative samples and cascade representations, while the user-collapsed analysis shows that part of the post-level breadth difference reflects repeat participation. The association with ideological composition and interaction alignment remains substantial across alternative ideology thresholds, label-noise simulations, and composition specifications. Some checks also narrow the interpretation of particular findings. For example, collapsing repeated posts by the same user reduces the breadth difference, indicating that repeat participation contributes to the post-level breadth contrast, while the partisan-only analysis shows that the residual center category contributes to part of the statistical attenuation. We have revised the manuscript to make these qualifications explicit.
 
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
 | #    | Raised by  | Reviewer point              | Response                                                   | Where        |
@@ -202,3 +202,9 @@ Across these sensitivity analyses, estimates sometimes change in magnitude, but 
 |      |            |                             | to establish how broadly the structural patterns           |              |
 |      |            |                             | generalize.                                                |              |
 +------+------------+-----------------------------+------------------------------------------------------------+--------------+
+
+We thank the reviewers and the SPC again for their careful and constructive feedback. Regardless of the
+final decision, we feel that this revision has made the project substantially stronger and more robust.
+The comments pushed us to clarify several parts of the analysis, add sensitivity checks that we had not
+originally included, and narrow some of the interpretations where appropriate. We very much appreciate
+the time the reviewers spent on the paper and the opportunity to revise it.
