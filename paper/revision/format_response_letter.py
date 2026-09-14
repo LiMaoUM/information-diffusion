@@ -35,8 +35,11 @@ def emit(cells):
 
 def main():
     lines = open(PATH).read().split("\n")
-    start = next(i for i, l in enumerate(lines)
-                 if l.startswith("+") and set(l) <= set("+-="))
+    start = next((i for i, l in enumerate(lines)
+                  if l.startswith("+") and set(l) <= set("+-=")), None)
+    if start is None:
+        print("no grid table in the letter; nothing to format")
+        return
 
     # the table runs from `start` to the last rule or row line; anything after
     # it is trailing prose and must survive the rewrite

@@ -77,8 +77,15 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
   (final accept/reject, color-highlighted changes + response document).
 - Reviews: `paper/reviews/2026-07_icwsm2027_round1_decision.md`.
   Roadmap + response skeleton: `paper/revision/`.
-- Submitted version: `paper/AnonymousSubmission/LaTeX/anonymous-submission-latex-2026.tex`.
-  `RestructuredLatex/` is an alternate draft; `CameraReady/` is still blank template.
-- Known factual issue to fix in revision: main text claims Huber-loss robust
-  regression (line ~258), appendix claims OLS + HC3 (line ~765); actual code
-  `src/modeling/model_R.R` uses lmrob (KS2014) and rlm with Huber psi.
+- Submitted version (the source the reviews refer to):
+  `paper/AnonymousSubmission/RestructuredLatex/icwsm2026-restructured.tex`.
+  `LaTeX/anonymous-submission-latex-2026.tex` is an OLDER draft; an earlier
+  session mistook it for the submission and edited the wrong base.
+  `CameraReady/` is still blank template.
+- Revision manuscript: `paper/Revision/revision.tex` (built from the
+  RestructuredLatex source, Ceren's abstract and intro kept). Response letter:
+  `paper/revision/response_letter.md`, built with `make` in that folder.
+- Estimator (settled in the revision): all reply models are statsmodels RLM,
+  Huber loss, Huber's proposal 2 scale. The default MAD scale degenerates here
+  because 61% of reply cascades are single posts at the origin. OLS with HC3
+  is used only for the repost reconstruction check.

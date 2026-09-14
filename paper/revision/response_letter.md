@@ -1,190 +1,165 @@
 ---
 title: "Response to Reviewers"
-subtitle: "Paper 1217, Depth, Breadth, and Bias: Structural Diffusion of Political Content on Divergent Platforms"
-geometry: margin=0.7in, landscape
-fontsize: 9pt
+subtitle: "Paper 1217: Depth, Breadth, and Bias: Structural Diffusion of Political Content on Divergent Platforms"
+geometry: margin=1in
+fontsize: 11pt
+header-includes:
+  - \renewcommand{\labelitemi}{$\bullet$}
+  - \renewcommand{\labelitemii}{$\circ$}
+  - \usepackage{enumitem}
+  - \setlist[itemize]{itemsep=4pt, topsep=4pt}
 ---
 
-We thank the reviewers and the SPC for their careful and constructive comments. We found the feedback very helpful in identifying several places where the original manuscript needed clearer definitions, additional validation, and more cautious interpretation. We have revised the manuscript substantially in response. All additions and major revisions are highlighted in blue in the revised manuscript.
+## Summary
 
-The main changes include additional robustness checks for repost-cascade reconstruction, expanded validation of the ideology labels, clarification of the post-level unit of analysis, sensitivity analyses using alternative cascade and ideology specifications, and a revised regression specification after identifying a problem with the original scale estimator. We also expanded the descriptive reporting, motif analysis, and discussion of the scope and limitations of the findings.
+We thank the SPC and the three reviewers for their careful and constructive comments. We were encouraged that the reviewers found the question timely and relevant to ICWSM (SPC, R2, R3) and the cross-platform comparison valuable, particularly because Truth Social and Bluesky remain understudied in comparative research (SPC, R1). The SPC, R2, and R3 highlighted the distinction between repost cascades as amplification and reply cascades as conversation, and R2 described the finding that reposts scale similarly while replies diverge as the paper's strongest contribution. We were also glad that the reviewers found the paper well written (SPC, R2, R3), careful not to overstate its results (R1), and the motif analysis interesting for comparing platforms (R1).
+
+We found the feedback very helpful in identifying several places where the original manuscript needed clearer definitions, additional validation, and more cautious interpretation, and we have revised the manuscript substantially in response. The main changes include additional robustness checks for repost-cascade reconstruction, expanded validation of the ideology labels, clarification of the post-level unit of analysis, sensitivity analyses using alternative cascade and ideology specifications, and a revised regression specification after identifying a problem with the original scale estimator. We also expanded the descriptive reporting and the motif analysis, and moved the discussion of scope and limitations into its own section.
 
 Across these sensitivity analyses, estimates sometimes change substantially in magnitude, but none overturns the central conclusions. The depth difference persists across alternative samples and cascade representations, while the user-collapsed analysis shows that part of the post-level breadth difference reflects repeat participation. The association with ideological composition and interaction alignment remains substantial across alternative ideology thresholds, label-noise simulations, and composition specifications. Some checks also narrow the interpretation of particular findings. For example, collapsing repeated posts by the same user reduces the breadth difference, indicating that repeat participation contributes to the post-level breadth contrast, while the partisan-only analysis shows that the residual center category contributes to part of the statistical attenuation. We have revised the manuscript to make these qualifications explicit.
 
-The first seven items are the seven points raised in the SPC decision, each answered once. Where a
-reviewer raised the same issue it is listed in the Raised by column and answered there rather than
-repeated. Items C8 onward are the remaining reviewer-specific comments.
+Below we respond first to the seven priorities in the SPC's roadmap and then to each reviewer's comments in turn. Where a reviewer's comment is addressed in full under an SPC priority, we summarize the change and refer to that response. Page numbers refer to the revised PDF. All revised and added content in the manuscript is shown in blue; the coloring will be removed in the final version.
 
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| #    | Raised by  | Reviewer point              | Response                                                   | Where        |
-+======+============+=============================+============================================================+==============+
-| C1   | SPC-1,     | Repost cascades are         | We addressed this in two ways. First, we rebuilt all       | App. D, Fig. |
-|      | R1-R3      | reconstructed rather than   | 244,129 repost cascades under alternative linking rules,   | 9            |
-|      |            | directly observed, so the   | together with a 40-draw random-linking specification.      |              |
-|      |            | apparent cross-platform     | Across these, the platform-by-size interaction stays       |              |
-|      |            | similarity could depend on  | within [-0.012, +0.031] for breadth and [-0.083, +0.028]   |              |
-|      |            | the reconstruction method   | for depth, against +0.170 and -0.182 for the corresponding |              |
-|      |            | and on follower edges that  | reply cascades. Second, because follower edges are         |              |
-|      |            | may postdate the repost.    | observed only in a post-collection snapshot without edge   |              |
-|      |            |                             | creation dates, we simulated timing error by randomly      |              |
-|      |            |                             | removing 5% to 30% of follower edges and reconstructing    |              |
-|      |            |                             | the cascades; the resulting platform interactions remain   |              |
-|      |            |                             | much smaller than the reply-cascade values. Both follower  |              |
-|      |            |                             | networks were collected during the same period, although   |              |
-|      |            |                             | we do not assume the timing error is identical across      |              |
-|      |            |                             | platforms. We also now refer to these cascades as          |              |
-|      |            |                             | reconstructed throughout.                                  |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C2   | SPC-2, R2, | It was unclear whether      | We have clarified that reply-cascade nodes are posts, not  | Methods;     |
-|      | R3         | cascade nodes represent     | unique users. A user who replies multiple times therefore  | App. E       |
-|      |            | users or posts, and how     | contributes multiple nodes carrying the same user-level    |              |
-|      |            | repeated users are treated. | ideology label. We also reconstructed the reply cascades   |              |
-|      |            |                             | after collapsing repeated appearances by the same user.    |              |
-|      |            |                             | The depth difference remains under this representation,    |              |
-|      |            |                             | whereas the breadth difference becomes substantially       |              |
-|      |            |                             | smaller. We now state explicitly that part of the          |              |
-|      |            |                             | post-level breadth contrast reflects repeat participation  |              |
-|      |            |                             | within threads.                                            |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C3   | SPC-3, R1, | The ideology validation was | We addressed these concerns together because they all bear | App. B,      |
-|      | R2         | limited, the Center         | on the measurement of ideology. We now report              | Table 3      |
-|      |            | category may combine        | class-specific and platform-specific precision and recall  |              |
-|      |            | moderate with uncertain     | with bootstrap intervals on the 171 cases where both       |              |
-|      |            | classifications, and the    | annotators agreed. Accuracy against consensus is 0.86,     |              |
-|      |            | manuscript should show      | inter-annotator kappa is 0.77, and model-human kappa is    |              |
-|      |            | robustness to plausible     | 0.61 and 0.74. We also define the Center category          |              |
-|      |            | label error.                | explicitly as a residual and recompute composition and     |              |
-|      |            |                             | alignment using partisan users only, where the association |              |
-|      |            |                             | remains substantial although smaller. Finally, we          |              |
-|      |            |                             | propagate label error through Model 3c under four error    |              |
-|      |            |                             | processes, with 100 draws per scenario. Median attenuation |              |
-|      |            |                             | ranges from 70 to 86 percent, against 84 and 86 percent    |              |
-|      |            |                             | with unperturbed labels, and even the least favorable draw |              |
-|      |            |                             | retains 66 percent. The pooled-error scenario produces the |              |
-|      |            |                             | largest reduction; the platform-specific and bootstrap     |              |
-|      |            |                             | scenarios, closest to the error we measured, stay nearest  |              |
-|      |            |                             | the unperturbed estimates.                                 |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C4   | SPC-4, R2, | Alignment is calculated     | We agree and have revised the manuscript throughout to     | Results;     |
-|      | R3         | from the same reply edges   | avoid a causal interpretation of the alignment results.    | Limitations  |
-|      |            | that determine cascade      | Alignment and cascade geometry are jointly realized        |              |
-|      |            | structure, making causal    | features of the same conversation, so the observed         |              |
-|      |            | language inappropriate.     | association does not establish a direction of influence.   |              |
-|      |            |                             | The Results now state this limitation directly, and the    |              |
-|      |            |                             | Discussion consistently describes composition and          |              |
-|      |            |                             | alignment as statistically associated with the platform    |              |
-|      |            |                             | difference rather than as causal mechanisms.               |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C5   | SPC-5, R1  | Descriptive reporting is    | We expanded the reporting throughout. Cascade counts, post | App. C, G,   |
-|      |            | thin: cascade counts by     | counts and size distributions are now given as n (%) by    | H; Tables 4, |
-|      |            | size, raw motif counts,     | platform and cascade type; this also made clear that       | 5            |
-|      |            | whether the null model      | root-only cascades are common and far more frequent on     |              |
-|      |            | handles motif overlap, and  | Bluesky, and because they carry no variation in breadth or |              |
-|      |            | topic-model detail.         | depth we refit the models excluding them, where the        |              |
-|      |            |                             | baseline platform difference is smaller but present and    |              |
-|      |            |                             | the combined ideology specification still accounts for     |              |
-|      |            |                             | most of it. We added observed counts for all 54            |              |
-|      |            |                             | ideology-labeled three-node motifs on both platforms. We   |              |
-|      |            |                             | describe the randomization and counting procedure          |              |
-|      |            |                             | explicitly: the same overlapping-instance enumeration is   |              |
-|      |            |                             | applied to observed and randomized graphs alike, so        |              |
-|      |            |                             | overlap is treated consistently, and because motifs share  |              |
-|      |            |                             | substructure we interpret the results as patterns across   |              |
-|      |            |                             | motif families rather than as independent evidence. We     |              |
-|      |            |                             | also report the topic-model corpus size (125,623 root      |              |
-|      |            |                             | posts), the outlier reduction procedure and settings, the  |              |
-|      |            |                             | remaining outlier share, and the eleven topic categories.  |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C6   | SPC-6, R2  | The main text describes     | We corrected this inconsistency. The main reply-cascade    | Methods;     |
-|      |            | robust regression with      | models use the Huber loss. Reviewing the procedure, we     | App. I,      |
-|      |            | Huber loss, whereas the     | found the default median-absolute-deviation scale          | Table 6      |
-|      |            | appendix referred to OLS    | degenerates because of the large mass of root-only         |              |
-|      |            | with HC3 standard errors.   | cascades, so the main models are refit with Huber's        |              |
-|      |            |                             | Proposal 2 scale. Table 1 now reports the corresponding    |              |
-|      |            |                             | estimates and standard errors, and Appendix I reports      |              |
-|      |            |                             | sensitivity results across samples and scale estimators.   |              |
-|      |            |                             | OLS with HC3 errors is used only for the                   |              |
-|      |            |                             | repost-reconstruction robustness analysis, where the Huber |              |
-|      |            |                             | scale estimate also degenerates.                           |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C7   | SPC-7,     | The paper examines one      | We revised the Discussion to state both the substantive    | Discussion;  |
-|      | R1-R3      | month of Biden- and         | implications and the limits of the comparison, and         | Limitations  |
-|      |            | Trump-related discussion    | gathered the limitations into a single section. We         |              |
-|      |            | during an unusual election  | distinguish the structural interpretation of broad and     |              |
-|      |            | period, in a single         | shallow from narrow and deep reply cascades from any       |              |
-|      |            | national context. It should | normative evaluation of those forms, and make clear that   |              |
-|      |            | clarify what generalizes    | the observed ideological composition and absolute cascade  |              |
-|      |            | and what the two cascade    | statistics are specific to the candidate-centered sampling |              |
-|      |            | shapes imply.               | frame and period studied here. We also state explicitly    |              |
-|      |            |                             | that both platforms are U.S.-centered and the sampled      |              |
-|      |            |                             | conversation is American, so the patterns describe a       |              |
-|      |            |                             | single national context, and that comparable analyses      |              |
-|      |            |                             | elsewhere are needed to establish how broadly they         |              |
-|      |            |                             | generalize.                                                |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C8   | R1         | The estimated left share on | These estimates are not directly comparable to prior       | App. B;      |
-|      |            | Truth Social and right      | platform-wide prevalence estimates because the studies     | Limitations  |
-|      |            | share on Bluesky appear     | differ in both sampling frame and how ideology is          |              |
-|      |            | high relative to previous   | measured. Our labels summarize expressed political         |              |
-|      |            | estimates.                  | position within the sampled Biden and Trump discourse      |              |
-|      |            |                             | rather than a context-independent ideology, and a position |              |
-|      |            |                             | that appears left-leaning in a Trump-centered conversation |              |
-|      |            |                             | need not imply a consistently left-wing position across    |              |
-|      |            |                             | candidates or issues. We therefore do not treat exact      |              |
-|      |            |                             | agreement with a particular platform-wide percentage as    |              |
-|      |            |                             | the validation criterion. Instead, we evaluate whether the |              |
-|      |            |                             | labels are interpretable and sufficiently reliable for the |              |
-|      |            |                             | comparative analysis in which they are used. We report     |              |
-|      |            |                             | human validation by class and platform, quantify the       |              |
-|      |            |                             | direction and uncertainty of classification error, apply a |              |
-|      |            |                             | prevalence correction, and propagate measured label error  |              |
-|      |            |                             | through the downstream models. The correction reduces the  |              |
-|      |            |                             | estimated Bluesky right share from 24.2% to 17.9% and the  |              |
-|      |            |                             | Truth Social left share from 11.5% to 1.9%.                |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C9   | R1         | The rationale for examining | We expanded the justification for treating the unusually   | App. A       |
-|      |            | highly followed users only  | high-follower Truth Social accounts separately. The upper  |              |
-|      |            | on Truth Social was not     | tail is far more concentrated on Truth Social: the largest |              |
-|      |            | sufficiently developed, and | account has 56 times the follower count of that platform's |              |
-|      |            | a symmetric top-n rule      | 99.9th percentile account, against a ratio of 5 on         |              |
-|      |            | might be preferable.        | Bluesky. We therefore treat this as a platform-specific    |              |
-|      |            |                             | concentration rather than imposing the same numerical      |              |
-|      |            |                             | cutoff on Bluesky, where the upper tail shows no           |              |
-|      |            |                             | comparable separation.                                     |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C10  | R1         | How much of the observed    | We added a direct analysis of A -> B -> A exchanges. Among | App. F       |
-|      |            | reply depth consists of     | cascades with depth of at least two, 68.8% on Bluesky and  |              |
-|      |            | back-and-forth interaction  | 70.0% on Truth Social contain at least one such exchange.  |              |
-|      |            | between the same two users? | These exchanges account for 20.0% and 15.6% of reply       |              |
-|      |            |                             | edges, respectively. The similar prevalence across the two |              |
-|      |            |                             | platforms suggests that the observed depth difference is   |              |
-|      |            |                             | not primarily due to one platform containing more dyadic   |              |
-|      |            |                             | back-and-forth conversations.                              |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C11  | R1         | The alignment results were  | We revised the alignment subsection to provide a clearer   | Methods      |
-|      |            | difficult to follow.        | definition, define the notation at first use, and include  |              |
-|      |            |                             | a worked example showing how the measure is calculated     |              |
-|      |            |                             | within a reply tree.                                       |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C12  | R1         | Several figures were        | We revised the figures to improve readability, including   | Figs. 1, 4,  |
-|      |            | difficult to read because   | moving motif-family labels outside the plotting area and   | 5, 7, 11     |
-|      |            | of overlapping labels and   | correcting labels and annotations that extended beyond the |              |
-|      |            | unclear plotted quantities. | axes. The revised figures are rendered at 300 dpi and no   |              |
-|      |            |                             | longer contain overlapping elements.                       |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C13  | R1         | The literature review would | We updated the Related Work section with more recent work  | Related Work |
-|      |            | benefit from more recent    | on cascade structure, information diffusion, and newer     |              |
-|      |            | information-spreading work. | social media platforms, including recent work on Bluesky.  |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
-| C14  | R1         | Some notation was           | We reviewed the manuscript for undefined notation,         | Throughout   |
-|      |            | unexplained and formatting  | inconsistent terminology, and formatting issues and        |              |
-|      |            | was inconsistent.           | corrected these throughout.                                |              |
-+------+------------+-----------------------------+------------------------------------------------------------+--------------+
+## Responses to the SPC
 
-\noindent\begin{minipage}{\textwidth}
-We thank the reviewers and the SPC again for their careful and constructive feedback. Regardless of the
-final decision, we feel that this revision has made the project substantially stronger and more robust.
-The comments pushed us to clarify several parts of the analysis, add sensitivity checks that we had not
-originally included, and narrow some of the interpretations where appropriate. We very much appreciate
-the time the reviewers spent on the paper and the opportunity to revise it.
-\end{minipage}
+- **SPC-1.** Validate or revise the repost cascade analysis. Provide robustness checks showing how results change under alternative repost reconstruction assumptions, including assumptions about follower-network timing and inferred exposure paths. If this cannot be done convincingly, consider reducing the emphasis on repost cascades or focusing the main contribution on reply cascades.
+    - We kept the repost analysis and tested its assumptions directly (Appendix D, p. 17). Every admissible reconstruction rule chooses a repost's parent from the same candidate set, the original post plus earlier reposters whom the reposting user follows. We rebuilt all 244,129 repost cascades (4.03 million reposts) under the rule used in the paper and under rules that choose the earliest eligible reposter, the most recent eligible reposter, or a uniformly random one (40 draws), each under both readings of the repost list order. Across all of them, the platform-by-size interaction for reposts stays within [-0.012, +0.031] for breadth and [-0.083, +0.028] for depth; the same estimator gives +0.170 and -0.182 for reply cascades (Figure 9, p. 18). The rule used in the paper yields the largest repost difference of any specification, and every alternative moves the estimates closer to zero. The rule also has limited room to matter: 55 percent of Bluesky reposts and 59 percent of Truth Social reposts have no eligible prior reposter and attach to the root under every rule.
+    - On follower-network timing: the follower networks are snapshots without edge creation dates, so a follow edge can postdate the repost it is used to explain. Both follower networks were collected during the same period, although we do not assume the timing error is identical across platforms. To bound its effect, we deleted 5 to 30 percent of follow edges at random before reconstruction. Across that range the breadth interaction moves from 0.031 to 0.005 and the depth interaction from 0.004 to 0.013, an order of magnitude below the reply-cascade values.
+    - We also removed the description of repost cascades as empirical. They are called reconstructed throughout, and Section 3.2 (p. 4) states how they are built and that the follower network is a post-collection snapshot.
+
+- **SPC-2.** Clarify cascade definitions. Explicitly state whether nodes are users, posts, or interactions; how repeated users in the same thread are represented; and how these choices affect depth, breadth, and motif analyses.
+    - Nodes are posts. In a reply cascade each node is the root post or a reply, so a user who replies several times contributes one node per reply; in a repost cascade each node is a repost. Ideology is aggregated at the user level, and each node carries the label of the account that wrote it. The submitted version described cascade nodes as users, which did not match the implementation, and Section 3.2 (p. 4) now gives the definition for both cascade types.
+    - Because this choice affects depth and breadth, we rebuilt every reply cascade from the raw thread data under both representations and compared them on the same 42,947 threads, those that still contain more than one node after each user is collapsed to a single node (Appendix E, p. 18). The depth divergence persists (-0.184 at post level, -0.132 collapsed) and is again largely absorbed by composition and alignment. The breadth divergence does not persist: it falls from 0.160 to -0.032 on the same threads, so part of Truth Social's greater post-level breadth reflects the same users posting repeatedly within a thread. The paper now states this.
+    - Motifs are counted on the post-level trees, so one user can occupy two positions in a motif. To show how often that happens, Appendix F (p. 18) counts exchanges of the form $A \rightarrow B \rightarrow A$, in which a reply's author also wrote its grandparent post. Among cascades of depth two or more, 68.8 percent on Bluesky and 70.0 percent on Truth Social contain at least one, and such exchanges account for 20.0 and 15.6 percent of reply edges. Repeat participation of this kind is similarly common on both platforms.
+
+- **SPC-3.** Strengthen ideology-label validation. Report more detailed validation results, including class-specific and platform-specific performance. Clarify the meaning of the center category and test whether the main findings are robust to plausible ideology-label noise.
+    - Appendix B now reports class-specific and platform-specific precision and recall, with bootstrap intervals, against the 171 of 200 validation items on which both annotators agree (Table 3, p. 15). Accuracy against this consensus is 0.86; inter-annotator agreement is $\kappa = 0.77$, and model-human agreement is $\kappa = 0.61$ and $0.74$. The errors are not uniform: the model over-assigns each platform's ideological minority, with precision of 0.64 for right-leaning labels on Bluesky and for left-leaning labels on Truth Social, against 0.98 and 0.93 for each platform's largest class. Because the minority cells rest on few items, we test the direction of the gap by bootstrap (one-sided $p = 0.017$ on Bluesky and $p = 0.004$ on Truth Social) and report the magnitude with its uncertainty.
+    - The center category is now defined explicitly as a residual: it collects users who reach neither partisan threshold, which mixes moderate users, users who post about politics inconsistently, and users the classifier could not resolve (Section 3.5, p. 5). We interpret center-labeled users that way throughout, including in the motif results. To test whether this residual carries the result, we recomputed composition and alignment over partisan users only (Appendix B, p. 17). On the 28,083 cascades where this is possible, composition and alignment still absorb 61 percent of the baseline breadth divergence and 64 percent of the depth divergence, against 99 and 77 percent under our main specification on the same sample.
+    - We propagated the measured classification error through the full analysis (Appendix B, pp. 15-17). In each draw, every user's label is replaced by a draw from the measured confusion distribution, composition and alignment are recomputed, and Model 3c is refit. We ran 100 draws under each of four error processes: the measured platform-specific rates, a pooled matrix, a nested bootstrap of the validation sample, and the less favorable rates measured against a single annotator. Median attenuation ranges from 70 to 86 percent across the four processes, against 84 and 86 percent with unperturbed labels, and even the least favorable of the 400 draws retains 66 percent. The pooled-error scenario produces the largest reduction; the platform-specific and bootstrap scenarios, closest to the error we measured, stay nearest the unperturbed estimates. Label noise therefore reduces the estimated degree of accounting under some specifications, but composition and alignment account for a majority of the baseline divergence in every simulation.
+    - The results also hold when users are classified with thresholds of 0.5 and 0.7 in place of 0.6 (Table 2, p. 15).
+
+- **SPC-4.** Reframe explanatory claims. Replace causal language suggesting that ideology and alignment "explain" platform differences with more cautious language about association, unless additional analyses can support a stronger claim. Discuss the potential endogeneity between alignment ratio and cascade structure.
+    - We agree and have revised the manuscript throughout. Composition and alignment are now described as associated with, or statistically accounting for, the platform difference in the abstract, introduction, results, and discussion. Where the submitted version said that platform differences disappear once ideology is modeled, the revision reports how much of the difference is absorbed: roughly five sixths of the baseline interaction for both breadth and depth (Table 1, p. 8).
+    - On endogeneity: the alignment ratio is computed from the same reply edges that determine depth and breadth, so alignment and cascade structure are jointly realized features of one conversation. Cross-ideological exchanges may lengthen sequential discussion, and sustained discussion may in turn create more occasions for cross-ideological exchange, the possibility R3 raises with deep and star-like cascades. The Limitations section (Section 6, p. 10) states this and treats alignment as associated with cascade structure, and the Results point to it where Model 3c is introduced (p. 7).
+
+- **SPC-5.** Improve reporting of data and robustness. Add readable descriptive statistics on posts, cascades, cascade sizes, motif frequencies, user participation patterns, and topic model outputs. Include motif counts and explain how dependence among motifs is handled.
+    - Table 4 (Appendix C, p. 18) reports, for each platform and cascade type, the number of cascades, the number of posts, and the number of cascades in each size range, as counts with percentages. The data cover May 30 to June 30, 2024 (Section 3.1, p. 4). Compiling this table surfaced something we had not reported: most reply cascades are a single post, 71.3 percent on Bluesky against 43.3 percent on Truth Social. Those cascades have no variation in breadth or depth and sit at the origin of the scaling plot, so we refit every model on the 47,670 cascades with more than one post. The baseline interaction is smaller there, and composition and alignment still absorb 81 to 92 percent of it (Table 6, p. 21).
+    - Table 5 (p. 19) gives the observed count of each of the 54 ideology-labeled three-node motifs on both platforms, next to the z-scores in Figures 4 and 5. Overlapping motifs do not bias the z-scores, because the randomized graphs are counted with the same overlapping-instance enumeration as the observed graphs, so overlap inflates observed and null counts alike. Overlap does make neighboring motif scores correlated, so we read them jointly, as patterns across motif families. Appendix G (pp. 18-19) describes the null model: 100 randomized graphs per platform, built by double-edge swaps within each cascade ($5m$ attempts for a cascade of $m$ edges), which preserve cascade sizes, out-degrees, and each participant's ideology. The submitted main text gave the number of randomizations as 1,000,000, which did not match the code or the appendix; both now state 100.
+    - User participation patterns are reported in Appendices E and F (see SPC-2). Appendix H (p. 19) reports the topic model: it was fit on 125,623 root posts, BERTopic's outlier reduction step reassigns low-density posts to their nearest topic, leaving 21 posts (0.02 percent) unassigned, and manual labeling yields the eleven categories used in Model 4.
+    - The SPC's summary also asked about back-and-forth reply chains between the same two users and about figure readability; we address these under R1's general comments 6 and 1.
+
+- **SPC-6.** Resolve methodological inconsistencies. Ensure that the regression estimator, loss function, and standard error procedure are described consistently across the main text and appendix.
+    - Thank you; this was an error in the submitted version. The reply-cascade models are robust linear models with the Huber loss. The appendix paragraph describing linear regression with HC3 standard errors was left over from an earlier specification and has been removed. The only analysis estimated by OLS with HC3 standard errors is the new repost reconstruction check, where the outcomes take few distinct values and the Huber scale estimate is degenerate; the appendix now says so.
+    - Checking this surfaced a related problem. Because 61 percent of reply cascades are a single post at the origin of the scaling plot, the default median-absolute-deviation scale estimate collapses to nearly zero, and the standard errors in the submitted Table 1 could not be interpreted. We refit every model with Huber's proposal 2 scale, which does not degenerate here, and report standard errors from the sandwich covariance estimator (Section 3.6, p. 5; Table 1, p. 8). Point estimates shift, most visibly for Model 3c on breadth, from 0.023 to 0.071 against a baseline of 0.419, and composition and alignment still absorb about five sixths of the baseline difference for both outcomes. Table 6 (p. 21) reports the results under both scale estimators, with and without single-post cascades: the absorbed share ranges from 81 to 94 percent across the four combinations. The threshold, encoding, and label-noise analyses in the appendix use the same estimator as Table 1.
+
+- **SPC-7.** Sharpen implications and limitations. Explain why the observed structural differences matter, what they suggest about platformed political discussion, and how limited the conclusions are to the 2024 U.S. election context and Biden/Trump-related discourse.
+    - The Discussion (Section 5, pp. 9-10) now states what the two cascade shapes mean. Wide, shallow reply cascades consist of many users responding to the same post with little exchange among them; narrow, deep cascades consist of replies that themselves draw replies over several turns. The two shapes distribute attention differently, and here the difference arises between platforms with similar reply mechanics. The Discussion also states a methodological implication: comparisons based on activity or cascade size alone would record Truth Social as simply more active and miss the divergence, which appears only after conditioning on size.
+    - The limitations are now a separate section (Section 6, p. 10). It states that the sample is candidate-centered and covers one month of the 2024 U.S. campaign; that the ideological composition we observe reflects that conversation and should not be read as the composition of either platform's full user base; that both platforms are U.S.-centered, so the patterns describe a single national context; that our ideology labels are coarse positions within the sampled Biden and Trump discourse; and that the alignment result is an association. The conclusion the evidence supports is that platforms with similar reply mechanics can exhibit different conversational structures conditional on cascade size, and that these differences are associated with who participates and how they engage across ideological lines.
+
+## Responses to Reviewer 1
+
+### Repost cascade reconstruction
+
+- You have reconstructed the cascades for reposts in a very deterministic manner according to section 3.2. I have no way of gauging whether this reconstruction is in any way realistic and I am concerned that the results which show that Bsky and Truth Social have similar report cascade structure are an artefact of this reconstruction process. I would want to see substantial validation and robustness checks to assess the influence of your choice of reconstruction mechanism on your results. The text refers to "empirical" cascades - if your cascades are reconstructed, then these are not empirical but modelled. I suggest either (1) cutting all the repost content and focusing on the reply trees, or (2) adding substantial robustness checks which assess the impact of the cascade reconstruction mechanism.
+    - Thank you; we took the second option. Because the concern is that one deterministic rule could produce the similarity, we re-derived every repost cascade under alternative deterministic rules and a random-rule ensemble, and found that the rule used in the paper gives the largest platform difference of any of them. The repost interaction stays near zero under all of them, against a clear reply-cascade difference (Appendix D and Figure 9, pp. 17-18; details under SPC-1). We also removed "empirical" for these cascades, which are now called reconstructed throughout.
+
+### Ideology labels
+
+- A lot of the results rely on a comparison between different ideological groups (left, centre, right). This is interesting, but it is also extremely reliant on the method used to label the ideology of users. This concerns me for multiple reasons: (1) you seem to find vastly more left leaning users of Truth Social than the wider literature would suggest, and likewise far more right leaning users on Bsky than the literature would suggest (I am thinking of a Bsky paper by Alex Bovet's team in Zurich which looked into this). This makes me question your ideological labelling and all the results which depend on this labelling, e.g., the ideology-based cascade trees. It is also important because the literature consistently suggests that most social media users are not politically engaged (although this is of course less likely to be the case in threads mentioning Biden or Trump). I would ask the authors to go to some effort to convincing the reader of the validity of their ideology labelling - currently I am not convinced.
+    - Thank you for pointing to the Bluesky study by Bovet's group (Quelle and Bovet 2025); Appendix B now compares our estimates with it directly (p. 17). These estimates are not directly comparable to platform-wide prevalence figures, because the studies differ in both sampling frame and how ideology is measured. Our sample is restricted to accounts posting in Biden- or Trump-related conversations during one campaign month, so every account in it is politically engaged in that narrow sense, and our labels summarize the stance a user expresses in those conversations. A position that appears left-leaning in a Trump-centered conversation need not imply a consistently left-wing position across candidates or issues, and the Limitations section now says the labels should be read as positions within the sampled discourse (p. 10).
+    - Part of the gap is also measurement error, in the direction you suspected: the model over-assigns each platform's ideological minority (SPC-3). Correcting the prevalence estimates with the measured confusion matrix lowers the right-leaning share on Bluesky from 24.2 to 17.9 percent and the left-leaning share on Truth Social from 11.5 to 1.9 percent. The remaining discrepancy may partly reflect the candidate-centered sampling frame and differences in measurement across studies.
+    - We therefore do not treat exact agreement with a particular platform-wide percentage as the validation criterion. We evaluate whether the labels are reliable enough for the comparison in which they are used: class-specific and platform-specific validation, a test of the direction of the error, propagation of the measured error through the models, alternative thresholds, and a partisan-only specification. Across all of these, composition and alignment continue to account for a majority of the platform difference (details under SPC-3).
+
+### Motifs, topics, and data
+
+- I like Figures 4 and 5, but I would want to know how many of each motif are actuallyu present in your dataset. This is crucial information for actually assessing the validity of your results.
+    - Table 5 (p. 19) now gives the observed count of all 54 ideology-labeled motifs on both platforms, alongside the z-scores in Figures 4 and 5. The counts matter for interpretation in the way you anticipated: on Truth Social, for example, Left to Right bounce-back chains are strongly overrepresented relative to the null model while remaining rare in absolute terms, which the Discussion now notes (p. 9).
+
+- Related to point 2 - different motifs are of course not independent of each other. Does your randomisation strategy account for this. In a chain of length 4, there are two 3 motifs, but these are not independent. How does this effect your results?
+    - It does, in the sense that matters for the z-scores: the randomized graphs are counted with the same overlapping-instance enumeration as the observed graphs, so a chain of length four contributes two three-node chains to both counts alike. The dependence does make neighboring motif scores correlated, so we read them jointly, as patterns across motif families, and say so in Appendix G (pp. 18-19; see also SPC-5).
+
+- A bit more info on the topic modelling would be useful. In my experience most Twitter-like posts are too short to get a useful topic label and BERTopic tends to throw 50% + of the posts into an outlier group.
+    - Appendix H (p. 19) now describes the topic model. It was fit on 125,623 root posts. HDBSCAN initially assigns low-density posts to an outlier class; we applied BERTopic's outlier reduction step with its default settings, which reassigns each such post to its nearest topic, leaving 21 posts (0.02 percent) unassigned. Manual labeling of the resulting clusters yields the eleven categories used in Model 4. Topic accounts for little of the platform difference, so the uncertainty that reassignment introduces is unlikely to affect the main comparison.
+
+- I want far more info about the data. How many posts? Over how long? The CCDFs in Fig 2 are useful to a point, but I cannot read off how many cascades of size N there actually are. Can you provide more of this data in a readable format?
+    - Table 4 (Appendix C, p. 18) now reports, for each platform and cascade type, the number of cascades, the number of posts, and the number of cascades in each size range with percentages. The data cover May 30 to June 30, 2024 (Section 3.1, p. 4). There are, for example, 79,348 reply cascades on Bluesky containing 199,413 posts, and 43,841 on Truth Social containing 1,369,497 posts. The table also led to an additional analysis excluding single-post cascades, described under SPC-5.
+
+### Further analyses
+
+- I may have missed this, but how many of the reply chains are conversations between two users, i.e., a back and forth between the same two accounts?
+    - Appendix F (p. 18) now answers this. For every reply we checked whether its author also wrote its grandparent post, an $A \rightarrow B \rightarrow A$ exchange. Among cascades of depth two or more, 68.8 percent on Bluesky and 70.0 percent on Truth Social contain at least one, and such exchanges account for 20.0 and 15.6 percent of reply edges. Two-account back-and-forth is common on both platforms to a similar degree, so it does not explain the depth difference.
+
+- I'll be honest, I don't fully follow the results about the alignment of users... Some clearer explanation would be useful.
+    - We rewrote the definition in Section 3.5 (p. 5) and added a worked example. Each reply edge is coded aligned if both users share an ideological label and misaligned otherwise, and a cascade's alignment ratio is the share of aligned edges. In the example, a thread has four replies: two right-leaning users reply to a right-leaning root author, a left-leaning user replies to the root, and that reply draws a response from a right-leaning user. Three edges connect users who share a label and one crosses, so the ratio is 0.75. The measure describes the conversation: the same user contributes aligned edges in one thread and crossing edges in another.
+
+- The justification for only looking at influencers on TS is poor. The lack of a natural gap in the cascade distribution is not really a natural justification. What if you just take the top n% of accounts on both platfomrs?
+    - Thank you for pressing on this. The reason lies in the shape of the two follower distributions, which Appendix A now describes (p. 14). On Truth Social, eight accounts are separated from the rest of the distribution: the largest has 56 times the followers of the platform's 99.9th-percentile account, and together the eight hold 16.4 percent of all followers in our data. On Bluesky the largest account sits five times above the 99.9th percentile, continuous with the rest of the distribution, and the top eight hold 6.1 percent. The eighth-largest Truth Social account has more followers than the largest Bluesky account.
+    - A top-n percent rule would therefore not equalize the comparison: on Bluesky it would remove accounts continuous with the rest of the distribution, and on Truth Social any n large enough to capture the separated accounts would also sweep in ordinary ones. Model 2 accordingly treats the eight Truth Social accounts as a separate group, and they account for only a small share of the platform difference (Table 1, p. 8).
+
+- I don't particularly like that this is another US centric paper, but that is not really reason to reject. Just a shame not to diversify the focus.
+    - We agree that a single national focus narrows what the paper can claim. The Limitations section (Section 6, p. 10) now states that both platforms are U.S.-centered and the sampled conversation is American, so the patterns describe a single national context, and names comparison across countries as needed to establish how broadly they generalize.
+
+### Figures, presentation, and citations
+
+- A lot of the figures need a bit of cleaning up / further explanation.
+    - We revised the figures. In the motif figures (Figures 4 and 5, pp. 9-10), the motif family labels had been drawn inside the panels on top of the data; they now sit in a header band above the axes, and the captions explain the groupings and the $|Z| < 3$ threshold used to gray out small scores. In the topic and partisanship distributions (Figures 1 and 7, pp. 6 and 15), value labels on the longest bars fell outside the axes; both figures are rebuilt so every label sits inside, and the partisanship figure now uses a shared axis. The partial-residual diagnostic (Figure 11, p. 22) was three separate images; it is now a single row of panels with a smoother against each predictor's linear term, which shows the curvature the appendix describes. All figures are rendered at 300 dpi.
+
+- Overall the presentation is good, but there is a fair bit of unexplained notation. Also, the figures are messy in places with labels overlapping parts of the content. It is not always clear what is being shown. The latex has paragraph indents in places where there shouldnt be any.
+    - We reviewed the manuscript for undefined notation and define the terms of the statistical models where they first appear (Section 3.6, p. 5). The stray paragraph indents came from blank lines after displayed equations and have been removed. The figure changes are described in our response to your first general comment.
+
+- The citations are appropriate and comprehensive. However, the literature is quite old in the context of social media research. It would perhaps be worth updating the literature to some papers which are more recent on information spreading on social media.
+    - We added recent work on information spreading, including DeVerna et al. (2024) on how the cascade inference problem distorts measured diffusion, González-Bailón et al. (2024) on the diffusion and reach of information on Facebook during the 2020 U.S. election, and Slaughter et al. (2025) on how Community Notes reduce the diffusion of false information. We also added recent methodological work on using automated and language-model labels in downstream analysis (Egami et al. 2023; TeBlunthuis, Hase, and Chan 2024; Vallejo Vera and Driggers 2025). The Related Work section now cites 17 studies published since 2023, including work on Bluesky and Truth Social.
+
+## Responses to Reviewer 2
+
+### Causal interpretation
+
+- I feel that the main "ideology explains the platform gap" claim is too strong: The paper measures ideological composition and alignment from the same completed reply cascades whose depth and breadth it is trying to explain. That makes these variables partly endogenous to the outcome. Alignment is not clearly a prior cause of cascade shape; it may simply describe the cascade after it has already formed. I think the safer claim is that ideology and alignment are associated with the platform gap, not that they explain it causally.
+    - We agree. Composition and alignment are now described as associated with, or statistically accounting for, the platform difference throughout, and the Limitations section discusses the endogeneity you describe: alignment and cascade structure are jointly realized features of one conversation, so their association does not establish a direction of influence (Section 6, p. 10). Details under SPC-4.
+
+### Cascade construction
+
+- The cascade construction is ambiguous for me. The paper says cascade nodes are users, but reply trees are naturally built from posts/replies. If the same user replies multiple times, collapsing posts into one user node can change depth, breadth, and motif structure. Can authors further clarify this?
+    - Thank you; the submitted text was wrong on this point. Nodes are posts: a user who replies several times contributes one node per reply, each carrying that user's label (Section 3.2, p. 4). Collapsing repeated replies into one user node leaves the depth difference in place but shrinks the breadth difference from 0.160 to -0.032 on the same threads, and we report both representations (Appendix E, p. 18). Details under SPC-2.
+
+- In addition, the paper infers repost paths because platform APIs do not directly provide true diffusion paths. That is reasonable, but the inference depends on assumptions about follower relationships and timing. This may be further justified.
+    - We now test these assumptions directly. All repost cascades are rebuilt under alternative linking rules and under simulated follower-timing error, and the repost result holds throughout (Appendix D, p. 17). Details under SPC-1.
+
+### Generalizability
+
+- The study covers one month and only Biden/Trump-related discussion during a highly unusual campaign period, which makes the generalizability a little limited.
+    - We agree that this limits what the paper can claim. The new Limitations section (Section 6, p. 10) states that the sample is candidate-centered, covers one month of the 2024 campaign, and describes a single national context, and it states the narrower conclusion the evidence supports. Details under SPC-7.
+
+### Ideology validation
+
+- Another concern is about data size. The LLM-based stance validation uses only 200 human-labeled replies, and the paper does not report enough class-specific or platform-specific performance. The "center" category also appears to include genuinely centrist users, mixed users, and uncertain users. Given ideology is the paper's main explanatory variable, label noise could directly affect the results.
+    - We now report class-specific and platform-specific performance with bootstrap intervals (Table 3, p. 15), define the center category explicitly as a residual and test a partisan-only specification, and propagate the measured label error through the models. The minority-class cells in the 200-item sample are small, so we report their uncertainty, test the direction of the error by bootstrap, and show that the substantive result survives label noise at the measured rates. Details under SPC-3.
+
+### Regression estimator
+
+- In addition to the weaknesses listed above, I find that the methods describe robust regression with Huber loss, while the appendix says linear regression with HC3 robust standard errors. These are different estimators. I suggest authors double check this.
+    - Thank you for catching this; it was an error in the submitted version. The models use the Huber loss, and the HC3 paragraph has been removed. Checking this also led us to correct the scale estimator and refit Table 1. Details under SPC-6.
+
+## Responses to Reviewer 3
+
+### Treatment of ideological alignment
+
+- The main claim that ideological composition and interaction alignment jointly account for the platform-level divergence in reply cascade scaling is interesting, but this interpretation requires caution. The alignment ratio is computed from the reply edges that constitute the cascades. Therefore, while alignment ratio may affect cascade structure, it is also possible that cascade structure affects the alignment ratio. For example, deep cascades and star-like cascades may provide different opportunities for cross-ideological interaction. I therefore recommend weakening the causal interpretation of this result, or strengthening the discussion and analysis of this issue.
+    - We agree. We weakened the causal interpretation throughout, and the Limitations section now discusses the two-way relationship you describe: cross-ideological exchanges may lengthen sequential discussion, and sustained discussion may create further occasions for such exchanges (Section 6, p. 10). Details under SPC-4.
+
+### Construction of repost cascades
+
+- The paper uses the follower network to infer repost cascades, but the timing of post collection and follower-network collection may affect the accuracy of this inference. For example, suppose user u follows user v and u reposts v's post. The paper appears to infer that information flowed from v to u. However, is it possible that u followed v only after reposting v's post? If u followed v after the repost occurred, then inferring information flow from v to u would not be appropriate. The paper should discuss the potential impact of this type of inference error. It should also consider whether such errors may differ systematically between Truth Social and Bluesky.
+    - This is a real limitation, and your example describes it exactly: the follower networks are snapshots without edge creation dates, so a follow edge can postdate the repost it is used to explain. The two platforms' follower networks were collected at the same time, so the delay between posting and the snapshot is similar for both, although we do not assume the resulting error is identical. To bound its effect, we deleted 5 to 30 percent of follow edges at random before reconstruction; across that range the platform interactions remain an order of magnitude smaller than those for reply cascades (Appendix D, p. 17). Section 3.2 (p. 4) now states the snapshot limitation. Details under SPC-1.
+
+### Definition of cascades
+
+- In reply cascades, the same user may appear multiple times in the same thread. It is unclear how the paper handles such cases. For example, does the paper allow the same user to appear as multiple nodes in a single cascade? Or are nodes defined strictly as users, with only a specific reply, such as the first or last appearance, counted for each user? These details should be clarified.
+    - The same user can appear as multiple nodes: nodes are posts, and a user who replies several times contributes one node per reply (Section 3.2, p. 4). We also report results with each user collapsed to a single node at the shallowest depth at which they appear (Appendix E, p. 18). Details under SPC-2.
+
+### Implications and limitations
+
+- The finding that cascade structures differ across platforms is interesting. However, the practical and theoretical implications of this finding are not very clear. It is also unclear whether the results are specific to the 2024 U.S. election context or whether they can be generalized more broadly. The generalizability of the findings may be addressed in future work, but the paper should provide a more careful discussion of its implications and limitations.
+    - We rewrote the Discussion to state what the two cascade shapes imply (Section 5, pp. 9-10) and moved the limitations, including the dependence on the 2024 U.S. campaign and the candidate-centered sample, into a separate section (Section 6, p. 10). Details under SPC-7.
+
+We thank the reviewers and the SPC again for their careful and constructive feedback. Regardless of the final decision, we feel that this revision has made the project substantially stronger and more robust. The comments pushed us to clarify several parts of the analysis, add sensitivity checks that we had not originally included, and narrow some of the interpretations where appropriate. We very much appreciate the time the reviewers spent on the paper and the opportunity to revise it.
