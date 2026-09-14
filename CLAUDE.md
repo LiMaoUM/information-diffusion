@@ -40,8 +40,9 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 
 - NO per-repost timestamps exist on either platform: `reposts` (bsky) and
   `reblogList` (TS) items are account/profile objects; their `createdAt` is
-  account creation. The appendix's "timestamped repost data, t_j < t_i" does
-  not match the data; list order is the only temporal signal.
+  account creation. List order is the temporal signal. Mao (2026-09-14): the
+  list is ordered, so the paper's condition t_j < t_i holds as written (read
+  as list order); keep it in the text and do not call it invalid.
 - The shipped `build_repost_graph` (cascade_analysis.py) differs from the
   appendix text AND has two quirks that shaped published numbers:
   (a) after a node links under author A, `linked_users[A]` is overwritten with
