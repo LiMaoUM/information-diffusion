@@ -89,6 +89,12 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 - Revision manuscript: `paper/Revision/revision.tex` (built from the
   RestructuredLatex source, Ceren's abstract and intro kept). Response letter:
   `paper/revision/response_letter.md`, built with `make` in that folder.
+- Build the paper in an isolated copy, then copy the PDF back: VS Code's
+  LaTeX Workshop rebuilds `revision.tex` on every save, and two builds writing
+  the same `revision.aux` corrupt it ("File ended while scanning use of
+  \bibcite"). Copy revision.tex, aaai2026.bib, the .bst/.sty files and
+  figures/ to the scratchpad, run latexmk there. A first-run exit 12 with an
+  unreadable PDF is this race, not a LaTeX error.
 - Mao edits `response_letter.md` directly in VS Code (remote SSH), sometimes
   while a session is working on it. Before any scripted edit: check the file's
   mtime, `git diff` it against HEAD, and edit only spans he has not reworded;
