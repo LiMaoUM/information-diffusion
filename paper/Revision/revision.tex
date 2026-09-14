@@ -235,7 +235,7 @@ where $Y_i$ denotes either cascade breadth or depth. The coefficient of interest
 To quantify the explanatory contribution of additional covariates, we track percent attenuation of $\beta_3$:
 
 \begin{equation}
-\Delta = 1 - \frac{\hat{\beta}_{3,\text{aug}}}{\hat{\beta}_{3,\text{base}}} ,
+\Delta = \rev{1 - \frac{|\hat{\beta}_{3,\text{aug}}|}{|\hat{\beta}_{3,\text{base}}|}} ,
 \end{equation}
 where $\hat{\beta}_{3,\text{base}}$ is the interaction coefficient from Eq.~\ref{eq:eq1} and $\hat{\beta}_{3,\text{aug}}$ is the corresponding estimate from augmented specifications (Models 2--4). A larger $\Delta$ indicates that added covariates account for a greater portion of cross-platform difference.
 
