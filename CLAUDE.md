@@ -85,6 +85,15 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
 - Revision manuscript: `paper/Revision/revision.tex` (built from the
   RestructuredLatex source, Ceren's abstract and intro kept). Response letter:
   `paper/revision/response_letter.md`, built with `make` in that folder.
+- Mao edits `response_letter.md` directly in VS Code (remote SSH), sometimes
+  while a session is working on it. Before any scripted edit: check the file's
+  mtime, `git diff` it against HEAD, and edit only spans he has not reworded;
+  never replace whole lines he may have touched. His save snapshots are in
+  `~/.vscode-server/data/User/History/6a230617/` (entries.json maps ids to
+  times), which is how an overwrite can be checked or recovered.
+- Ceren's comments on the letter (2026-09-14) are in
+  `paper/revision/response_letter_cb.pdf` as PDF annotations; read them with
+  pymupdf (`page.annots()`), pdftotext does not show them.
 - Estimator (settled in the revision): all reply models are statsmodels RLM,
   Huber loss, Huber's proposal 2 scale. The default MAD scale degenerates here
   because 61% of reply cascades are single posts at the origin. OLS with HC3
