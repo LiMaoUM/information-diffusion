@@ -21,8 +21,15 @@ def main():
     frame = pd.read_csv(FRAME, dtype={"index": str}, low_memory=False)
     j = frame.merge(m[["platform", "tree_id", "u_size"]],
                     left_on=["platform", "index"], right_on=["platform", "tree_id"])
+    # Restrict to threads with at least one reply, as in the size > 1 rows of
+    # Table 6: dropping two-person threads from the full frame raises the share
+    # of single posts, which all sit at one point, and the proposal 2 scale
+    # estimate collapses again (NaN weights on the first attempt).
+    j = j.merge(m[["platform", "tree_id", "post_size"]], on=["platform", "tree_id"])
+    replied = j[j.post_size > 1]
     rows = []
-    for label, t in [("all matched", j), ("without two-participant threads", j[j.u_size != 2])]:
+    for label, t in [("threads with a reply", replied),
+                     ("same, without two-participant threads", replied[replied.u_size != 2])]:
         for y in ["log_breadth", "log_depth"]:
             b0, _ = fit(t, BASE_F, y)
             b3, n = fit(t, M3C_F, y)
