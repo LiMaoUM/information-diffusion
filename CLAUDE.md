@@ -50,6 +50,10 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
   sending it to root fallback. Also root-priority: reposters following the
   root author always attach to the root (the appendix describes root as
   fallback only).
+- Collection timing (Mao, 2026-09-14): posts/reposts and follower lists were
+  collected at the same time, one day apart, for both platforms. File mtimes
+  in `data/` reflect later re-saves and processing, NOT collection dates; never
+  infer collection timing from them.
 - Follow maps: use `data/bsky_followings.json` (id-only, 1.5 GB), not the
   23 GB `bsky_follows.json` (profile objects). TS: `ts_user_following_map.json`.
 - Robustness suite: `src/analysis/repost_robustness.py` (card in
