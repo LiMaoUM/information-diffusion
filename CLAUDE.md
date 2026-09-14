@@ -42,7 +42,8 @@ Truth Social vs. Bluesky. See README.md for layout and pipeline.
   `reblogList` (TS) items are account/profile objects; their `createdAt` is
   account creation. List order is the temporal signal. Mao (2026-09-14): the
   list is ordered, so the paper's condition t_j < t_i holds as written (read
-  as list order); keep it in the text and do not call it invalid.
+  as list order); keep it in the text and do not call it invalid. The list
+  runs from oldest to newest (Mao, 2026-09-14).
 - The shipped `build_repost_graph` (cascade_analysis.py) differs from the
   appendix text AND has two quirks that shaped published numbers:
   (a) after a node links under author A, `linked_users[A]` is overwritten with
