@@ -594,10 +594,6 @@ Three further constraints bear on interpretation. Our measure of ideological ali
 %% APPENDIX
 %% -------------------------------------------------------
 \appendix
-% let the appendix place more floats per page, so tables stay near their text
-\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.9}
-\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.8}
-\setcounter{topnumber}{3}\setcounter{bottomnumber}{2}\setcounter{totalnumber}{5}
 \setcounter{table}{0}\setcounter{figure}{0}
 \renewcommand{\thetable}{A\arabic{table}}\renewcommand{\thefigure}{A\arabic{figure}}
 
@@ -612,7 +608,7 @@ To identify unusually influential users, we examined the follower-count distribu
 
 \rev{We therefore designate the eight separated Truth Social accounts as influencers and apply no exclusion on Bluesky. A symmetric rule, such as excluding the top $n$ percent on both platforms, would not equalize the comparison: on Bluesky it would remove accounts continuous with the rest of the distribution, while on Truth Social any $n$ large enough to capture the separated class would also sweep in ordinary accounts.}
 
-\begin{figure}
+\begin{figure}[!tbp]
     \centering
     \includegraphics[width=\linewidth]{figures/powerlaw.png}
     \caption{Follower count distributions across platforms.}
@@ -624,7 +620,7 @@ To identify unusually influential users, we examined the follower-count distribu
 \subsection*{Ideological Distribution of Root Post Authors.}
 Figure~\ref{fig:party_dis} shows the ideological distribution of users who authored root posts. Bluesky exhibited a predominantly left-leaning user base (over 46,000 root posts from left-leaning users vs.\ 27,495 from right-leaning), while Truth Social was overwhelmingly right-leaning (37,639 right-authored root posts vs.\ 5,149 from left-leaning users and 1,053 from centrists).
 
-\begin{figure*}
+\begin{figure*}[!tbp]
     \centering
     \includegraphics[width=\linewidth]{figures/party_dis.png}
     \caption{Distribution of root post partisanship across platforms.
@@ -635,14 +631,14 @@ Bar plots show the number of root posts authored by users with left-leaning, cen
 \subsection*{Robustness to Ideology Thresholds.}
 We re-estimated Model~3 using alternative thresholds of 0.5 and 0.7 for classifying user ideology. \rev{Figure~\ref{fig:threshold} shows how the share of users in each category changes with the threshold: center-labeled users remain at every threshold, including 0.5, and grow as the threshold rises. Table~\ref{tab:robust_threshold} reports the fit and the platform-by-size interaction at each threshold. Against the baseline model without ideology measures, whose platform interaction on this sample is $0.417$ for breadth and $-0.321$ for depth, composition and alignment account for 63\% and 67\% of the platform difference at a threshold of 0.5, 84\% and 86\% at 0.6, and 98\% and 96\% at 0.7. The share rises with the threshold because a stricter threshold sorts more users into the center category, which composition then separates from the partisan groups. Pseudo-$R^2$ values are uniformly high and error metrics change little.} We also applied an unsupervised natural breakpoint detection algorithm to the ideology distribution, which identified 0.67 as a statistically distinct split point; we adopt 0.6 as our default to avoid excessive sparsity.
 
-\begin{figure*}
+\begin{figure*}[!tbp]
     \centering
     \includegraphics[width=0.9\linewidth]{figures/threshold.png}
     \caption{User ideology proportions and consistency across thresholds on \textit{Bluesky} and \textit{Truth Social}. Left-leaning users dominate at lower thresholds on Bluesky; right-leaning users represent the majority on Truth Social at all thresholds. Center-labeled users increase at higher thresholds on both platforms. \rev{A user is labeled left- or right-leaning when that share of their posts reaches the threshold, the same rule used in the models.}}
     \label{fig:threshold}
 \end{figure*}
 
-\begin{table*}[htbp]
+\begin{table*}[!htbp]
 \centering
 \caption{Robustness check using alternative thresholds for defining user-level ideology.
 Results show that the main findings are stable across thresholds (0.5, 0.6, 0.7):
@@ -675,7 +671,7 @@ platform gaps in cascade breadth and depth are consistently reduced once ideolog
 
 \rev{The misclassified items point to two sources of error. First, the model sometimes treats a post that describes the right as a right-leaning stance, and a post that describes the left as a left-leaning one. What a post discusses and where its author stands are related in complex ways: a description of the right can come from either side, and so can criticism of it, since a reply complaining that Republican leaders are too soft on immigration criticizes the right from the right. Second, some replies carry little substantive content. A reply such as ``What do we do?'' can be interpreted as supportive or as critical of the post it answers, depending on who writes it, which leaves room for error even with the preceding posts as context.}
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \small
 \rev{
@@ -707,7 +703,7 @@ Truth Social & right & 0.93 [0.86, 0.98] & 0.90 & 69 \\
 
 \rev{We ran this under four error processes: the error rates measured on each platform; one set of error rates pooled across both platforms, which applies to each platform's dominant class an error rate measured mostly on the other platform; error rates re-estimated from a resampled validation sample in each draw, which carries the uncertainty of the small validation sample through; and the error rates obtained when a single annotator's labels, instead of the consensus, are treated as ground truth, under which precision for right-leaning labels on Bluesky falls to 0.33. The baseline model without ideology measures does not use the labels, so its platform difference on these cascades ($0.417$ for breadth and $-0.321$ for depth) is the same in every draw; what label noise can change is how much of that difference composition and alignment account for. Table~\ref{tab:noise} reports this share. With the original labels it is 84\% for breadth and 86\% for depth. In the median draw of each process it stays between 70\% and 86\%, and in the least favorable of all 400 draws it is 66\%. The pooled process lowers the share the most, and the per-platform and resampled processes, which are closest to the error we measured, leave it near its original value. Label noise therefore lowers the share under some assumptions, but composition and alignment account for most of the platform difference in every simulation. All fits use Huber's proposal 2 scale, as in Table~\ref{tab:model_comparison}.}
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \small
 \rev{
@@ -739,7 +735,7 @@ Single annotator & 79\% & 72\% & 76\% & 69\% \\
 
 \rev{Table~\ref{tab:descriptives} gives the full size distribution behind the main-text summary in Table~\ref{tab:descriptives_main}.}
 
-\begin{table*}[t]
+\begin{table*}[!t]
 \centering
 \small
 \rev{
@@ -768,7 +764,7 @@ Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & \rev{112{,}266 (51.4)} & \rev{
 
 \rev{The rule has limited room to matter in the first place: 55\% of Bluesky reposts and 59\% of Truth Social reposts have no eligible prior reposter and attach to the root under every rule, and a further 21\% and 12\% have exactly one candidate. A second concern is that the follower network is a snapshot without edge creation dates, so a follow created after a repost could produce a spurious parent. The follower lists were collected together with the posts and reposts, one day apart, on both platforms, so few follow edges should postdate the reposts they explain and the error applies to both platforms alike. As a check, under the most-recent-reposter rule we deleted 5\% of follow edges at random; the breadth interaction moves from $0.031$ to $0.028$ and the depth interaction from $0.004$ to $0.005$, both far below the reply values.}
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=\linewidth]{figures/repost_robustness.png}
 \caption{\rev{Platform-by-size interaction $\beta_3$ for repost cascades under alternative reconstruction rules (dots with 95\% confidence intervals; shaded band, range over 40 random-rule draws), for log breadth (A) and log depth (B). The diamond marks the reply-cascade interaction under the same estimator.}}
@@ -783,7 +779,7 @@ Repost & Truth Soc. & 218{,}579 & 3{,}847{,}903 & \rev{112{,}266 (51.4)} & \rev{
 
 \rev{Table~\ref{tab:motifcounts} reports the raw observed frequency of every ideology-labeled three-node motif on each platform, alongside which the z-scores should be interpreted. The two platforms differ by orders of magnitude in absolute motif volume, so a large z-score does not imply a common configuration.}
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
@@ -840,7 +836,7 @@ Total & 318,502 & 233,481,534 & 60,768 & 578,307 \\
 \label{app:strategy}
 Initial Ordinary Least Squares (OLS) regression revealed strong heteroskedasticity, with residuals showing a fan-shaped pattern as a function of fitted values (Figure~\ref{fig:model_diag}). Residuals also exhibited heavy tails resembling a t-distribution. Although Cook's Distance analysis identified a small number of observations with relatively higher influence, the vast majority fell well below the threshold of $4/n$. \rev{The heavy-tailed, heteroskedastic residuals motivate robust estimation, and all models reported in the main text are robust linear models with the Huber loss. Because 61.3\% of reply cascades consist of a root post with no replies, and these sit exactly at the origin of the log--log scaling plot, the default median-absolute-deviation scale estimate collapses toward zero; standard errors computed from it are not interpretable. We therefore fit with Huber's proposal 2 scale, which does not degenerate here, and report a sensitivity analysis across samples and scale estimators below. The analyses estimated by OLS with HC3 errors are the repost reconstruction robustness check and the repost panels of Figure~\ref{fig:bd}, where lattice-valued outcomes make the Huber scale estimate degenerate.}
 
-\begin{figure*}
+\begin{figure*}[!tbp]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/model_diag.png}
     \caption{\textbf{Regression diagnostic plots.}
@@ -854,7 +850,7 @@ Top: quantile--quantile (QQ) plot of residuals indicating heavy-tailed error dis
 
 \rev{Table~\ref{tab:specrob} therefore re-estimates the baseline model and Model 3c across the four combinations of sample and scale estimator. The baseline interaction is smaller when single-post cascades are excluded, as expected once the degenerate points are removed, but the substantive result is stable: including composition and alignment absorbs between 81\% and 94\% of the baseline platform difference in every specification, for both breadth and depth. Table~\ref{tab:model_comparison} reports the Huber proposal 2 fit on all cascades.}
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -886,7 +882,7 @@ Size $>1$ & Huber & depth & $-0.217$ & $0.029$ & 87\% \\
 
 We apply spline transformations (\texttt{bs} basis, df\,=\,3) to \texttt{author\_left\_ratio} and \texttt{author\_alignment\_ratio}; B-splines are preferred over natural cubic splines here because the data are confined to [0,1] and used in interactions, where their local support provides greater numerical stability. \rev{This places a spline on the predictor with the least curvature and a linear term on one with more, so we report what the choice costs. Refitting Model 3c with all three ratios splined absorbs 98.8\% of the baseline breadth interaction and 93.5\% of the depth interaction; entering all three linearly absorbs 68.4\% and 69.7\%. The specification we report falls between these, at 83.1\% and 84.7\%. It is therefore the more conservative of the two spline choices, and the finding that ideological structure absorbs most of the platform gap holds wherever the splines are placed.}
 
-\begin{figure*}
+\begin{figure*}[!tbp]
 \centering
 \includegraphics[width=\linewidth]{figures/partial.png}
     \caption{Partial residual plots under a linear baseline for (A) \texttt{author\_left\_ratio}, (B) \texttt{author\_right\_ratio}, and (C) \texttt{author\_alignment\_ratio}. \rev{Points are a random 20{,}000 of the 123{,}189 cascades; the fit uses all of them. The dashed line is the predictor's linear contribution evaluated at mean cascade size, the solid curve a LOWESS smoother of the partial residuals. Separation between the two is the nonlinearity a spline basis would absorb.}}
@@ -903,7 +899,7 @@ To assess whether findings depend on how user composition is encoded, we compare
 
 Including alignment substantially improves fit for both outcomes (Breadth $R^2 \approx 0.95$; Depth $R^2 \approx 0.90$), confirming that interaction structure plays a central role in cascade geometry. \rev{The majority/minority framework gives slightly lower absolute error but slightly worse pseudo-$R^2$ and RMSE, so neither encoding dominates. Its residual $\log(\text{size}) \times \text{platform}$ interaction is smaller in the composition-only models and larger once alignment is included, which is expected: recoding composition by each platform's dominant ideology absorbs part of the platform contrast directly into the composition terms, and that absorption is redundant once alignment is in the model. The attenuation conclusion is the same under both encodings. We retain the left/right specification as our main model because its coefficients carry a fixed ideological meaning across platforms.}
 
-\begin{table*}[t]
+\begin{table*}[!t]
 \centering
 \caption{Comparison of user-composition encodings (Left/Right vs. Majority/Minority), with and without alignment. Robust Linear Models.}
 \label{tab:si_comp_encoding_rlm_full}
@@ -945,7 +941,7 @@ Panel~B additionally includes the \emph{alignment ratio} (spline, df=3) and its 
 
 Figure~\ref{fig:marginal} plots marginal effects of alignment ratio, left-user ratio, and right-user ratio on cascade structure. For \textbf{depth}, higher alignment is associated with shallower structures, consistent with the idea that ideologically homogeneous cascades sustain fewer extended exchanges. Cascades with fewer right-leaning participants exhibit greater layering, echoing the motif finding that \rev{fully right-aligned chains on Truth Social are no more frequent than the platform's ideological composition already implies}. The marginal effects of left- and right-user ratios are asymmetric: increases in right-leaning participation are linked to sharper declines in depth than comparable increases in left-leaning participation. For \textbf{breadth}, higher alignment corresponds to wider cascades, indicating that homogeneous groups are more likely to generate simultaneous uptake at the same level. The left-user ratio exhibits an inverted-U relationship with breadth, while the right-user ratio shows a more linear pattern: as right-leaning users become increasingly dominant, cascades grow consistently broader.
 
-\begin{figure*}
+\begin{figure*}[!tbp]
     \centering
     \includegraphics[width=\linewidth]{figures/model_margin_effect.png}
     \caption{Marginal effects of ideological alignment, left-user ratio, and right-user ratio on cascade structure.
@@ -961,7 +957,7 @@ Our comparison rests on a narrow notion of technical comparability: we do not as
 
 The technical lineage of both platforms provides additional justification. Bluesky is built on the AT Protocol, which also supports custom feed generation through a feed-generator architecture. Truth Social has been widely documented as Mastodon-derived, using open-source social networking software with visual modifications. These lineages support structural comparability of cascade objects while reinforcing that ranking, moderation, and exposure should be treated as platform-specific and only partially observed.
 
-\begin{table}[ht]
+\begin{table}[!ht]
 \centering
 \small
 \caption{Platform affordances and technical lineage relevant to cascade construction.}
