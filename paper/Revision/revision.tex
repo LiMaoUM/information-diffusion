@@ -597,6 +597,10 @@ Three further constraints bear on interpretation. Our measure of ideological ali
 %% APPENDIX
 %% -------------------------------------------------------
 \appendix
+% let the appendix place more floats per page, so tables stay near their text
+\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{3}\setcounter{bottomnumber}{2}\setcounter{totalnumber}{5}
 \setcounter{table}{0}\setcounter{figure}{0}
 \renewcommand{\thetable}{A\arabic{table}}\renewcommand{\thefigure}{A\arabic{figure}}
 
