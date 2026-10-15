@@ -14,3 +14,9 @@
 - 2026-07-17: Repo hygiene policy set during cleanup session: large regenerable
   data git-ignored going forward; history purge of old data blobs deferred
   pending Mao's decision (needs force push).
+
+## 2026-10-15: Ideas and facts recorded from the month retrospective
+
+PROPOSAL: recorded ideas and facts, none decided by Mao; the source is notes/reviews/2026-10-15-month-retrospective/unrecorded-ideas.md in maospace.
+
+- **Figure decisions missing from this file (last entry before this one: 2026-07-17).** Figure 3 uses a pooled fit, because the per-platform MAD scale degenerates when 61 to 71% of cascades sit at the origin; repost uses OLS with HC3; and the ">=" rule applies. Voiced by Claude, 2026-09-15. (Item 92)
