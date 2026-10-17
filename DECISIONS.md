@@ -20,3 +20,7 @@
 PROPOSAL: recorded ideas and facts, none decided by Mao; the source is notes/reviews/2026-10-15-month-retrospective/unrecorded-ideas.md in maospace.
 
 - **Figure decisions missing from this file (last entry before this one: 2026-07-17).** Figure 3 uses a pooled fit, because the per-platform MAD scale degenerates when 61 to 71% of cascades sit at the origin; repost uses OLS with HC3; and the ">=" rule applies. Voiced by Claude, 2026-09-15. (Item 92)
+
+## 2026-10-16: ICWSM 2027 revision submitted
+
+Mao confirmed on 2026-10-16 (paper plan review in the maospace session) that the revised paper 1217 and response letter were submitted by the 2026-09-15 deadline. Status: awaiting the final accept or reject decision.
